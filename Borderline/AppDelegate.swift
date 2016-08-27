@@ -13,10 +13,19 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+//    let defaultBlue = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0)
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+
+        UINavigationBar.appearance().tintColor = GlobalConstants.defaultBlue
+        UINavigationBar.appearance().translucent = false
+        UINavigationBar.appearance().opaque = true
+        UINavigationBar.appearance().barTintColor = UIColor.orangeColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : GlobalConstants.defaultBlue, NSFontAttributeName : UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)]
+        setStatusBarBackgroundColor(UIColor.clearColor())
+//        UINavigationBar.appearance().setTitleVerticalPositionAdjustment(2, forBarMetrics: UIBarMetrics.Default)
+//        [[UINavigationBar appearance] setBarTintColor:[UIColor orangeColor]]
         return true
     }
 
@@ -62,7 +71,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("SingleViewCoreData.sqlite")
+        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("BorderlineCountries.sqlite")
+        
+        if !NSFileManager.defaultManager().fileExistsAtPath(url.path!) {
+            let sourceSqliteURLs = [NSBundle.mainBundle().URLForResource("BorderlineCountries", withExtension: "sqlite")!, NSBundle.mainBundle().URLForResource("BorderlineCountries", withExtension: "sqlite-wal")!, NSBundle.mainBundle().URLForResource("BorderlineCountries", withExtension: "sqlite-shm")!]
+            
+            let destSqliteURLs = [self.applicationDocumentsDirectory.URLByAppendingPathComponent("BorderlineCountries.sqlite"),
+                                  self.applicationDocumentsDirectory.URLByAppendingPathComponent("BorderlineCountries.sqlite-wal"),
+                                  self.applicationDocumentsDirectory.URLByAppendingPathComponent("BorderlineCountries.sqlite-shm")]
+            
+            var error:NSError? = nil
+            var index = 0
+            for url in sourceSqliteURLs{
+                do {
+                    try NSFileManager.defaultManager().copyItemAtURL(url, toURL: destSqliteURLs[index])
+                }catch {
+                    print(error)
+                }
+                index+=1
+            }            
+        }
+        
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
             try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
@@ -107,5 +136,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    func setStatusBarBackgroundColor(color: UIColor) {
+        
+        guard  let statusBar = UIApplication.sharedApplication().valueForKey("statusBarWindow")?.valueForKey("statusBar") as? UIView else {
+            return
+        }
+        
+        statusBar.backgroundColor = color
+    }
 }
 

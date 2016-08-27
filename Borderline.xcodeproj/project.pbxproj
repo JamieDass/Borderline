@@ -15,6 +15,18 @@
 		7D25AE921D69354C00319F5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D25AE901D69354C00319F5B /* LaunchScreen.storyboard */; };
 		7D25AE9D1D69354C00319F5B /* BorderlineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D25AE9C1D69354C00319F5B /* BorderlineTests.swift */; };
 		7D25AEA81D69354C00319F5B /* BorderlineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D25AEA71D69354C00319F5B /* BorderlineUITests.swift */; };
+		7D25AEB71D6939C500319F5B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D25AEB61D6939C500319F5B /* CloudKit.framework */; };
+		7D25AEB91D6939D200319F5B /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D25AEB81D6939D200319F5B /* GameKit.framework */; };
+		7D2D47921D6A7D3B00D7C1BC /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2D47911D6A7D3B00D7C1BC /* RootVC.swift */; };
+		7D579C921D70F65B0014C5EC /* BorderlineCountries.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7D579C8F1D70F65B0014C5EC /* BorderlineCountries.sqlite */; };
+		7D579C931D70F65B0014C5EC /* BorderlineCountries.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 7D579C901D70F65B0014C5EC /* BorderlineCountries.sqlite-shm */; };
+		7D579C941D70F65B0014C5EC /* BorderlineCountries.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 7D579C911D70F65B0014C5EC /* BorderlineCountries.sqlite-wal */; };
+		7D8382BA1D6A684300320083 /* ChallengeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8382B91D6A684300320083 /* ChallengeVC.swift */; };
+		7D9A22A41D7120FB002E9EC2 /* NavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A22A31D7120FB002E9EC2 /* NavVC.swift */; };
+		7DEFC6FF1D70AF3B003DA9CF /* LevelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFC6FE1D70AF3B003DA9CF /* LevelVC.swift */; };
+		7DEFC7011D70B45A003DA9CF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFC7001D70B45A003DA9CF /* Constants.swift */; };
+		7DEFC7101D70E81C003DA9CF /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFC70F1D70E81C003DA9CF /* Country.swift */; };
+		7DEFC7201D70EE27003DA9CF /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 7DEFC71F1D70EE27003DA9CF /* Images */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +61,19 @@
 		7D25AEA31D69354C00319F5B /* BorderlineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BorderlineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D25AEA71D69354C00319F5B /* BorderlineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderlineUITests.swift; sourceTree = "<group>"; };
 		7D25AEA91D69354C00319F5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7D25AEB51D6939C000319F5B /* Borderline.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Borderline.entitlements; sourceTree = "<group>"; };
+		7D25AEB61D6939C500319F5B /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		7D25AEB81D6939D200319F5B /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		7D2D47911D6A7D3B00D7C1BC /* RootVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
+		7D579C8F1D70F65B0014C5EC /* BorderlineCountries.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = BorderlineCountries.sqlite; sourceTree = "<group>"; };
+		7D579C901D70F65B0014C5EC /* BorderlineCountries.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BorderlineCountries.sqlite-shm"; sourceTree = "<group>"; };
+		7D579C911D70F65B0014C5EC /* BorderlineCountries.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BorderlineCountries.sqlite-wal"; sourceTree = "<group>"; };
+		7D8382B91D6A684300320083 /* ChallengeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeVC.swift; sourceTree = "<group>"; };
+		7D9A22A31D7120FB002E9EC2 /* NavVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavVC.swift; sourceTree = "<group>"; };
+		7DEFC6FE1D70AF3B003DA9CF /* LevelVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelVC.swift; sourceTree = "<group>"; };
+		7DEFC7001D70B45A003DA9CF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7DEFC70F1D70E81C003DA9CF /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		7DEFC71F1D70EE27003DA9CF /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D25AEB71D6939C500319F5B /* CloudKit.framework in Frameworks */,
+				7D25AEB91D6939D200319F5B /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +106,8 @@
 		7D25AE781D69354B00319F5B = {
 			isa = PBXGroup;
 			children = (
+				7D25AEB81D6939D200319F5B /* GameKit.framework */,
+				7D25AEB61D6939C500319F5B /* CloudKit.framework */,
 				7D25AE831D69354C00319F5B /* Borderline */,
 				7D25AE9B1D69354C00319F5B /* BorderlineTests */,
 				7D25AEA61D69354C00319F5B /* BorderlineUITests */,
@@ -99,13 +128,24 @@
 		7D25AE831D69354C00319F5B /* Borderline */ = {
 			isa = PBXGroup;
 			children = (
+				7D25AEB51D6939C000319F5B /* Borderline.entitlements */,
 				7D25AE841D69354C00319F5B /* AppDelegate.swift */,
+				7D2D47911D6A7D3B00D7C1BC /* RootVC.swift */,
 				7D25AE861D69354C00319F5B /* ViewController.swift */,
+				7D8382B91D6A684300320083 /* ChallengeVC.swift */,
+				7DEFC6FE1D70AF3B003DA9CF /* LevelVC.swift */,
+				7D9A22A31D7120FB002E9EC2 /* NavVC.swift */,
+				7DEFC7001D70B45A003DA9CF /* Constants.swift */,
+				7DEFC70F1D70E81C003DA9CF /* Country.swift */,
 				7D25AE881D69354C00319F5B /* Main.storyboard */,
+				7DEFC71F1D70EE27003DA9CF /* Images */,
 				7D25AE8E1D69354C00319F5B /* Assets.xcassets */,
 				7D25AE901D69354C00319F5B /* LaunchScreen.storyboard */,
 				7D25AE931D69354C00319F5B /* Info.plist */,
 				7D25AE8B1D69354C00319F5B /* Borderline.xcdatamodeld */,
+				7D579C8F1D70F65B0014C5EC /* BorderlineCountries.sqlite */,
+				7D579C901D70F65B0014C5EC /* BorderlineCountries.sqlite-shm */,
+				7D579C911D70F65B0014C5EC /* BorderlineCountries.sqlite-wal */,
 			);
 			path = Borderline;
 			sourceTree = "<group>";
@@ -196,6 +236,15 @@
 				TargetAttributes = {
 					7D25AE801D69354B00319F5B = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = D8896AHXDR;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					7D25AE971D69354C00319F5B = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -233,8 +282,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D25AE921D69354C00319F5B /* LaunchScreen.storyboard in Resources */,
+				7D579C921D70F65B0014C5EC /* BorderlineCountries.sqlite in Resources */,
 				7D25AE8F1D69354C00319F5B /* Assets.xcassets in Resources */,
+				7D579C941D70F65B0014C5EC /* BorderlineCountries.sqlite-wal in Resources */,
+				7D579C931D70F65B0014C5EC /* BorderlineCountries.sqlite-shm in Resources */,
 				7D25AE8A1D69354C00319F5B /* Main.storyboard in Resources */,
+				7DEFC7201D70EE27003DA9CF /* Images in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +312,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D9A22A41D7120FB002E9EC2 /* NavVC.swift in Sources */,
 				7D25AE871D69354C00319F5B /* ViewController.swift in Sources */,
+				7DEFC7101D70E81C003DA9CF /* Country.swift in Sources */,
+				7DEFC6FF1D70AF3B003DA9CF /* LevelVC.swift in Sources */,
+				7D8382BA1D6A684300320083 /* ChallengeVC.swift in Sources */,
+				7D2D47921D6A7D3B00D7C1BC /* RootVC.swift in Sources */,
+				7DEFC7011D70B45A003DA9CF /* Constants.swift in Sources */,
 				7D25AE851D69354C00319F5B /* AppDelegate.swift in Sources */,
 				7D25AE8D1D69354C00319F5B /* Borderline.xcdatamodeld in Sources */,
 			);
@@ -405,7 +464,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Borderline/Borderline.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Borderline/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Jetliner.Borderline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -416,7 +478,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Borderline/Borderline.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Borderline/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Jetliner.Borderline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -488,6 +553,7 @@
 				7D25AEAE1D69354C00319F5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7D25AEAF1D69354C00319F5B /* Build configuration list for PBXNativeTarget "BorderlineTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +562,7 @@
 				7D25AEB11D69354C00319F5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7D25AEB21D69354C00319F5B /* Build configuration list for PBXNativeTarget "BorderlineUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +571,7 @@
 				7D25AEB41D69354C00319F5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
