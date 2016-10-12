@@ -18,7 +18,7 @@ class ChallengeVC: UIViewController {
     @IBOutlet weak var level5Button: UIButton!
     @IBOutlet weak var level6Button: UIButton!
     @IBOutlet weak var scoreLab: UILabel!
-    
+    let levelStrings: NSArray = ["Level 1","Level 2","Level 3","Level 4","Level 5","Level 6"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,31 +33,31 @@ class ChallengeVC: UIViewController {
 //        RootVC().updateLabel("ahoy")
 //        RootVC().setValue("ahoy", forKey: scorel)
 //        scoreView.backgroundColor = UIColor.orangeColor()
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setInteger(7, forKey: "score")
+        let defaults = UserDefaults.standard
+        defaults.set(7, forKey: "score")
         RootVC().updateLabel()
         self.navigationItem.title = "Challenge"
         let levelButtons: NSArray = [level1Button,level2Button,level3Button,level4Button,level5Button,level6Button]
         for button in levelButtons{
-            button.layer.cornerRadius = 13
-            button.layer.borderWidth = 4.0
-            button.layer.backgroundColor = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0).CGColor
-            button.layer.borderColor = UIColor.orangeColor().CGColor
-            button.titleLabel??.numberOfLines = 1
-            button.titleLabel??.adjustsFontSizeToFitWidth = true
-            button.titleLabel??.lineBreakMode = NSLineBreakMode.ByClipping
-            button.titleLabel??.textColor = UIColor.orangeColor()
-            button.titleLabel??.font = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle2)
+            (button as AnyObject).layer.cornerRadius = 13
+            (button as AnyObject).layer.borderWidth = 4.0
+            (button as AnyObject).layer.backgroundColor = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0).cgColor
+            (button as AnyObject).layer.borderColor = UIColor.orange.cgColor
+            (button as AnyObject).titleLabel??.numberOfLines = 1
+            (button as AnyObject).titleLabel??.adjustsFontSizeToFitWidth = true
+            (button as AnyObject).titleLabel??.lineBreakMode = NSLineBreakMode.byClipping
+            (button as AnyObject).titleLabel??.textColor = UIColor.orange
+            (button as AnyObject).titleLabel??.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title2)
             //            button.setTitleColor(UIColor.orangeColor(), forState: .Normal)
         }
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        LevelVC *targetVC = segue.destinationViewController
-        if let destination = segue.destinationViewController as? LevelVC{
-            destination.levelName = "Level 1"
-            destination.levelNumber = 1
+        if let destination = segue.destination as? LevelVC{
+            destination.levelName = levelStrings[(sender! as AnyObject).tag] as! NSString
+            destination.levelNumber = sender!.tag+1
         }
     }
     

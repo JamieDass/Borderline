@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var creditsWidth: NSLayoutConstraint!
 
     struct MyConstraint {
-        static func changeMultiplier(constraint: NSLayoutConstraint, multiplier: CGFloat) -> NSLayoutConstraint {
+        static func changeMultiplier(_ constraint: NSLayoutConstraint, multiplier: CGFloat) -> NSLayoutConstraint {
             let newConstraint = NSLayoutConstraint(
                 item: constraint.firstItem,
                 attribute: constraint.firstAttribute,
@@ -33,8 +33,8 @@ class ViewController: UIViewController {
             
             newConstraint.priority = constraint.priority
             
-            NSLayoutConstraint.deactivateConstraints([constraint])
-            NSLayoutConstraint.activateConstraints([newConstraint])
+            NSLayoutConstraint.deactivate([constraint])
+            NSLayoutConstraint.activate([newConstraint])
             
             return newConstraint
         }
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
         self.navigationItem.title = "Borderline"
         let homeConstraints: NSArray = [challengeWidth,extraLevelsWidth,settingsWidth,creditsWidth]
 
-    let isiPad: Bool = (UIDevice.currentDevice().userInterfaceIdiom == .Pad);
+    let isiPad: Bool = (UIDevice.current.userInterfaceIdiom == .pad);
         if ( isiPad )
         {
             challengeWidth = MyConstraint.changeMultiplier(challengeWidth, multiplier: 0.75)
@@ -68,15 +68,15 @@ class ViewController: UIViewController {
         
         let homeButtons: NSArray = [challengeButton,extraLevelsButton,settingsButton,creditsButton]
         for button in homeButtons{
-            button.layer.cornerRadius = 13
-            button.layer.borderWidth = 4.0
-            button.layer.backgroundColor = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0).CGColor
-            button.layer.borderColor = UIColor.orangeColor().CGColor
-            button.titleLabel??.numberOfLines = 1
-            button.titleLabel??.adjustsFontSizeToFitWidth = true
-            button.titleLabel??.lineBreakMode = NSLineBreakMode.ByClipping
-            button.titleLabel??.textColor = UIColor.orangeColor()
-            button.titleLabel??.font = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle2)
+            (button as AnyObject).layer.cornerRadius = 13
+            (button as AnyObject).layer.borderWidth = 4.0
+            (button as AnyObject).layer.backgroundColor = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0).cgColor
+            (button as AnyObject).layer.borderColor = UIColor.orange.cgColor
+            (button as AnyObject).titleLabel??.numberOfLines = 1
+            (button as AnyObject).titleLabel??.adjustsFontSizeToFitWidth = true
+            (button as AnyObject).titleLabel??.lineBreakMode = NSLineBreakMode.byClipping
+            (button as AnyObject).titleLabel??.textColor = UIColor.orange
+            (button as AnyObject).titleLabel??.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title2)
             
             
 //            button.setTitleColor(UIColor.orangeColor(), forState: .Normal)

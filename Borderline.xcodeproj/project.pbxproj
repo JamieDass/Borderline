@@ -23,6 +23,7 @@
 		7D579C941D70F65B0014C5EC /* BorderlineCountries.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 7D579C911D70F65B0014C5EC /* BorderlineCountries.sqlite-wal */; };
 		7D8382BA1D6A684300320083 /* ChallengeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8382B91D6A684300320083 /* ChallengeVC.swift */; };
 		7D9A22A41D7120FB002E9EC2 /* NavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A22A31D7120FB002E9EC2 /* NavVC.swift */; };
+		7D9A22A61D73859F002E9EC2 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A22A51D73859F002E9EC2 /* GameVC.swift */; };
 		7DEFC6FF1D70AF3B003DA9CF /* LevelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFC6FE1D70AF3B003DA9CF /* LevelVC.swift */; };
 		7DEFC7011D70B45A003DA9CF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFC7001D70B45A003DA9CF /* Constants.swift */; };
 		7DEFC7101D70E81C003DA9CF /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFC70F1D70E81C003DA9CF /* Country.swift */; };
@@ -70,6 +71,7 @@
 		7D579C911D70F65B0014C5EC /* BorderlineCountries.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BorderlineCountries.sqlite-wal"; sourceTree = "<group>"; };
 		7D8382B91D6A684300320083 /* ChallengeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeVC.swift; sourceTree = "<group>"; };
 		7D9A22A31D7120FB002E9EC2 /* NavVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavVC.swift; sourceTree = "<group>"; };
+		7D9A22A51D73859F002E9EC2 /* GameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
 		7DEFC6FE1D70AF3B003DA9CF /* LevelVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelVC.swift; sourceTree = "<group>"; };
 		7DEFC7001D70B45A003DA9CF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7DEFC70F1D70E81C003DA9CF /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				7D9A22A31D7120FB002E9EC2 /* NavVC.swift */,
 				7DEFC7001D70B45A003DA9CF /* Constants.swift */,
 				7DEFC70F1D70E81C003DA9CF /* Country.swift */,
+				7D9A22A51D73859F002E9EC2 /* GameVC.swift */,
 				7D25AE881D69354C00319F5B /* Main.storyboard */,
 				7DEFC71F1D70EE27003DA9CF /* Images */,
 				7D25AE8E1D69354C00319F5B /* Assets.xcassets */,
@@ -237,6 +240,7 @@
 					7D25AE801D69354B00319F5B = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = D8896AHXDR;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -248,10 +252,12 @@
 					};
 					7D25AE971D69354C00319F5B = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 7D25AE801D69354B00319F5B;
 					};
 					7D25AEA21D69354C00319F5B = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 7D25AE801D69354B00319F5B;
 					};
 				};
@@ -320,6 +326,7 @@
 				7D2D47921D6A7D3B00D7C1BC /* RootVC.swift in Sources */,
 				7DEFC7011D70B45A003DA9CF /* Constants.swift in Sources */,
 				7D25AE851D69354C00319F5B /* AppDelegate.swift in Sources */,
+				7D9A22A61D73859F002E9EC2 /* GameVC.swift in Sources */,
 				7D25AE8D1D69354C00319F5B /* Borderline.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,6 +478,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Jetliner.Borderline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -485,6 +493,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Jetliner.Borderline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -496,6 +505,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Jetliner.BorderlineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Borderline.app/Borderline";
 			};
 			name = Debug;
@@ -508,6 +518,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Jetliner.BorderlineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Borderline.app/Borderline";
 			};
 			name = Release;
@@ -519,6 +530,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Jetliner.BorderlineUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Borderline;
 			};
 			name = Debug;
@@ -530,6 +542,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Jetliner.BorderlineUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Borderline;
 			};
 			name = Release;

@@ -10,16 +10,16 @@ import UIKit
 import CoreData
 
 class LevelVC: UICollectionViewController {
-    private let reuseIdentifier = "countryCell"
-    private var countries:[Country] = []
-    var fetchResultController:NSFetchedResultsController!
+    fileprivate let reuseIdentifier = "countryCell"
+    fileprivate var countries:[Country] = []
+    var fetchResultController:NSFetchedResultsController<AnyObject>!
     var levelCountries = [NSMutableArray]()
     var levelName = NSString()
     var levelNumber = NSNumber()
     var statusBar = Bool()
 
-    override func viewWillAppear(animated: Bool) {
-        if UIDevice.currentDevice().orientation.isPortrait {
+    override func viewWillAppear(_ animated: Bool) {
+        if UIDevice.current.orientation.isPortrait {
             statusBar = true
         }else{
             statusBar = false
@@ -28,7 +28,7 @@ class LevelVC: UICollectionViewController {
     }
 
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
 //        self.automaticallyAdjustsScrollViewInsets = false
 //        self.edgesForExtendedLayout = UIRectEdge.None
 //        updateCollectionViewLayout(with: self.view.bounds.size)
@@ -37,19 +37,19 @@ class LevelVC: UICollectionViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.edgesForExtendedLayout = UIRectEdge.None
+        self.edgesForExtendedLayout = UIRectEdge()
 //        self.automaticallyAdjustsScrollViewInsets = false
-        self.view.backgroundColor = UIColor.orangeColor()
+        self.view.backgroundColor = UIColor.orange
         self.collectionView?.backgroundColor = GlobalConstants.defaultBlue
         self.navigationItem.title = levelName as String
 //        updateCollectionViewLayout(with: self.view.frame.size)
         
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
+        if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
             
             let fetchRequest = NSFetchRequest(entityName: "Country")
             fetchRequest.predicate = NSPredicate(format: "level == %@", levelNumber)
             do {
-                countries = try managedObjectContext.executeFetchRequest(fetchRequest) as! [Country]
+                countries = try managedObjectContext.fetch(fetchRequest) as! [Country]
             } catch {
                 print("Failed to retrieve record")
                 print(error)
@@ -60,31 +60,31 @@ class LevelVC: UICollectionViewController {
 
     }
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 12
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) 
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) 
         
-        var country: NSString = countries[indexPath.row].name!
-        country = country.stringByReplacingOccurrencesOfString(" ", withString: "_")
-        country = country.stringByAppendingString("_mask_200.png")
-        country = "Images/Countries/masks/200/".stringByAppendingString(country as String)
+        var country: NSString = countries[(indexPath as NSIndexPath).row].name!
+        country = country.replacingOccurrences(of: " ", with: "_") as NSString
+        country = country.appending("_mask_200.png") as NSString
+        country = "Images/Countries/masks/200/" + (country as String)
         
         let flagImage = UIImage.init(named: country as String)
         let bgView = UIImageView.init(image: flagImage)
-        bgView.contentMode = UIViewContentMode.ScaleAspectFit
+        bgView.contentMode = UIViewContentMode.scaleAspectFit
     
         cell.backgroundView = bgView
 //        cell.backgroundColor = UIColor.blackColor()
         // Configure the cell
         cell.layer.borderWidth = 0
-        cell.layer.borderColor = UIColor.whiteColor().CGColor
+        cell.layer.borderColor = UIColor.white.cgColor
         return cell
     }
     
@@ -94,7 +94,7 @@ class LevelVC: UICollectionViewController {
 //        return UIEdgeInsetsMake(10, 10, 0, 10)
 //    }
     
-    func collectionView(collectionView: UICollectionView,
+    func collectionView(_ collectionView: UICollectionView,
             layout collectionViewLayout: UICollectionViewLayout,
                minimumInteritemSpacingForSectionAtIndex:NSInteger) -> CGFloat{
         return 10
@@ -107,21 +107,21 @@ class LevelVC: UICollectionViewController {
 //    }
 //
 
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
 //        self.updateSize = size
 //        self.collectionView!.performBatchUpdates(nil, completion: nil)
 
-        coordinator.animateAlongsideTransition({ context in
+        coordinator.animate(alongsideTransition: { context in
             // do whatever with your context
-            context.viewControllerForKey(UITransitionContextFromViewControllerKey)
+            context.viewController(forKey: UITransitionContextViewControllerKey.from)
             self.statusBar = (size.width > size.height) ? true : false
         self.updateCollectionViewLayout(with: size)
             }, completion: nil)
 
     }
     
-    private func updateCollectionViewLayout(with size: CGSize) {
+    fileprivate func updateCollectionViewLayout(with size: CGSize) {
         if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout {
             
 //            print(self.navigationController?.navigationBar.frame.size.height)
@@ -129,7 +129,7 @@ class LevelVC: UICollectionViewController {
 //            print("vc h: ",size.height,"\n")
 
 //            print("\n",self.view.frame.size.height)
-            let screenSize: CGRect = UIScreen.mainScreen().bounds
+            let screenSize: CGRect = UIScreen.main.bounds
             let navHeight: CGFloat = (self.navigationController?.navigationBar.frame.size.height)!
 //            print(screenSize.height)
 //            print(screenSize.width)
@@ -146,12 +146,12 @@ class LevelVC: UICollectionViewController {
             if statusBar {
                 sbheight = 20
             }
-            print(sbheight)
+
             let vInsets: CGFloat = (size.height-navHeight-sbheight-((4*vertical)+(3*thickSpace)))/2
 //            print(vInsets)
             let hInsets: CGFloat = (size.width-((4*horizontal)+(3*thickSpace)))/2
 
-            layout.itemSize = (size.width < size.height) ? CGSizeMake(vertical, vertical) : CGSizeMake(horizontal, horizontal)
+            layout.itemSize = (size.width < size.height) ? CGSize(width: vertical, height: vertical) : CGSize(width: horizontal, height: horizontal)
             layout.minimumLineSpacing = (size.width < size.height) ? thickSpace : thinSpace
             layout.minimumInteritemSpacing = (size.width < size.height) ? thinSpace : thickSpace
             layout.sectionInset = (size.width < size.height) ? UIEdgeInsetsMake(vInsets, 10, vInsets, 10) : UIEdgeInsetsMake(10, hInsets, 0, hInsets)
