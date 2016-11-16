@@ -12,7 +12,8 @@ import CoreData
 class LevelVC: UICollectionViewController {
     fileprivate let reuseIdentifier = "countryCell"
     fileprivate var countries:[Country] = []
-    var fetchResultController:NSFetchedResultsController<AnyObject>!
+//    var fetchResultController:NSFetchedResultsController<AnyObject>!
+    var fetchResultsController: NSFetchedResultsController<NSManagedObject>!
     var levelCountries = [NSMutableArray]()
     var levelName = NSString()
     var levelNumber = NSNumber()
@@ -46,7 +47,7 @@ class LevelVC: UICollectionViewController {
         
         if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
             
-            let fetchRequest = NSFetchRequest(entityName: "Country")
+            let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Country")
             fetchRequest.predicate = NSPredicate(format: "level == %@", levelNumber)
             do {
                 countries = try managedObjectContext.fetch(fetchRequest) as! [Country]
@@ -57,7 +58,6 @@ class LevelVC: UICollectionViewController {
         }
         
 //        print(countries[0].name)
-
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -71,16 +71,25 @@ class LevelVC: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) 
         
-        var country: NSString = countries[(indexPath as NSIndexPath).row].name!
-        country = country.replacingOccurrences(of: " ", with: "_") as NSString
-        country = country.appending("_mask_200.png") as NSString
-        country = "Images/Countries/masks/200/" + (country as String)
+//        if let array = countries[(indexPath).row] as? [[NSObject:AnyObject]] {
+//        var country: NSString = countries[(indexPath as NSIndexPath).row].name!
+        
+        let countrySel: Country = countries[(indexPath).row]
+        var country: String = (countrySel.name)!
+//        var country: NSString = countries[(indexPath).row].name!
+        country = country.replacingOccurrences(of: " ", with: "_")
+        country = country.appending("_mask_200.png")
+        let path:NSString = "Images/Countries/masks/200/"
+        country = path.appending(country as String)
+//        country = ("Images/Countries/masks/200/" as NSString) + (country)
+//        country = "Images/Countries/masks/200/" + (country as String)
         
         let flagImage = UIImage.init(named: country as String)
         let bgView = UIImageView.init(image: flagImage)
         bgView.contentMode = UIViewContentMode.scaleAspectFit
     
         cell.backgroundView = bgView
+
 //        cell.backgroundColor = UIColor.blackColor()
         // Configure the cell
         cell.layer.borderWidth = 0

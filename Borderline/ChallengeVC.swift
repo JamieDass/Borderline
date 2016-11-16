@@ -57,7 +57,8 @@ class ChallengeVC: UIViewController {
 //        LevelVC *targetVC = segue.destinationViewController
         if let destination = segue.destination as? LevelVC{
             destination.levelName = levelStrings[(sender! as AnyObject).tag] as! NSString
-            destination.levelNumber = sender!.tag+1
+//            let target: NSNumber = (sender! as AnyObject).tag as NSNumber
+            destination.levelNumber = ((sender! as AnyObject).tag)+1 as NSNumber
         }
     }
     
