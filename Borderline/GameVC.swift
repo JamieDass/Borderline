@@ -10,12 +10,19 @@ import UIKit
 
 class GameVC: UIViewController {
 
-    @IBOutlet weak var countryGuessConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageBottom: NSLayoutConstraint!
+//    @IBOutlet weak var imageBottom: NSLayoutConstraint!
+    @IBOutlet weak var revealedImageView: UIImageView!
+    
+//    @IBOutlet weak var countryGuessConstraint: NSLayoutConstraint!
     @IBOutlet weak var countryGuess: UITextField!
     var keyboardHeight: CGFloat = 0.0
     
     override func viewWillAppear(_ animated: Bool) {
+        let screenSize: CGRect = UIScreen.main.bounds
+//        imageBottom.constant = screenSize.height/2
         super.viewWillAppear(true)
+        
          // Do any additional setup after loading the view.
     }
     
@@ -24,12 +31,19 @@ class GameVC: UIViewController {
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
-            print(keyboardHeight)
+            
+//            if keyboardHeight > imageBottom.constant {
+//                imageBottom.constant = keyboardHeight
+//            }
+//            countryGuessConstraint.constant = keyboardHeight
+//            countryGuess.frame.origin = CGPoint(x: 0,y: keyboardHeight)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        revealedImageView.backgroundColor = UIColor.blue
+        countryGuess.becomeFirstResponder()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)        // Do any additional setup after loading the view.
     }
 
