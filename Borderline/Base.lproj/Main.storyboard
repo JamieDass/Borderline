@@ -431,7 +431,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </view>
                                 <connections>
-                                    <segue destination="adb-Zq-eWF" kind="show" id="CXF-BR-OB3"/>
+                                    <segue destination="adb-Zq-eWF" kind="presentation" id="CXF-BR-OB3"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -455,35 +455,51 @@
                         <viewControllerLayoutGuide type="bottom" id="LOA-uH-eQg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4Tz-sn-fVI">
-                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wnf-Q8-6ic">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="26"/>
+                                <rect key="frame" x="0.0" y="20" width="768" height="26"/>
                                 <color key="tintColor" red="1" green="0.50196078430000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
-                            </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bz1-bL-8AA">
-                                <rect key="frame" x="144" y="26" width="480" height="480"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="bz1-bL-8AA" secondAttribute="height" multiplier="1:1" id="Ege-kG-UMl"/>
+                                    <constraint firstAttribute="height" constant="26" id="pG7-La-chF"/>
                                 </constraints>
-                            </imageView>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZqH-hK-oTT" userLabel="GameView">
+                                <rect key="frame" x="0.0" y="46" width="768" height="978"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LzB-Q5-Yl8">
+                                        <rect key="frame" x="-56" y="49" width="880" height="880"/>
+                                        <color key="backgroundColor" red="0.0" green="0.53333333329999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="LzB-Q5-Yl8" secondAttribute="height" multiplier="1:1" id="iCT-Mc-Zzb"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="LzB-Q5-Yl8" firstAttribute="centerX" secondItem="ZqH-hK-oTT" secondAttribute="centerX" id="P3m-ng-ZVY"/>
+                                    <constraint firstItem="LzB-Q5-Yl8" firstAttribute="centerY" secondItem="ZqH-hK-oTT" secondAttribute="centerY" id="YvJ-3d-7CE"/>
+                                    <constraint firstItem="LzB-Q5-Yl8" firstAttribute="height" secondItem="ZqH-hK-oTT" secondAttribute="height" multiplier="0.9" id="h6f-uM-vaJ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ZqH-hK-oTT" firstAttribute="width" secondItem="4Tz-sn-fVI" secondAttribute="width" id="5j7-kM-QVQ"/>
                             <constraint firstItem="wnf-Q8-6ic" firstAttribute="top" secondItem="ie2-Qm-C49" secondAttribute="bottom" id="GSF-OB-Bv1"/>
                             <constraint firstItem="wnf-Q8-6ic" firstAttribute="centerX" secondItem="4Tz-sn-fVI" secondAttribute="centerX" id="MI8-9a-QIl"/>
                             <constraint firstItem="wnf-Q8-6ic" firstAttribute="width" secondItem="4Tz-sn-fVI" secondAttribute="width" id="XeL-2P-aOE"/>
-                            <constraint firstItem="bz1-bL-8AA" firstAttribute="centerX" secondItem="4Tz-sn-fVI" secondAttribute="centerX" id="eX3-xC-7x7"/>
-                            <constraint firstItem="bz1-bL-8AA" firstAttribute="height" secondItem="4Tz-sn-fVI" secondAttribute="height" multiplier="0.5" id="h7l-hD-M2O"/>
-                            <constraint firstItem="bz1-bL-8AA" firstAttribute="top" secondItem="wnf-Q8-6ic" secondAttribute="bottom" priority="999" id="hHo-nM-Rat"/>
+                            <constraint firstItem="ZqH-hK-oTT" firstAttribute="top" secondItem="wnf-Q8-6ic" secondAttribute="bottom" id="aUw-i4-tqn"/>
+                            <constraint firstItem="ZqH-hK-oTT" firstAttribute="centerX" secondItem="4Tz-sn-fVI" secondAttribute="centerX" id="hLw-ba-ae9"/>
+                            <constraint firstItem="LOA-uH-eQg" firstAttribute="top" secondItem="ZqH-hK-oTT" secondAttribute="bottom" id="idT-Tw-zVc"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="countryGuess" destination="wnf-Q8-6ic" id="Q5h-cg-VuC"/>
-                        <outlet property="revealedImageView" destination="bz1-bL-8AA" id="aLE-LZ-HmV"/>
+                        <outlet property="countryView" destination="ZqH-hK-oTT" id="9Xy-cW-Tx6"/>
+                        <outlet property="viewBottom" destination="idT-Tw-zVc" id="btx-zR-Xf5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tAc-Hx-wxn" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,7 +11,6 @@
 		7D25AE871D69354C00319F5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D25AE861D69354C00319F5B /* ViewController.swift */; };
 		7D25AE8A1D69354C00319F5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D25AE881D69354C00319F5B /* Main.storyboard */; };
 		7D25AE8D1D69354C00319F5B /* Borderline.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D25AE8B1D69354C00319F5B /* Borderline.xcdatamodeld */; };
-		7D25AE8F1D69354C00319F5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D25AE8E1D69354C00319F5B /* Assets.xcassets */; };
 		7D25AE921D69354C00319F5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D25AE901D69354C00319F5B /* LaunchScreen.storyboard */; };
 		7D25AE9D1D69354C00319F5B /* BorderlineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D25AE9C1D69354C00319F5B /* BorderlineTests.swift */; };
 		7D25AEA81D69354C00319F5B /* BorderlineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D25AEA71D69354C00319F5B /* BorderlineUITests.swift */; };
@@ -24,6 +23,7 @@
 		7D8382BA1D6A684300320083 /* ChallengeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8382B91D6A684300320083 /* ChallengeVC.swift */; };
 		7D9A22A41D7120FB002E9EC2 /* NavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A22A31D7120FB002E9EC2 /* NavVC.swift */; };
 		7D9A22A61D73859F002E9EC2 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A22A51D73859F002E9EC2 /* GameVC.swift */; };
+		7DA1FFB21DE34330008D5B44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DA1FFB11DE34330008D5B44 /* Assets.xcassets */; };
 		7DA67F271DDCFAE300768537 /* ProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA67F261DDCFAE300768537 /* ProgressButton.swift */; };
 		7DA67F291DDD01B200768537 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA67F281DDD01B200768537 /* Extensions.swift */; };
 		7DEFC6FF1D70AF3B003DA9CF /* LevelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFC6FE1D70AF3B003DA9CF /* LevelVC.swift */; };
@@ -55,7 +55,6 @@
 		7D25AE861D69354C00319F5B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7D25AE891D69354C00319F5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7D25AE8C1D69354C00319F5B /* Borderline.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Borderline.xcdatamodel; sourceTree = "<group>"; };
-		7D25AE8E1D69354C00319F5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D25AE911D69354C00319F5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D25AE931D69354C00319F5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D25AE981D69354C00319F5B /* BorderlineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BorderlineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +73,7 @@
 		7D8382B91D6A684300320083 /* ChallengeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeVC.swift; sourceTree = "<group>"; };
 		7D9A22A31D7120FB002E9EC2 /* NavVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavVC.swift; sourceTree = "<group>"; };
 		7D9A22A51D73859F002E9EC2 /* GameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
+		7DA1FFB11DE34330008D5B44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7DA67F261DDCFAE300768537 /* ProgressButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressButton.swift; sourceTree = "<group>"; };
 		7DA67F281DDD01B200768537 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7DEFC6FE1D70AF3B003DA9CF /* LevelVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelVC.swift; sourceTree = "<group>"; };
@@ -147,8 +147,8 @@
 				7D9A22A51D73859F002E9EC2 /* GameVC.swift */,
 				7D25AE881D69354C00319F5B /* Main.storyboard */,
 				7DA67F261DDCFAE300768537 /* ProgressButton.swift */,
+				7DA1FFB11DE34330008D5B44 /* Assets.xcassets */,
 				7DEFC71F1D70EE27003DA9CF /* Images */,
-				7D25AE8E1D69354C00319F5B /* Assets.xcassets */,
 				7D25AE901D69354C00319F5B /* LaunchScreen.storyboard */,
 				7D25AE931D69354C00319F5B /* Info.plist */,
 				7D25AE8B1D69354C00319F5B /* Borderline.xcdatamodeld */,
@@ -295,10 +295,10 @@
 			files = (
 				7D25AE921D69354C00319F5B /* LaunchScreen.storyboard in Resources */,
 				7D579C921D70F65B0014C5EC /* BorderlineCountries.sqlite in Resources */,
-				7D25AE8F1D69354C00319F5B /* Assets.xcassets in Resources */,
 				7D579C941D70F65B0014C5EC /* BorderlineCountries.sqlite-wal in Resources */,
 				7D579C931D70F65B0014C5EC /* BorderlineCountries.sqlite-shm in Resources */,
 				7D25AE8A1D69354C00319F5B /* Main.storyboard in Resources */,
+				7DA1FFB21DE34330008D5B44 /* Assets.xcassets in Resources */,
 				7DEFC7201D70EE27003DA9CF /* Images in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

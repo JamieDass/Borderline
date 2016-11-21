@@ -12,6 +12,7 @@ import CoreData
 class LevelVC: UICollectionViewController {
     fileprivate let reuseIdentifier = "countryCell"
     fileprivate var countries:[Country] = []
+//    var fetchResultController:NSFetchedResultsController<AnyObject>!
     var fetchResultsController: NSFetchedResultsController<NSManagedObject>!
     var levelCountries = [NSMutableArray]()
     var levelName = NSString()
