@@ -75,7 +75,6 @@ class LevelVC: UICollectionViewController {
         
         let countrySel: Country = countries[(indexPath).row]
         var country: String = (countrySel.name)!
-//        var country: NSString = countries[(indexPath).row].name!
         country = country.replacingOccurrences(of: " ", with: "_")
         country = country.appending("_mask_200.png")
         let path:NSString = "Images/Countries/masks/200/"
@@ -93,6 +92,7 @@ class LevelVC: UICollectionViewController {
         // Configure the cell
         cell.layer.borderWidth = 0
         cell.layer.borderColor = UIColor.white.cgColor
+        cell.tag = indexPath.row
         return cell
     }
     
@@ -166,6 +166,23 @@ class LevelVC: UICollectionViewController {
             layout.invalidateLayout()
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? GameVC{
+            let selectedCountry: Country = countries[(sender as! UICollectionViewCell).tag]
+        
+//            destination.levelCountry = selectedCountry.name! as NSString
+            destination.levelCountry = selectedCountry
+//            destination.levelCountry = selectedCountry
+//            if segue.identifier == "gameSegue"{
+//            destination.levelCountry = selectedCountry
+//            }
+        }
+    }
+    
+    @IBAction func cancelToLevelVC(segue:UIStoryboardSegue) {
+    }
+
     
 //    func collectionView(collectionView: UICollectionView,
 //                          layout collectionViewLayout: UICollectionViewLayout,
