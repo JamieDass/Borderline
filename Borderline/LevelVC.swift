@@ -39,11 +39,9 @@ class LevelVC: UICollectionViewController {
         
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge()
-//        self.automaticallyAdjustsScrollViewInsets = false
         self.view.backgroundColor = UIColor.orange
         self.collectionView?.backgroundColor = GlobalConstants.defaultBlue
         self.navigationItem.title = levelName as String
-//        updateCollectionViewLayout(with: self.view.frame.size)
         
         if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
             

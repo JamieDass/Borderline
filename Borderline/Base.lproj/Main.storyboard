@@ -473,6 +473,78 @@
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="evq-Xb-PJ3" userLabel="ClueView">
                                         <rect key="frame" x="58" y="156" width="653" height="653"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="CLUE1" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oai-ie-8pX" userLabel="clue1">
+                                                <rect key="frame" x="32" y="19" width="588" height="196"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="utL-5e-aN1" userLabel="clueSpace1">
+                                                <rect key="frame" x="-0.5" y="215" width="653" height="13"/>
+                                            </view>
+                                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4P6-EA-uaE" userLabel="clue1Button">
+                                                <rect key="frame" x="32" y="19" width="588" height="196"/>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="CLUE2" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcA-WZ-ocb" userLabel="clue2">
+                                                <rect key="frame" x="32" y="228" width="588" height="196"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6bL-rl-ZFH" userLabel="clueSpace2">
+                                                <rect key="frame" x="-0.5" y="424" width="653" height="13"/>
+                                            </view>
+                                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QWo-GL-c0P" userLabel="clue2Button">
+                                                <rect key="frame" x="32" y="228" width="588" height="196"/>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="CLUE3" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiB-f1-bXt" userLabel="clue3">
+                                                <rect key="frame" x="32" y="437" width="588" height="196"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yoK-Uc-jIA" userLabel="clue3Button">
+                                                <rect key="frame" x="32" y="437" width="588" height="196"/>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="QWo-GL-c0P" firstAttribute="width" secondItem="qcA-WZ-ocb" secondAttribute="width" id="0J9-o1-pe2"/>
+                                            <constraint firstItem="6bL-rl-ZFH" firstAttribute="top" secondItem="qcA-WZ-ocb" secondAttribute="bottom" id="1Pu-vY-tvK"/>
+                                            <constraint firstItem="tiB-f1-bXt" firstAttribute="width" secondItem="evq-Xb-PJ3" secondAttribute="width" multiplier="0.9" id="1xi-BZ-xrO"/>
+                                            <constraint firstItem="tiB-f1-bXt" firstAttribute="centerX" secondItem="evq-Xb-PJ3" secondAttribute="centerX" id="4Ft-nH-cKr"/>
+                                            <constraint firstItem="Oai-ie-8pX" firstAttribute="width" secondItem="evq-Xb-PJ3" secondAttribute="width" multiplier="0.9" id="4Ps-Fa-SOr"/>
+                                            <constraint firstItem="6bL-rl-ZFH" firstAttribute="width" secondItem="evq-Xb-PJ3" secondAttribute="width" id="7Zh-PV-JIG"/>
+                                            <constraint firstItem="yoK-Uc-jIA" firstAttribute="width" secondItem="tiB-f1-bXt" secondAttribute="width" id="8RM-LC-uAN"/>
+                                            <constraint firstItem="qcA-WZ-ocb" firstAttribute="centerY" secondItem="evq-Xb-PJ3" secondAttribute="centerY" id="Dhm-6i-rKT"/>
+                                            <constraint firstItem="4P6-EA-uaE" firstAttribute="height" secondItem="Oai-ie-8pX" secondAttribute="height" id="H0r-li-xIH"/>
+                                            <constraint firstItem="Oai-ie-8pX" firstAttribute="centerX" secondItem="evq-Xb-PJ3" secondAttribute="centerX" id="H2F-5n-r9u"/>
+                                            <constraint firstItem="QWo-GL-c0P" firstAttribute="centerY" secondItem="qcA-WZ-ocb" secondAttribute="centerY" id="Ho8-Ne-oOc"/>
+                                            <constraint firstItem="4P6-EA-uaE" firstAttribute="centerY" secondItem="Oai-ie-8pX" secondAttribute="centerY" id="I7S-B2-bg1"/>
+                                            <constraint firstItem="tiB-f1-bXt" firstAttribute="height" secondItem="evq-Xb-PJ3" secondAttribute="height" multiplier="0.3" id="IXr-kY-FCr"/>
+                                            <constraint firstItem="qcA-WZ-ocb" firstAttribute="height" secondItem="evq-Xb-PJ3" secondAttribute="height" multiplier="0.3" id="Jts-SS-DQQ"/>
+                                            <constraint firstItem="4P6-EA-uaE" firstAttribute="width" secondItem="Oai-ie-8pX" secondAttribute="width" id="Jzs-nt-mk7"/>
+                                            <constraint firstItem="Oai-ie-8pX" firstAttribute="bottom" secondItem="utL-5e-aN1" secondAttribute="top" id="LUu-62-tOm"/>
+                                            <constraint firstItem="utL-5e-aN1" firstAttribute="height" secondItem="evq-Xb-PJ3" secondAttribute="height" multiplier="0.02" id="MNE-4D-A6N"/>
+                                            <constraint firstItem="utL-5e-aN1" firstAttribute="centerX" secondItem="evq-Xb-PJ3" secondAttribute="centerX" id="Nqx-3M-F6f"/>
+                                            <constraint firstItem="tiB-f1-bXt" firstAttribute="top" secondItem="6bL-rl-ZFH" secondAttribute="bottom" id="RZQ-L0-bfT"/>
+                                            <constraint firstItem="qcA-WZ-ocb" firstAttribute="width" secondItem="evq-Xb-PJ3" secondAttribute="width" multiplier="0.9" id="S3N-hf-7AB"/>
+                                            <constraint firstItem="QWo-GL-c0P" firstAttribute="centerX" secondItem="qcA-WZ-ocb" secondAttribute="centerX" id="m6T-dq-Yiy"/>
+                                            <constraint firstItem="6bL-rl-ZFH" firstAttribute="centerX" secondItem="evq-Xb-PJ3" secondAttribute="centerX" id="nRv-xr-272"/>
+                                            <constraint firstItem="utL-5e-aN1" firstAttribute="width" secondItem="evq-Xb-PJ3" secondAttribute="width" id="owb-pj-5CA"/>
+                                            <constraint firstItem="utL-5e-aN1" firstAttribute="bottom" secondItem="qcA-WZ-ocb" secondAttribute="top" id="pgD-uy-qlS"/>
+                                            <constraint firstItem="yoK-Uc-jIA" firstAttribute="centerY" secondItem="tiB-f1-bXt" secondAttribute="centerY" id="qZ5-6V-H4a"/>
+                                            <constraint firstItem="QWo-GL-c0P" firstAttribute="height" secondItem="qcA-WZ-ocb" secondAttribute="height" id="sI9-BS-E1M"/>
+                                            <constraint firstItem="4P6-EA-uaE" firstAttribute="centerX" secondItem="Oai-ie-8pX" secondAttribute="centerX" id="udw-d3-ej7"/>
+                                            <constraint firstItem="Oai-ie-8pX" firstAttribute="height" secondItem="evq-Xb-PJ3" secondAttribute="height" multiplier="0.3" id="vdT-Ij-g9G"/>
+                                            <constraint firstItem="6bL-rl-ZFH" firstAttribute="height" secondItem="evq-Xb-PJ3" secondAttribute="height" multiplier="0.02" id="wol-MT-7cn"/>
+                                            <constraint firstItem="yoK-Uc-jIA" firstAttribute="centerX" secondItem="tiB-f1-bXt" secondAttribute="centerX" id="xdI-Ot-eJd"/>
+                                            <constraint firstItem="qcA-WZ-ocb" firstAttribute="centerX" secondItem="evq-Xb-PJ3" secondAttribute="centerX" id="yOC-hF-uB2"/>
+                                            <constraint firstItem="yoK-Uc-jIA" firstAttribute="height" secondItem="tiB-f1-bXt" secondAttribute="height" id="zEm-XY-RPW"/>
+                                        </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wnf-Q8-6ic">
                                         <rect key="frame" x="0.0" y="809" width="768" height="40"/>
@@ -598,6 +670,12 @@
                     <connections>
                         <outlet property="bgView" destination="OdI-sG-Qe9" id="QmA-da-hD9"/>
                         <outlet property="closeButton" destination="UdO-MS-d34" id="DMf-ug-nSg"/>
+                        <outlet property="clue1" destination="Oai-ie-8pX" id="wP6-Ad-zOs"/>
+                        <outlet property="clue1Button" destination="4P6-EA-uaE" id="6d1-8w-tdb"/>
+                        <outlet property="clue2" destination="qcA-WZ-ocb" id="fn2-ou-KMu"/>
+                        <outlet property="clue2Button" destination="QWo-GL-c0P" id="F8g-jR-o7r"/>
+                        <outlet property="clue3" destination="tiB-f1-bXt" id="Ve7-pL-3Xc"/>
+                        <outlet property="clue3Button" destination="yoK-Uc-jIA" id="irY-88-H7m"/>
                         <outlet property="clueButton" destination="zcK-9N-1Pm" id="YxE-xs-quQ"/>
                         <outlet property="clueView" destination="evq-Xb-PJ3" id="KMs-NV-4Uj"/>
                         <outlet property="countryGuess" destination="wnf-Q8-6ic" id="Q5h-cg-VuC"/>

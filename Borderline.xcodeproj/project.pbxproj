@@ -17,9 +17,9 @@
 		7D25AEB71D6939C500319F5B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D25AEB61D6939C500319F5B /* CloudKit.framework */; };
 		7D25AEB91D6939D200319F5B /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D25AEB81D6939D200319F5B /* GameKit.framework */; };
 		7D2D47921D6A7D3B00D7C1BC /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2D47911D6A7D3B00D7C1BC /* RootVC.swift */; };
-		7D579C921D70F65B0014C5EC /* BorderlineCountries.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7D579C8F1D70F65B0014C5EC /* BorderlineCountries.sqlite */; };
-		7D579C931D70F65B0014C5EC /* BorderlineCountries.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 7D579C901D70F65B0014C5EC /* BorderlineCountries.sqlite-shm */; };
-		7D579C941D70F65B0014C5EC /* BorderlineCountries.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 7D579C911D70F65B0014C5EC /* BorderlineCountries.sqlite-wal */; };
+		7D4BFC4B1DE8C8680043152C /* BorderlineCountries.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7D4BFC481DE8C8680043152C /* BorderlineCountries.sqlite */; };
+		7D4BFC4C1DE8C8680043152C /* BorderlineCountries.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 7D4BFC491DE8C8680043152C /* BorderlineCountries.sqlite-shm */; };
+		7D4BFC4D1DE8C8680043152C /* BorderlineCountries.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 7D4BFC4A1DE8C8680043152C /* BorderlineCountries.sqlite-wal */; };
 		7D8382BA1D6A684300320083 /* ChallengeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8382B91D6A684300320083 /* ChallengeVC.swift */; };
 		7D9A22A41D7120FB002E9EC2 /* NavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A22A31D7120FB002E9EC2 /* NavVC.swift */; };
 		7D9A22A61D73859F002E9EC2 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A22A51D73859F002E9EC2 /* GameVC.swift */; };
@@ -67,9 +67,9 @@
 		7D25AEB61D6939C500319F5B /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		7D25AEB81D6939D200319F5B /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		7D2D47911D6A7D3B00D7C1BC /* RootVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
-		7D579C8F1D70F65B0014C5EC /* BorderlineCountries.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = BorderlineCountries.sqlite; sourceTree = "<group>"; };
-		7D579C901D70F65B0014C5EC /* BorderlineCountries.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BorderlineCountries.sqlite-shm"; sourceTree = "<group>"; };
-		7D579C911D70F65B0014C5EC /* BorderlineCountries.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BorderlineCountries.sqlite-wal"; sourceTree = "<group>"; };
+		7D4BFC481DE8C8680043152C /* BorderlineCountries.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = BorderlineCountries.sqlite; sourceTree = "<group>"; };
+		7D4BFC491DE8C8680043152C /* BorderlineCountries.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BorderlineCountries.sqlite-shm"; sourceTree = "<group>"; };
+		7D4BFC4A1DE8C8680043152C /* BorderlineCountries.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BorderlineCountries.sqlite-wal"; sourceTree = "<group>"; };
 		7D8382B91D6A684300320083 /* ChallengeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeVC.swift; sourceTree = "<group>"; };
 		7D9A22A31D7120FB002E9EC2 /* NavVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavVC.swift; sourceTree = "<group>"; };
 		7D9A22A51D73859F002E9EC2 /* GameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
@@ -152,9 +152,9 @@
 				7D25AE901D69354C00319F5B /* LaunchScreen.storyboard */,
 				7D25AE931D69354C00319F5B /* Info.plist */,
 				7D25AE8B1D69354C00319F5B /* Borderline.xcdatamodeld */,
-				7D579C8F1D70F65B0014C5EC /* BorderlineCountries.sqlite */,
-				7D579C901D70F65B0014C5EC /* BorderlineCountries.sqlite-shm */,
-				7D579C911D70F65B0014C5EC /* BorderlineCountries.sqlite-wal */,
+				7D4BFC481DE8C8680043152C /* BorderlineCountries.sqlite */,
+				7D4BFC491DE8C8680043152C /* BorderlineCountries.sqlite-shm */,
+				7D4BFC4A1DE8C8680043152C /* BorderlineCountries.sqlite-wal */,
 			);
 			path = Borderline;
 			sourceTree = "<group>";
@@ -294,10 +294,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D25AE921D69354C00319F5B /* LaunchScreen.storyboard in Resources */,
-				7D579C921D70F65B0014C5EC /* BorderlineCountries.sqlite in Resources */,
-				7D579C941D70F65B0014C5EC /* BorderlineCountries.sqlite-wal in Resources */,
-				7D579C931D70F65B0014C5EC /* BorderlineCountries.sqlite-shm in Resources */,
+				7D4BFC4B1DE8C8680043152C /* BorderlineCountries.sqlite in Resources */,
 				7D25AE8A1D69354C00319F5B /* Main.storyboard in Resources */,
+				7D4BFC4D1DE8C8680043152C /* BorderlineCountries.sqlite-wal in Resources */,
+				7D4BFC4C1DE8C8680043152C /* BorderlineCountries.sqlite-shm in Resources */,
 				7DA1FFB21DE34330008D5B44 /* Assets.xcassets in Resources */,
 				7DEFC7201D70EE27003DA9CF /* Images in Resources */,
 			);

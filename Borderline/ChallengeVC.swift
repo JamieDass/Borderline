@@ -46,7 +46,7 @@ class ChallengeVC: UIViewController {
             
             let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Country")
             // predicate to find all solved countries. CoreData doesn't accept BOOLs so this is stored as NSNumber 0,1
-            fetchRequest.predicate = NSPredicate(format: "solved != %@", 0)
+            fetchRequest.predicate = NSPredicate(format: "solved == %@", 0)
             do {
                 countries = try managedObjectContext.fetch(fetchRequest) as! [Country]
             } catch {
