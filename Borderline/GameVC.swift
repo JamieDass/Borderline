@@ -48,8 +48,15 @@ class GameVC: UIViewController, UITextFieldDelegate {
     
     var flagImage : UIImage!
     
-//    var levelCountry = NSString()
+    
+    var fetchResultsController: NSFetchedResultsController<NSManagedObject>!
+    
+    var countryList: [String] = ["Italy", "China", "Canada", "Australia", "France", "Germany", "Greece", "India", "Japan", "Mexico", "USA", "The United Kingdom", "Argentina", "Brazil", "Cyprus", "Ireland", "New Zealand", "Russia", "Portugal", "Spain", "South Africa", "Norway", "Vietnam", "Chile", "Austria", "Belgium", "Cuba", "North Korea", "Denmark", "Egypt", "Sweden", "Iceland", "Iran", "Turkey", "Netherlands", "Poland", "Switzerland", "South Korea", "Singapore", "Kenya", "Libya", "Malaysia", "Algeria", "Thailand", "Indonesia", "Nigeria", "Peru", "Pakistan", "Somalia", "Morocco", "Taiwan", "Kazakhstan", "Cameroon", "Bulgaria", "Colombia", "The Philippines", "Iraq", "Jamaica", "Bolivia", "Saudi Arabia", "Ecuador", "Croatia", "Czech Republic", "Lebanon", "Paraguay", "Syria", "Hungary", "Ivory Coast", "Trinidad and Tobago", "Tunisia", "Venezuela", "Isle of Man"]
+
+    var levelCountryName : String!
+    var levelCountryNumber : Int!
     var levelCountry : Country!
+
     
     override func viewWillAppear(_ animated: Bool) {
         let screenSize: CGRect = UIScreen.main.bounds
@@ -57,6 +64,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(true)
         imageX.constant += screenSize.width*0.075
         clueView.isHidden = true
+
 //        cluesShown = false
         
          // Do any additional setup after loading the view.
@@ -111,6 +119,22 @@ class GameVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
+            
+            let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Country")
+            fetchRequest.predicate = NSPredicate(format: "name == %@", levelCountryName)
+            do {
+                let countries = try managedObjectContext.fetch(fetchRequest) as! [Country]
+                levelCountry = countries[0]
+            } catch {
+                print("Failed to retrieve record")
+                print(error)
+            }
+        }
+        let countryIdx: Int = countryList.index(of: levelCountryName)!
+        levelCountryNumber = Int(ceilf(Float(countryIdx+1)/12.0))
+        
         self.view.backgroundColor = UIColor.orange
         clueTextViews = [clue1,clue2,clue3]
         clueButtons = [clue1Button,clue2Button,clue3Button]
@@ -140,20 +164,51 @@ class GameVC: UIViewController, UITextFieldDelegate {
 
         gameView.backgroundColor = GlobalConstants.defaultBlue
         bgView.backgroundColor = GlobalConstants.defaultBlue
-        countryGuess.becomeFirstResponder()
+
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)        // Do any additional setup after loading the view.
+        
+        self.loadCountryView()
+        self.configureClues()
+        if levelCountry.solved! == 1 {
+            countryGuess.text = levelCountryName.uppercased()
+            countryGuess.isEnabled = false
+            clueButton.isHidden = true
+            flagButton.isHidden = true
+            revealButton.isHidden = true
+        }else{
+            countryGuess.isEnabled = true
+            countryGuess.becomeFirstResponder()
+            clueButton.isHidden = false
+            flagButton.isHidden = false
+            revealButton.isHidden = false
+        }
+        
+    }
+    
+    func loadCountry(){
+        
+    }
+    
+    func loadCountryView(){
+        var flagType : String!
+        var flagPath : String!
+        if levelCountry.flagRevealed == 0 {
+            flagType = "_mask.png"
+            flagPath = "masks/"
+        }else{
+            flagType = "_clear.png"
+            flagPath = "clear/"
+        }
         
         var country: String = (levelCountry.name)!
         country = country.replacingOccurrences(of: " ", with: "_")
-        country = country.appending("_mask.png")
-        let path:NSString = "Images/Countries/masks/"
+        country = country.appending(flagType)
+        var path:String = "Images/Countries/"
+        path = path.appending(flagPath)
         country = path.appending(country as String)
         flagImage = UIImage.init(named: country as String)
         gameImage.image = flagImage
-        
-        self.configureClues()
-        
-        
+   
     }
 
     
@@ -185,20 +240,54 @@ class GameVC: UIViewController, UITextFieldDelegate {
         
     }
     
-     @IBAction func showFlag(){
-        if levelCountry.flagRevealed == 0 {
-            if !flagShown {
-                var country: String = (levelCountry.name)!
-                country = country.replacingOccurrences(of: " ", with: "_")
-                country = country.appending("_clear.png")
-                let path:NSString = "Images/Countries/clear/"
-                country = path.appending(country as String)
-                let flagClearImage = UIImage.init(named: country as String)
-                gameImage.image = flagClearImage
-                flagShown = true
-            }else{
-                gameImage.image = flagImage
-                flagShown = false
+     @IBAction func showFlagAlert(){
+        
+        let alertController = UIAlertController(title: "Reveal Flag?", message: "3★", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            // ...
+        }
+        alertController.addAction(cancelAction)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.revealFlag()
+            // ...
+        }
+        alertController.addAction(OKAction)
+        
+        self.present(alertController, animated: true) {
+            // ...
+        }
+    }
+    func revealFlag(){
+        var thisCountry : Country!
+        if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
+            
+            let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Country")
+            fetchRequest.predicate = NSPredicate(format: "name == %@", levelCountryName)
+            do {
+                let countries = try managedObjectContext.fetch(fetchRequest) as! [Country]
+                thisCountry = countries[0]
+//                print(thisCountry.objectID)
+            } catch {
+                print("Failed to retrieve record")
+                print(error)
+            }
+//        }
+        
+            if levelCountry.flagRevealed == 0 {
+                thisCountry.flagRevealed = 1
+                levelCountry.flagRevealed = 1
+                do {
+                    try managedObjectContext.save()
+                } catch {
+                    print("Failed to save record")
+                    print(error)
+
+                    // Do something in response to error condition
+                }
+                
+                self.loadCountryView()
             }
         }
     }
@@ -208,15 +297,13 @@ class GameVC: UIViewController, UITextFieldDelegate {
         allAnswers = allAnswers?.lowercased()
         
         let arrAnswers = allAnswers?.components(separatedBy: ", ")
-        for answer in arrAnswers!{
-            print(answer)
-        }
         var answerCheck:String = countryGuess.text!
         answerCheck = answerCheck.lowercased()
         answerCheck = answerCheck.replacingOccurrences(of: "the ", with: "")
-        
         if (arrAnswers?.contains(answerCheck))! {
             print("YAY")
+            self.rightAnswer()
+            countryGuess.resignFirstResponder()
         }else{
             print("BOO")
         }
@@ -236,7 +323,6 @@ class GameVC: UIViewController, UITextFieldDelegate {
         for clueButton in clueButtons{
             let buttonTitle = (clueButtonText.object(at: clueIndex) as! String)
             (clueButton as! UIButton).setTitle(buttonTitle, for: UIControlState.normal)
-            print((clueButtonText.object(at: clueIndex) as! String))
             (clueButton as! UIButton).tintColor = GlobalConstants.defaultBlue
             (clueButton as! UIButton).titleLabel?.textAlignment = NSTextAlignment.center
             (clueButton as! UIButton).titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -249,6 +335,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
             }else{
                 (clueButton as! UIButton).isHidden = false
             }
+            
             clueIndex+=1
         }
         
@@ -260,12 +347,86 @@ class GameVC: UIViewController, UITextFieldDelegate {
     @IBAction func revealClue(sender: UIButton) {
         
         
+    }
+    
+    @IBAction func revealAnswerAlert() {
+        if levelCountry.solved == 0 {
+            let alertController = UIAlertController(title: "Reveal Answer?", message: "10★", preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+                // ...
+            }
+            alertController.addAction(cancelAction)
+            
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                self.revealAnswer()
+                // ...
+            }
+            alertController.addAction(OKAction)
+            
+            self.present(alertController, animated: true) {
+                // ...
+            }
+
+        }
+        
+    }
+    func revealAnswer(){
+        countryGuess.text = levelCountryName.uppercased()
+        countryGuess.resignFirstResponder()
+
+        var thisCountry : Country!
+        if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
+            
+            let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Country")
+            fetchRequest.predicate = NSPredicate(format: "name == %@", levelCountryName)
+            do {
+                let countries = try managedObjectContext.fetch(fetchRequest) as! [Country]
+                thisCountry = countries[0]
+                //                print(thisCountry.objectID)
+            } catch {
+                print("Failed to retrieve record")
+                print(error)
+            }
+            //        }
+            
+            thisCountry.flagRevealed = 1
+            thisCountry.solved = 1
+            levelCountry.flagRevealed = 1
+            levelCountry.solved = 1
+            clueButton.isHidden = true
+            flagButton.isHidden = true
+            revealButton.isHidden = true
+
+            do {
+                try managedObjectContext.save()
+            } catch {
+                print("Failed to save record")
+                print(error)
+                
+                // Do something in response to error condition
+            }
+            
+            self.loadCountryView()
+
+        }
+    }
+    
+    
+    func resetLevel(){
         
     }
     
-    @IBAction func rightAnswer(){
-            
+    
+    func rightAnswer(){
+        let thisCountryIdx = countryList.index(of: levelCountryName)
+        let nextCountry = countryList[thisCountryIdx!+1]
+        levelCountryName = nextCountry
+        
+        print(nextCountry)
     }
+    
+    
     
     @IBAction func exitGame(){
         countryGuess.resignFirstResponder()

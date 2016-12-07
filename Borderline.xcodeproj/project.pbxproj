@@ -26,6 +26,7 @@
 		7DA1FFB21DE34330008D5B44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DA1FFB11DE34330008D5B44 /* Assets.xcassets */; };
 		7DA67F271DDCFAE300768537 /* ProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA67F261DDCFAE300768537 /* ProgressButton.swift */; };
 		7DA67F291DDD01B200768537 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA67F281DDD01B200768537 /* Extensions.swift */; };
+		7DA8C6E91DF2209B00AFF4AE /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA8C6E81DF2209B00AFF4AE /* SettingsTVC.swift */; };
 		7DEFC6FF1D70AF3B003DA9CF /* LevelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFC6FE1D70AF3B003DA9CF /* LevelVC.swift */; };
 		7DEFC7011D70B45A003DA9CF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFC7001D70B45A003DA9CF /* Constants.swift */; };
 		7DEFC7101D70E81C003DA9CF /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFC70F1D70E81C003DA9CF /* Country.swift */; };
@@ -76,6 +77,7 @@
 		7DA1FFB11DE34330008D5B44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7DA67F261DDCFAE300768537 /* ProgressButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressButton.swift; sourceTree = "<group>"; };
 		7DA67F281DDD01B200768537 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		7DA8C6E81DF2209B00AFF4AE /* SettingsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTVC.swift; sourceTree = "<group>"; };
 		7DEFC6FE1D70AF3B003DA9CF /* LevelVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelVC.swift; sourceTree = "<group>"; };
 		7DEFC7001D70B45A003DA9CF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7DEFC70F1D70E81C003DA9CF /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
@@ -138,13 +140,14 @@
 				7D25AE841D69354C00319F5B /* AppDelegate.swift */,
 				7D2D47911D6A7D3B00D7C1BC /* RootVC.swift */,
 				7D25AE861D69354C00319F5B /* ViewController.swift */,
+				7DA8C6E81DF2209B00AFF4AE /* SettingsTVC.swift */,
 				7D8382B91D6A684300320083 /* ChallengeVC.swift */,
 				7DA67F281DDD01B200768537 /* Extensions.swift */,
 				7DEFC6FE1D70AF3B003DA9CF /* LevelVC.swift */,
 				7D9A22A31D7120FB002E9EC2 /* NavVC.swift */,
 				7DEFC7001D70B45A003DA9CF /* Constants.swift */,
-				7DEFC70F1D70E81C003DA9CF /* Country.swift */,
 				7D9A22A51D73859F002E9EC2 /* GameVC.swift */,
+				7DEFC70F1D70E81C003DA9CF /* Country.swift */,
 				7D25AE881D69354C00319F5B /* Main.storyboard */,
 				7DA67F261DDCFAE300768537 /* ProgressButton.swift */,
 				7DA1FFB11DE34330008D5B44 /* Assets.xcassets */,
@@ -332,6 +335,7 @@
 				7D2D47921D6A7D3B00D7C1BC /* RootVC.swift in Sources */,
 				7DEFC7011D70B45A003DA9CF /* Constants.swift in Sources */,
 				7DA67F291DDD01B200768537 /* Extensions.swift in Sources */,
+				7DA8C6E91DF2209B00AFF4AE /* SettingsTVC.swift in Sources */,
 				7D25AE851D69354C00319F5B /* AppDelegate.swift in Sources */,
 				7DA67F271DDCFAE300768537 /* ProgressButton.swift in Sources */,
 				7D9A22A61D73859F002E9EC2 /* GameVC.swift in Sources */,

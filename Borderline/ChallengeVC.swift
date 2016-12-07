@@ -37,8 +37,20 @@ class ChallengeVC: UIViewController {
     @IBOutlet weak var scoreLab: UILabel!
     let levelStrings: NSArray = ["Level 1","Level 2","Level 3","Level 4","Level 5","Level 6"]
 
+    override func viewWillAppear(_ animated: Bool) {
+        self.configureButtons()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
+        self.navigationItem.title = "Challenge"
+        self.configureButtons()
+        
+    }
+    
+    func configureButtons() {
         let defaults = UserDefaults.standard
         defaults.set(7, forKey: "score")
         
@@ -46,7 +58,8 @@ class ChallengeVC: UIViewController {
             
             let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Country")
             // predicate to find all solved countries. CoreData doesn't accept BOOLs so this is stored as NSNumber 0,1
-            fetchRequest.predicate = NSPredicate(format: "solved == %@", 0)
+            let solvedNumber:NSNumber = 1
+            fetchRequest.predicate = NSPredicate(format: "solved == %@", solvedNumber)
             do {
                 countries = try managedObjectContext.fetch(fetchRequest) as! [Country]
             } catch {
@@ -55,7 +68,6 @@ class ChallengeVC: UIViewController {
             }
         }
         
-        self.navigationItem.title = "Challenge"
         let levelButtons: NSArray = [level1Button,level2Button,level3Button,level4Button,level5Button,level6Button]
         let levelProgress: NSArray = [progress1View,progress2View,progress3View,progress4View,progress5View,progress6View]
         let levelConstraints: NSArray = [progress1X,progress2X,progress3X,progress4X,progress5X,progress6X]
@@ -70,7 +82,7 @@ class ChallengeVC: UIViewController {
             (button as AnyObject).titleLabel??.lineBreakMode = NSLineBreakMode.byClipping
             (button as AnyObject).titleLabel??.textColor = UIColor.orange
             (button as AnyObject).titleLabel??.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title2)
-//            let edgeInsets: UIEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0)
+            //            let edgeInsets: UIEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0)
             let bW = (button as AnyObject).bounds.size.width/20
             let constraint:NSLayoutConstraint = levelConstraints.object(at: index) as! NSLayoutConstraint
             constraint.constant = bW
@@ -78,18 +90,13 @@ class ChallengeVC: UIViewController {
             let progressView = levelProgress.object(at: index) as! UIProgressView
             progressView.tintColor = UIColor.white
             progressView.trackTintColor = UIColor.gray
-//            progressView.trackTintColor = UIColor(red: 28/255, green: 86/255, blue: 133/255, alpha: 1.0)
-            
-//            progressView.progress = (1/Float(index+1))
-//            progressView.frame.offsetBy(dx: 100,dy: 0)
             (button as AnyObject).addSubview(progressView)
             index += 1
             let level:NSNumber = index as NSNumber
             let passedLevel = countries.filter{ $0.level == level }.count
             progressView.progress = Float(passedLevel)/12.0
-
+            
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -26,6 +26,7 @@ class LevelVC: UICollectionViewController {
             statusBar = false
         }
         updateCollectionViewLayout(with: self.view.bounds.size)
+        self.collectionView?.reloadData()
     }
 
     
@@ -72,14 +73,25 @@ class LevelVC: UICollectionViewController {
 //        var country: NSString = countries[(indexPath as NSIndexPath).row].name!
         
         let countrySel: Country = countries[(indexPath).row]
+        
+        var flagType : String!
+        var flagPath : String!
+        if countrySel.flagRevealed == 0 {
+            flagType = "_mask_200.png"
+            flagPath = "masks/200/"
+        }else{
+            flagType = "_clear_200.png"
+            flagPath = "clear/200/"
+        }
+        
         var country: String = (countrySel.name)!
         country = country.replacingOccurrences(of: " ", with: "_")
-        country = country.appending("_mask_200.png")
-        let path:NSString = "Images/Countries/masks/200/"
-        country = path.appending(country as String)
-//        country = ("Images/Countries/masks/200/" as NSString) + (country)
-//        country = "Images/Countries/masks/200/" + (country as String)
+        country = country.appending(flagType)
         
+        var path:String = "Images/Countries/"
+        path = path.appending(flagPath)
+        country = path.appending(country as String)
+    
         let flagImage = UIImage.init(named: country as String)
         let bgView = UIImageView.init(image: flagImage)
         bgView.contentMode = UIViewContentMode.scaleAspectFit
@@ -169,8 +181,8 @@ class LevelVC: UICollectionViewController {
         if let destination = segue.destination as? GameVC{
             let selectedCountry: Country = countries[(sender as! UICollectionViewCell).tag]
         
-//            destination.levelCountry = selectedCountry.name! as NSString
-            destination.levelCountry = selectedCountry
+            destination.levelCountryName = selectedCountry.name!
+//            destination.levelCountry = selectedCountry
 //            destination.levelCountry = selectedCountry
 //            if segue.identifier == "gameSegue"{
 //            destination.levelCountry = selectedCountry
