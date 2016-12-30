@@ -17,7 +17,9 @@ class LevelVC: UICollectionViewController {
     var levelCountries = [NSMutableArray]()
     var levelName = NSString()
     var levelNumber = NSNumber()
+    var selectedIndex = IndexPath()
     var statusBar = Bool()
+    var changed = Bool()
 
     override func viewWillAppear(_ animated: Bool) {
         if UIDevice.current.orientation.isPortrait {
@@ -25,12 +27,22 @@ class LevelVC: UICollectionViewController {
         }else{
             statusBar = false
         }
+
+        var indices = [IndexPath]()
         updateCollectionViewLayout(with: self.view.bounds.size)
-        self.collectionView?.reloadData()
+        if(changed){
+            indices.append(selectedIndex)
+            self.collectionView?.reloadItems(at: indices)
+//                    self.collectionView?.reloadData()
+        }
+        
+        
+        
     }
 
     
     override func viewDidAppear(_ animated: Bool) {
+//
 //        self.automaticallyAdjustsScrollViewInsets = false
 //        self.edgesForExtendedLayout = UIRectEdge.None
 //        updateCollectionViewLayout(with: self.view.bounds.size)
@@ -65,14 +77,24 @@ class LevelVC: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 12
     }
-    
+        
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) 
         
+        print(indexPath.section)
 //        if let array = countries[(indexPath).row] as? [[NSObject:AnyObject]] {
 //        var country: NSString = countries[(indexPath as NSIndexPath).row].name!
         
         let countrySel: Country = countries[(indexPath).row]
+        
+        let tickImage = UIImage.init(named: "Images/Tick.png")
+        let cellheight = cell.frame.height/4
+        let tickView = UIImageView(frame: CGRect(x: cell.bounds.width-cellheight-2, y: cell.bounds.height-cellheight-2, width: cellheight, height: cellheight))
+            tickView.image = tickImage
+        
+        if(countrySel.solved == 1){
+            cell.addSubview(tickView)
+        }
         
         var flagType : String!
         var flagPath : String!
@@ -96,13 +118,15 @@ class LevelVC: UICollectionViewController {
         let bgView = UIImageView.init(image: flagImage)
         bgView.contentMode = UIViewContentMode.scaleAspectFit
     
-        cell.backgroundView = bgView
+
 
 //        cell.backgroundColor = UIColor.blackColor()
         // Configure the cell
         cell.layer.borderWidth = 0
         cell.layer.borderColor = UIColor.white.cgColor
         cell.tag = indexPath.row
+        
+        cell.backgroundView = bgView
         return cell
     }
     
@@ -182,6 +206,7 @@ class LevelVC: UICollectionViewController {
             let selectedCountry: Country = countries[(sender as! UICollectionViewCell).tag]
         
             destination.levelCountryName = selectedCountry.name!
+            destination.countryNumber = (sender as! UICollectionViewCell).tag as NSNumber!
 //            destination.levelCountry = selectedCountry
 //            destination.levelCountry = selectedCountry
 //            if segue.identifier == "gameSegue"{
@@ -191,6 +216,11 @@ class LevelVC: UICollectionViewController {
     }
     
     @IBAction func cancelToLevelVC(segue:UIStoryboardSegue) {
+        if let sourceViewController = segue.source as? GameVC {
+            changed = sourceViewController.modified
+            let selIdx = NSIndexPath(row: sourceViewController.countryNumber as Int, section: 0)
+            selectedIndex = selIdx as IndexPath
+        }
     }
 
     

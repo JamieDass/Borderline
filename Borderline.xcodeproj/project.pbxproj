@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3CE7DE2D99246618DCCEFCB5 /* Pods_Borderline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9CAAE9DCB7D205A4104CA43 /* Pods_Borderline.framework */; };
 		7D25AE851D69354C00319F5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D25AE841D69354C00319F5B /* AppDelegate.swift */; };
 		7D25AE871D69354C00319F5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D25AE861D69354C00319F5B /* ViewController.swift */; };
 		7D25AE8A1D69354C00319F5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D25AE881D69354C00319F5B /* Main.storyboard */; };
@@ -31,6 +32,8 @@
 		7DEFC7011D70B45A003DA9CF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFC7001D70B45A003DA9CF /* Constants.swift */; };
 		7DEFC7101D70E81C003DA9CF /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFC70F1D70E81C003DA9CF /* Country.swift */; };
 		7DEFC7201D70EE27003DA9CF /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 7DEFC71F1D70EE27003DA9CF /* Images */; };
+		8B4EE4FED7A0993186C0344E /* Pods_BorderlineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4DEAE02F43EC3294BA0E689 /* Pods_BorderlineUITests.framework */; };
+		9C44E25FE48BB5773FBE8777 /* Pods_BorderlineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705F8AA55C97BFE5F78E9015 /* Pods_BorderlineTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1BF66C25E57BD97EE4A15FBD /* Pods-BorderlineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BorderlineUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BorderlineUITests/Pods-BorderlineUITests.release.xcconfig"; sourceTree = "<group>"; };
+		705F8AA55C97BFE5F78E9015 /* Pods_BorderlineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BorderlineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73476EC30FEEF2DC03E1FAE9 /* Pods-Borderline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Borderline.release.xcconfig"; path = "Pods/Target Support Files/Pods-Borderline/Pods-Borderline.release.xcconfig"; sourceTree = "<group>"; };
+		7BF86C96692E5E4BE42BA491 /* Pods-Borderline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Borderline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Borderline/Pods-Borderline.debug.xcconfig"; sourceTree = "<group>"; };
 		7D25AE811D69354B00319F5B /* Borderline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Borderline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D25AE841D69354C00319F5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D25AE861D69354C00319F5B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +89,11 @@
 		7DEFC7001D70B45A003DA9CF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7DEFC70F1D70E81C003DA9CF /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		7DEFC71F1D70EE27003DA9CF /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
+		94FEDA47935E2F1F1F5EA179 /* Pods-BorderlineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BorderlineTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BorderlineTests/Pods-BorderlineTests.release.xcconfig"; sourceTree = "<group>"; };
+		C4DEAE02F43EC3294BA0E689 /* Pods_BorderlineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BorderlineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D348E2A873B89715092A44E1 /* Pods-BorderlineUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BorderlineUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BorderlineUITests/Pods-BorderlineUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D9CAAE9DCB7D205A4104CA43 /* Pods_Borderline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Borderline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7EFDA8308D84699C7026258 /* Pods-BorderlineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BorderlineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BorderlineTests/Pods-BorderlineTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +103,7 @@
 			files = (
 				7D25AEB71D6939C500319F5B /* CloudKit.framework in Frameworks */,
 				7D25AEB91D6939D200319F5B /* GameKit.framework in Frameworks */,
+				3CE7DE2D99246618DCCEFCB5 /* Pods_Borderline.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C44E25FE48BB5773FBE8777 /* Pods_BorderlineTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,12 +119,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B4EE4FED7A0993186C0344E /* Pods_BorderlineUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F90A911AE4F12B037B614AE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7BF86C96692E5E4BE42BA491 /* Pods-Borderline.debug.xcconfig */,
+				73476EC30FEEF2DC03E1FAE9 /* Pods-Borderline.release.xcconfig */,
+				E7EFDA8308D84699C7026258 /* Pods-BorderlineTests.debug.xcconfig */,
+				94FEDA47935E2F1F1F5EA179 /* Pods-BorderlineTests.release.xcconfig */,
+				D348E2A873B89715092A44E1 /* Pods-BorderlineUITests.debug.xcconfig */,
+				1BF66C25E57BD97EE4A15FBD /* Pods-BorderlineUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7D25AE781D69354B00319F5B = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +148,8 @@
 				7D25AE9B1D69354C00319F5B /* BorderlineTests */,
 				7D25AEA61D69354C00319F5B /* BorderlineUITests */,
 				7D25AE821D69354B00319F5B /* Products */,
+				4F90A911AE4F12B037B614AE /* Pods */,
+				93100F5D2A10EB0BA2A73F09 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -180,6 +210,16 @@
 			path = BorderlineUITests;
 			sourceTree = "<group>";
 		};
+		93100F5D2A10EB0BA2A73F09 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D9CAAE9DCB7D205A4104CA43 /* Pods_Borderline.framework */,
+				705F8AA55C97BFE5F78E9015 /* Pods_BorderlineTests.framework */,
+				C4DEAE02F43EC3294BA0E689 /* Pods_BorderlineUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -187,9 +227,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7D25AEAC1D69354C00319F5B /* Build configuration list for PBXNativeTarget "Borderline" */;
 			buildPhases = (
+				8E1B237E8B5868ED2184B8C7 /* [CP] Check Pods Manifest.lock */,
 				7D25AE7D1D69354B00319F5B /* Sources */,
 				7D25AE7E1D69354B00319F5B /* Frameworks */,
 				7D25AE7F1D69354B00319F5B /* Resources */,
+				F0F31AD929078414DC808C38 /* [CP] Embed Pods Frameworks */,
+				7B7834A296130917521114F0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -204,9 +247,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7D25AEAF1D69354C00319F5B /* Build configuration list for PBXNativeTarget "BorderlineTests" */;
 			buildPhases = (
+				7300A07F91D2EF5FB9855C10 /* [CP] Check Pods Manifest.lock */,
 				7D25AE941D69354C00319F5B /* Sources */,
 				7D25AE951D69354C00319F5B /* Frameworks */,
 				7D25AE961D69354C00319F5B /* Resources */,
+				7E2EFDEE412AFBC1F58EDFE3 /* [CP] Embed Pods Frameworks */,
+				2F91F14758459D5FE81BDDC2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -222,9 +268,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7D25AEB21D69354C00319F5B /* Build configuration list for PBXNativeTarget "BorderlineUITests" */;
 			buildPhases = (
+				B05EF544167018851AEE0E58 /* [CP] Check Pods Manifest.lock */,
 				7D25AE9F1D69354C00319F5B /* Sources */,
 				7D25AEA01D69354C00319F5B /* Frameworks */,
 				7D25AEA11D69354C00319F5B /* Resources */,
+				DE391A489FE57CA96D385AFB /* [CP] Embed Pods Frameworks */,
+				8AF0455605D2F1E8DA75423E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -321,6 +370,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2F91F14758459D5FE81BDDC2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BorderlineTests/Pods-BorderlineTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7300A07F91D2EF5FB9855C10 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7B7834A296130917521114F0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Borderline/Pods-Borderline-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E2EFDEE412AFBC1F58EDFE3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BorderlineTests/Pods-BorderlineTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8AF0455605D2F1E8DA75423E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BorderlineUITests/Pods-BorderlineUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E1B237E8B5868ED2184B8C7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B05EF544167018851AEE0E58 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DE391A489FE57CA96D385AFB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BorderlineUITests/Pods-BorderlineUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F0F31AD929078414DC808C38 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Borderline/Pods-Borderline-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7D25AE7D1D69354B00319F5B /* Sources */ = {
@@ -486,6 +673,7 @@
 		};
 		7D25AEAD1D69354C00319F5B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BF86C96692E5E4BE42BA491 /* Pods-Borderline.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Borderline/Borderline.entitlements;
@@ -501,6 +689,7 @@
 		};
 		7D25AEAE1D69354C00319F5B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73476EC30FEEF2DC03E1FAE9 /* Pods-Borderline.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Borderline/Borderline.entitlements;
@@ -516,6 +705,7 @@
 		};
 		7D25AEB01D69354C00319F5B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7EFDA8308D84699C7026258 /* Pods-BorderlineTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = BorderlineTests/Info.plist;
@@ -529,6 +719,7 @@
 		};
 		7D25AEB11D69354C00319F5B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94FEDA47935E2F1F1F5EA179 /* Pods-BorderlineTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = BorderlineTests/Info.plist;
@@ -542,6 +733,7 @@
 		};
 		7D25AEB31D69354C00319F5B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D348E2A873B89715092A44E1 /* Pods-BorderlineUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = BorderlineUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -554,6 +746,7 @@
 		};
 		7D25AEB41D69354C00319F5B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BF66C25E57BD97EE4A15FBD /* Pods-BorderlineUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = BorderlineUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
