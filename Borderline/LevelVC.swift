@@ -32,22 +32,15 @@ class LevelVC: UICollectionViewController {
         updateCollectionViewLayout(with: self.view.bounds.size)
         if(changed){
             indices.append(selectedIndex)
-            self.collectionView?.reloadItems(at: indices)
-//                    self.collectionView?.reloadData()
+//            self.collectionView?.reloadItems(at: indices)
+            self.collectionView?.reloadData()
         }
         
         
         
     }
+    
 
-    
-    override func viewDidAppear(_ animated: Bool) {
-//
-//        self.automaticallyAdjustsScrollViewInsets = false
-//        self.edgesForExtendedLayout = UIRectEdge.None
-//        updateCollectionViewLayout(with: self.view.bounds.size)
-    }
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -80,21 +73,17 @@ class LevelVC: UICollectionViewController {
         
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) 
-        
-        print(indexPath.section)
+
 //        if let array = countries[(indexPath).row] as? [[NSObject:AnyObject]] {
 //        var country: NSString = countries[(indexPath as NSIndexPath).row].name!
         
         let countrySel: Country = countries[(indexPath).row]
         
-        let tickImage = UIImage.init(named: "Images/Tick.png")
-        let cellheight = cell.frame.height/4
-        let tickView = UIImageView(frame: CGRect(x: cell.bounds.width-cellheight-2, y: cell.bounds.height-cellheight-2, width: cellheight, height: cellheight))
-            tickView.image = tickImage
+//        let tickImage = UIImage.init(named: "Images/Tick.png")
+//        let cellheight = cell.frame.height/4
+//        let tickView = UIImageView(frame: CGRect(x: cell.bounds.width-cellheight-2, y: cell.bounds.height-cellheight-2, width: cellheight, height: cellheight))
+//            tickView.image = tickImage
         
-        if(countrySel.solved == 1){
-            cell.addSubview(tickView)
-        }
         
         var flagType : String!
         var flagPath : String!
@@ -125,8 +114,19 @@ class LevelVC: UICollectionViewController {
         cell.layer.borderWidth = 0
         cell.layer.borderColor = UIColor.white.cgColor
         cell.tag = indexPath.row
+        var tickImage = UIImage()
         
-        cell.backgroundView = bgView
+        if(countrySel.solved == 1){
+            tickImage = UIImage.init(named: "Images/Tick.png")!
+//            bgView.addSubview(tickView)
+        }
+//        let combinedImage:UIImage = LevelVC.mergeImages(imageView: bgView)
+        let combinedImage:UIImage = self.mergeImages(backgroundImage: flagImage!, foregroundImage: tickImage)
+        let combView = UIImageView.init(image: combinedImage)
+        combView.contentMode = UIViewContentMode.scaleAspectFit
+        
+        
+        cell.backgroundView = combView
         return cell
     }
     
@@ -165,40 +165,55 @@ class LevelVC: UICollectionViewController {
     
     fileprivate func updateCollectionViewLayout(with size: CGSize) {
         if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout {
-            
-//            print(self.navigationController?.navigationBar.frame.size.height)
-//            print("vc w: ",size.width)
-//            print("vc h: ",size.height,"\n")
-
-//            print("\n",self.view.frame.size.height)
-            let screenSize: CGRect = UIScreen.main.bounds
+//            let screenSize: CGRect = UIScreen.main.bounds
+            let screenSize: CGRect = (collectionView?.bounds)!
             let navHeight: CGFloat = (self.navigationController?.navigationBar.frame.size.height)!
-//            print(screenSize.height)
-//            print(screenSize.width)
-
-//            let horizontal: CGFloat = (size.height-40)/3
-            let thinSpace: CGFloat = 10
-            let thickSpace: CGFloat = 25
+            let portrait:Bool = (size.height > size.width)
+            let hSpace: CGFloat = portrait ? screenSize.width*0.025 : screenSize.width*0.04
+            let vSpace: CGFloat = portrait ? (screenSize.height-navHeight)*0.04 : (screenSize.height-navHeight)*0.025
+            let portraitSize = min(screenSize.width*0.3, (screenSize.height-navHeight)*0.2)
+            let landscapeSize = min(screenSize.width*0.2, (screenSize.height-navHeight)*0.3)
             
-//            let vertical: CGFloat = (screenSize.height-navHeight-(5*thickSpace))/4
-            let vertical: CGFloat = (screenSize.width-(4*thinSpace))/3
-
-            let horizontal: CGFloat = (screenSize.height-navHeight-(4*thinSpace))/3
-            var sbheight: CGFloat = 0
-            if statusBar {
-                sbheight = 20
-            }
-
-            let vInsets: CGFloat = (size.height-navHeight-sbheight-((4*vertical)+(3*thickSpace)))/2
-//            print(vInsets)
-            let hInsets: CGFloat = (size.width-((4*horizontal)+(3*thickSpace)))/2
-
-            layout.itemSize = (size.width < size.height) ? CGSize(width: vertical, height: vertical) : CGSize(width: horizontal, height: horizontal)
-            layout.minimumLineSpacing = (size.width < size.height) ? thickSpace : thinSpace
-            layout.minimumInteritemSpacing = (size.width < size.height) ? thinSpace : thickSpace
-            layout.sectionInset = (size.width < size.height) ? UIEdgeInsetsMake(vInsets, 10, vInsets, 10) : UIEdgeInsetsMake(10, hInsets, 0, hInsets)
-            layout.invalidateLayout()
+            
+            layout.itemSize = portrait ? CGSize(width: portraitSize, height: portraitSize) : CGSize(width: landscapeSize, height: landscapeSize)
+            
+            layout.minimumLineSpacing = vSpace
+            layout.minimumInteritemSpacing = hSpace
+            layout.sectionInset = UIEdgeInsetsMake(vSpace, hSpace*0.5, vSpace, hSpace*0.5)
         }
+        
+//        if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout {
+//            
+////            print(self.navigationController?.navigationBar.frame.size.height)
+////            print("vc w: ",size.width)
+////            print("vc h: ",size.height,"\n")
+//
+////            print("\n",self.view.frame.size.height)
+//            let screenSize: CGRect = UIScreen.main.bounds
+//            let navHeight: CGFloat = (self.navigationController?.navigationBar.frame.size.height)!
+////            print(screenSize.height)
+////            print(screenSize.width)
+//
+//            let thinSpace: CGFloat = 10
+//            let thickSpace: CGFloat = 25
+//            
+//            let vertical: CGFloat = (screenSize.width-(4*thinSpace))/3
+//
+//            let horizontal: CGFloat = (screenSize.height-navHeight-(4*thinSpace))/3
+//            var sbheight: CGFloat = 0
+//            if statusBar {
+//                sbheight = 20
+//            }
+//
+//            let vInsets: CGFloat = (size.height-navHeight-sbheight-((4*vertical)+(3*thickSpace)))/2
+//            let hInsets: CGFloat = (size.width-((4*horizontal)+(3*thickSpace)))/2
+//
+//            layout.itemSize = (size.width < size.height) ? CGSize(width: vertical, height: vertical) : CGSize(width: horizontal, height: horizontal)
+//            layout.minimumLineSpacing = (size.width < size.height) ? thickSpace : thinSpace
+//            layout.minimumInteritemSpacing = (size.width < size.height) ? thinSpace : thickSpace
+//            layout.sectionInset = (size.width < size.height) ? UIEdgeInsetsMake(vInsets, 10, vInsets, 10) : UIEdgeInsetsMake(10, hInsets, 0, hInsets)
+//            layout.invalidateLayout()
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -222,7 +237,39 @@ class LevelVC: UICollectionViewController {
             selectedIndex = selIdx as IndexPath
         }
     }
-
+    
+//    class func mergeImages(imageView: UIImageView) -> UIImage {
+//        UIGraphicsBeginImageContextWithOptions(imageView.frame.size, false, 0.0)
+//        //        imageView.view.layer.render(in: UIGraphicsGetCurrentContext()!)
+//        imageView.superview!.layer.render(in: UIGraphicsGetCurrentContext()!)
+//        let image = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+//        
+//        return image!
+//    }
+    
+    func mergeImages (backgroundImage : UIImage, foregroundImage : UIImage) -> UIImage {
+        
+        let bottomImage = backgroundImage
+        let topImage = foregroundImage
+        
+        let size = backgroundImage.size
+        let tickSize = size.width/4
+        UIGraphicsBeginImageContext(size)
+        
+        let areaSize = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        let tickareaSize = CGRect(x: size.width-tickSize-2, y: size.height-tickSize-2, width: tickSize, height: tickSize)
+        bottomImage.draw(in: areaSize)
+        
+        topImage.draw(in: tickareaSize, blendMode: .normal, alpha: 1.0)
+        
+        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+//        resultImageView.image = newImage
+        
+        UIGraphicsEndImageContext()
+        return newImage
+        
+    }
     
 //    func collectionView(collectionView: UICollectionView,
 //                          layout collectionViewLayout: UICollectionViewLayout,

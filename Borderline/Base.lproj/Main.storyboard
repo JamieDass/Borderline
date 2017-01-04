@@ -558,48 +558,48 @@
                                 <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LzB-Q5-Yl8">
-                                        <rect key="frame" x="58" y="156" width="653" height="653"/>
+                                        <rect key="frame" x="58.5" y="156.5" width="652" height="652"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="LzB-Q5-Yl8" secondAttribute="height" multiplier="1:1" id="iCT-Mc-Zzb"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="evq-Xb-PJ3" userLabel="ClueView">
-                                        <rect key="frame" x="58" y="156" width="653" height="653"/>
+                                        <rect key="frame" x="58.5" y="156.5" width="652" height="652"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="CLUE1" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oai-ie-8pX" userLabel="clue1">
-                                                <rect key="frame" x="32" y="19" width="588" height="196"/>
+                                                <rect key="frame" x="32" y="18.5" width="587.5" height="196"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="utL-5e-aN1" userLabel="clueSpace1">
-                                                <rect key="frame" x="-0.5" y="215" width="653" height="13"/>
+                                                <rect key="frame" x="-0.5" y="214.5" width="652" height="13"/>
                                             </view>
                                             <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4P6-EA-uaE" userLabel="clue1Button">
-                                                <rect key="frame" x="32" y="19" width="588" height="196"/>
+                                                <rect key="frame" x="32" y="18.5" width="587.5" height="196"/>
                                                 <state key="normal" title="Button"/>
                                             </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="CLUE2" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcA-WZ-ocb" userLabel="clue2">
-                                                <rect key="frame" x="32" y="228" width="588" height="196"/>
+                                                <rect key="frame" x="32" y="227.5" width="587.5" height="196.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6bL-rl-ZFH" userLabel="clueSpace2">
-                                                <rect key="frame" x="-0.5" y="424" width="653" height="13"/>
+                                                <rect key="frame" x="-0.5" y="424" width="652" height="12.5"/>
                                             </view>
                                             <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QWo-GL-c0P" userLabel="clue2Button">
-                                                <rect key="frame" x="32" y="228" width="588" height="196"/>
+                                                <rect key="frame" x="32" y="227.5" width="587.5" height="196.5"/>
                                                 <state key="normal" title="Button"/>
                                             </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="CLUE3" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiB-f1-bXt" userLabel="clue3">
-                                                <rect key="frame" x="32" y="437" width="588" height="196"/>
+                                                <rect key="frame" x="32" y="436.5" width="587.5" height="196"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yoK-Uc-jIA" userLabel="clue3Button">
-                                                <rect key="frame" x="32" y="437" width="588" height="196"/>
+                                                <rect key="frame" x="32" y="436.5" width="587.5" height="196"/>
                                                 <state key="normal" title="Button"/>
                                             </button>
                                         </subviews>
@@ -639,7 +639,7 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wnf-Q8-6ic">
-                                        <rect key="frame" x="0.0" y="809" width="768" height="40"/>
+                                        <rect key="frame" x="0.0" y="808.5" width="768" height="40"/>
                                         <color key="tintColor" red="1" green="0.50196078430000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="pG7-La-chF"/>
@@ -666,16 +666,16 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="548-bN-i3j" userLabel="ButtonsView">
-                                <rect key="frame" x="8" y="176" width="50" height="653"/>
+                                <rect key="frame" x="8.5" y="176.5" width="50" height="652"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZW-Fo-r1D" userLabel="spacer2">
-                                        <rect key="frame" x="-0.5" y="575.5" width="50" height="32.5"/>
+                                        <rect key="frame" x="-0.5" y="575" width="50" height="32"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uuC-aP-3WF" userLabel="spacer1">
-                                        <rect key="frame" x="0.0" y="497.5" width="50" height="33"/>
+                                        <rect key="frame" x="0.0" y="497" width="50" height="33"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1m-b7-I4t" userLabel="revealButton">
-                                        <rect key="frame" x="2.5" y="452.5" width="45" height="45"/>
+                                        <rect key="frame" x="2.5" y="452" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="s1m-b7-I4t" secondAttribute="height" multiplier="1:1" id="UKC-bt-kxD"/>
                                         </constraints>
@@ -685,7 +685,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcK-9N-1Pm" userLabel="clueButton">
-                                        <rect key="frame" x="3" y="608" width="45" height="45"/>
+                                        <rect key="frame" x="3" y="607" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="zcK-9N-1Pm" secondAttribute="height" multiplier="1:1" id="PhZ-1w-Zcw"/>
                                         </constraints>
@@ -695,7 +695,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EkY-j0-7j2" userLabel="flagButton">
-                                        <rect key="frame" x="2.5" y="530.5" width="45" height="45"/>
+                                        <rect key="frame" x="2.5" y="530" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="EkY-j0-7j2" secondAttribute="height" multiplier="1:1" id="piB-57-0Cy"/>
                                         </constraints>
