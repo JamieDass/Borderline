@@ -51,6 +51,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
     
     var countryNumber : NSNumber!
     var modified: Bool = false
+    var alertVisible: Bool = false
     
     
     var fetchResultsController: NSFetchedResultsController<NSManagedObject>!
@@ -310,26 +311,43 @@ class GameVC: UIViewController, UITextFieldDelegate {
             self.rightAnswer()
 //            countryGuess.resignFirstResponder()
         }else{
-            let appearance = SCLAlertView.SCLAppearance(
-            )
-            let alertView = SCLAlertView(appearance: appearance)
-            alertView.showTitle(
-                "Uh oh!", // Title of view
-                subTitle: "Wrong Answer", // String of view
-                duration: 0.0, // Duration to show before closing automatically, default: 0.0
-                completeText: "D'oh!", // Optional button value, default: ""
-                style: .error, // Styles - see below.
-                colorStyle: 0xC1272D,
-                colorTextButton: 0xFFFFFF
-            )
+            self.sclAlert(showCloseButton: true, title: "Uh Oh!", subtitle: "Wrong Answer", closeText: "D'oh!", style: .error, colorInt: 0xC1272D, selectorClose: "", selectorNext: "")
 //            SCLAlertView().showError("Uh oh!", subTitle: "Wrong Answer",completeText: "D'oh!")
             print("BOO")
         }
         
     }
     
-    func sclAlert(showCloseButton: Bool, title: String, subtitle: String, style: SCLAlertViewStyle, colorInt: UInt){
+    func sclAlert(showCloseButton: Bool, title: String, subtitle: String, closeText: String, style: SCLAlertViewStyle, colorInt: UInt, selectorClose: String, selectorNext:String){
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton:showCloseButton
+        )
         
+        
+//        if(!alertVisible){
+//            alertVisible = true
+            let alertView = SCLAlertView(appearance: appearance)
+        
+        if(selectorClose != ""){
+            alertView.addButton("Close", target:self, selector:Selector(selectorClose))
+        }
+        if(selectorNext != ""){
+            alertView.addButton("Next", target:self, selector:Selector(selectorNext))
+        }
+
+        
+        alertView.showTitle(
+            title, // Title of view
+            subTitle: subtitle, // String of view
+            duration: 0.0, // Duration to show before closing automatically, default: 0.0
+            completeText: closeText, // Optional button value, default: ""
+            style: style, // Styles - see below.
+            colorStyle: colorInt,
+            colorTextButton: 0xFFFFFF
+        )
+//        }else{
+//            alertVisible = false
+//        }
     }
     
     
