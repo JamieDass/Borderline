@@ -31,6 +31,7 @@ class ChallengeVC: UIViewController {
     @IBOutlet weak var progress4X: NSLayoutConstraint!
     @IBOutlet weak var progress5X: NSLayoutConstraint!
     @IBOutlet weak var progress6X: NSLayoutConstraint!
+    @IBOutlet weak var scoreBarItem: UIBarButtonItem!
 
     
     
@@ -38,6 +39,7 @@ class ChallengeVC: UIViewController {
     let levelStrings: NSArray = ["Level 1","Level 2","Level 3","Level 4","Level 5","Level 6"]
 
     override func viewWillAppear(_ animated: Bool) {
+        self.updateScore()
         self.configureButtons()
     }
     
@@ -49,11 +51,14 @@ class ChallengeVC: UIViewController {
         self.configureButtons()
         
     }
+    func updateScore() {
+        let defaults = UserDefaults.standard
+        var score:String = defaults.string(forKey: "score")!
+        score = score+"★"
+        scoreBarItem.title = score
+    }
     
     func configureButtons() {
-        let defaults = UserDefaults.standard
-        defaults.set(7, forKey: "score")
-        
         if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
             
             let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Country")

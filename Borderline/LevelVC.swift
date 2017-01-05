@@ -12,6 +12,10 @@ import CoreData
 class LevelVC: UICollectionViewController {
     fileprivate let reuseIdentifier = "countryCell"
     fileprivate var countries:[Country] = []
+    
+    @IBOutlet weak var scoreBarItem: UIBarButtonItem!
+    
+    
 //    var fetchResultController:NSFetchedResultsController<AnyObject>!
     var fetchResultsController: NSFetchedResultsController<NSManagedObject>!
     var levelCountries = [NSMutableArray]()
@@ -22,6 +26,7 @@ class LevelVC: UICollectionViewController {
     var changed = Bool()
 
     override func viewWillAppear(_ animated: Bool) {
+        self.updateScore()
         if UIDevice.current.orientation.isPortrait {
             statusBar = true
         }else{
@@ -40,6 +45,12 @@ class LevelVC: UICollectionViewController {
         
     }
     
+    func updateScore() {
+        let defaults = UserDefaults.standard
+        var score:String = defaults.string(forKey: "score")!
+        score = score+"★"
+        scoreBarItem.title = score
+    }
 
     override func viewDidLoad() {
         

@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var extraLevelsWidth: NSLayoutConstraint!
     @IBOutlet weak var settingsWidth: NSLayoutConstraint!
     @IBOutlet weak var creditsWidth: NSLayoutConstraint!
+    @IBOutlet weak var scoreBarItem: UIBarButtonItem!
 
     struct MyConstraint {
         static func changeMultiplier(_ constraint: NSLayoutConstraint, multiplier: CGFloat) -> NSLayoutConstraint {
@@ -40,6 +41,16 @@ class ViewController: UIViewController {
         }
     }
     
+    func updateScore(){
+        let defaults = UserDefaults.standard
+        var score:String = defaults.string(forKey: "score")!
+        score = score+"★"
+        scoreBarItem.title = score
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.updateScore()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)

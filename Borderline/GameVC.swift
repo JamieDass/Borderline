@@ -37,6 +37,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var clue2Button: UIButton!
     @IBOutlet weak var clue3Button: UIButton!
     
+
     
     var clueTextViews: NSArray!
     var clueButtons: NSArray!
@@ -44,6 +45,9 @@ class GameVC: UIViewController, UITextFieldDelegate {
     var keyboardHeight: CGFloat = 0.0
     
 //    var cluesShown = Bool()
+    var clueTitle: String = "Clues"
+    var clueSubTitle: String = "Need A Hint?"
+    
     var cluesShown: Bool = false
     var flagShown: Bool = false
     
@@ -83,42 +87,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
 
             UIView.animate(withDuration: 0.1, animations: {self.viewBottom.constant = keyboardHeight})
             
-//            print(viewBottom.constant)
-            
-//            viewBottom.constant = keyboardHeight
-            
-            
-//            var imgFrame:CGRect = countryView.frame
-//            imgFrame.size.height = imgFrame.size.height - keyboardHeight
-//            countryView.frame = imgFrame
-//            countryView.frame.origin.y = keyboardHeight
-//            print(viewBottom.constant)
-            
-//            UIView.animate(withDuration: 0.1, animations: {self.loadViewIfNeeded()})
-//            }
-////            print(keyboardHeight)
-//            let textfieldHeight = countryGuess.frame.size.height
-//            let screenSize: CGRect = UIScreen.main.bounds
-//            let availableScreen = screenSize.height-textfieldHeight
-//            let frac = keyboardHeight/availableScreen
-//            imageHeight.isActive = false
-            
-//            imageHeight.multiplier = (1.0-frac)
-////            print(frac)
-//            var imgFrame:CGRect = revealedImageView.frame
-//            imgFrame.size.height = availableScreen*(1.0-frac)
-//            imgFrame.size.width = availableScreen*(1.0-frac)
-//
-//            if keyboardHeight > revealedImageView.frame.origin.y {
-//                revealedImageView.frame = imgFrame
-//            }
-            
-//            imageBottom.constant = keyboardHeight
-//            if keyboardHeight > imageBottom.constant {
-//                imageBottom.constant = keyboardHeight
-//            }
-//            countryGuessConstraint.constant = keyboardHeight
-//            countryGuess.frame.origin = CGPoint(x: 0,y: keyboardHeight)
+
         }
     }
     
@@ -231,40 +200,182 @@ class GameVC: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    
+    
      @IBAction func showClues(){
-        if !cluesShown {
-            flagButton.isHidden = true
-            revealButton.isHidden = true
-            clueView.isHidden = false
-            cluesShown = true
-        }else{
-            flagButton.isHidden = false
-            revealButton.isHidden = false
-            clueView.isHidden = true
-            cluesShown = false
-        }
+        self.countryGuess.resignFirstResponder()
+        let appearance = SCLAlertView.SCLAppearance(
+            kTextFont: UIFont(name: "HelveticaNeue", size: 20)!,
+            showCloseButton: false,
+            showCircularIcon: false,
+            shouldAutoDismiss: false
+        )
+        let alertView = SCLAlertView(appearance:appearance)
+        let alertViewResponder: SCLAlertViewResponder = alertView.showInfo(clueTitle, subTitle: clueSubTitle)
         
+        var thisCountry : Country!
+        if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
+            
+            let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Country")
+            fetchRequest.predicate = NSPredicate(format: "name == %@", levelCountryName)
+            do {
+                let countries = try managedObjectContext.fetch(fetchRequest) as! [Country]
+                thisCountry = countries[0]
+
+            } catch {
+                print("Failed to retrieve record")
+                print(error)
+            }
+            var button1Title:String = "Reveal Clue 1 (1★)"
+            var button2Title:String = "Reveal Clue 2 (2★)"
+            var button3Title:String = "Reveal Clue 3 (3★)"
+            
+            if thisCountry.capitalRevealed == 1 {
+                button1Title = "Show Capital"
+            }
+            if thisCountry.continentRevealed == 1 {
+                button2Title = "Show Continent"
+            }
+            if thisCountry.clueRevealed == 1 {
+                button3Title = "Show Clue"
+            }
+            
+            alertView.addButton(button1Title) {
+                if thisCountry.capitalRevealed == 0 {
+                    alertViewResponder.close()
+                    self.showClueAlert(button: 1)
+                }else{
+                    alertViewResponder.setTitle("Capital:")
+                    alertViewResponder.setSubTitle(thisCountry.capital!)
+                }
+            }
+            
+            alertView.addButton(button2Title) {
+                if thisCountry.continentRevealed == 0 {
+                    alertViewResponder.close()
+                    self.showClueAlert(button: 2)
+                }else{
+                    alertViewResponder.setTitle("Continent:")
+                    alertViewResponder.setSubTitle(thisCountry.continent!)
+                }
+            }
+            alertView.addButton(button3Title) {
+                if thisCountry.clueRevealed == 0 {
+                    alertViewResponder.close()
+                    self.showClueAlert(button: 3)
+                }else{
+                    alertViewResponder.setTitle("Name:")
+                    alertViewResponder.setSubTitle(thisCountry.clue!)
+                }
+            }
+            alertView.addButton("Back") {
+                alertViewResponder.close()
+                self.clueTitle = "Clues"
+                self.clueSubTitle = "Need A Hint?"
+                self.countryGuess.becomeFirstResponder()
+            }
+
+            alertView.showInfo(clueTitle, subTitle: clueSubTitle)
+            do {
+                try managedObjectContext.save()
+            } catch {
+                print("Failed to save record")
+                print(error)
+                
+                // Do something in response to error condition
+            }
+        }
+//        if !cluesShown {
+//            flagButton.isHidden = true
+//            revealButton.isHidden = true
+//            clueView.isHidden = false
+//            cluesShown = true
+//        }else{
+//            flagButton.isHidden = false
+//            revealButton.isHidden = false
+//            clueView.isHidden = true
+//            cluesShown = false
+//        }
+//        
     }
     
+    func showClueAlert(button: Int) {
+        var thisCountry : Country!
+        if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
+            
+            let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Country")
+            fetchRequest.predicate = NSPredicate(format: "name == %@", levelCountryName)
+            do {
+                let countries = try managedObjectContext.fetch(fetchRequest) as! [Country]
+                thisCountry = countries[0]
+                
+            } catch {
+                print("Failed to retrieve record")
+                print(error)
+            }
+
+            var title = String()
+            var subTitle = String()
+            switch button {
+            case 1:
+                title = "Reveal Capital?"
+                subTitle = "Cost: 1★"
+            case 2:
+                title = "Reveal Continent?"
+                subTitle = "Cost: 2★"
+            case 3:
+                title = "Reveal Clue?"
+                subTitle = "Cost: 3★"
+            default:
+                print("")
+            }
+            
+            let subAppearance = SCLAlertView.SCLAppearance(
+                showCloseButton: false
+            )
+            let subAlertView = SCLAlertView(appearance: subAppearance)
+            subAlertView.addButton("OK") {
+                switch button {
+                case 1:
+                    thisCountry.capitalRevealed = 1
+                    self.clueTitle = "Capital:"
+                    self.clueSubTitle = thisCountry.capital!
+                case 2:
+                    thisCountry.continentRevealed = 1
+                    self.clueTitle = "Continent:"
+                    self.clueSubTitle = thisCountry.continent!
+                case 3:
+                    thisCountry.clueRevealed = 1
+                    self.clueTitle = "Name:"
+                    self.clueSubTitle = thisCountry.clue!
+                default:
+                    print("nothing")
+                }
+                self.showClues()
+            }
+            subAlertView.addButton("Cancel") {
+                self.showClues()
+            }
+            subAlertView.showInfo(title, subTitle: subTitle, animationStyle:.leftToRight)
+            do {
+                try managedObjectContext.save()
+            } catch {
+                print("Failed to save record")
+                print(error)
+                
+                // Do something in response to error condition
+            }
+        }
+        
+    }
+
+    
      @IBAction func showFlagAlert(){
-        
-        let alertController = UIAlertController(title: "Reveal Flag?", message: "3★", preferredStyle: .alert)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-            // ...
-        }
-        alertController.addAction(cancelAction)
-        
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            self.revealFlag()
-            // ...
-        }
-        alertController.addAction(OKAction)
-        
-        self.present(alertController, animated: true) {
-            // ...
+         if levelCountry.flagRevealed == 0 {
+            self.sclAlert(showCloseButton: true, title: "Reveal Flag?", subtitle: "3★", closeText: "Cancel", style: .warning, alertContext: "revealFlag")
         }
     }
+    
     func revealFlag(){
         var thisCountry : Country!
         if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
@@ -311,31 +422,74 @@ class GameVC: UIViewController, UITextFieldDelegate {
             self.rightAnswer()
 //            countryGuess.resignFirstResponder()
         }else{
-            self.sclAlert(showCloseButton: true, title: "Uh Oh!", subtitle: "Wrong Answer", closeText: "D'oh!", style: .error, colorInt: 0xC1272D, selectorClose: "", selectorNext: "")
+            self.sclAlert(showCloseButton: true, title: "Uh Oh!", subtitle: "Wrong Answer", closeText: "D'oh!", style: .error,  alertContext: "")
 //            SCLAlertView().showError("Uh oh!", subTitle: "Wrong Answer",completeText: "D'oh!")
             print("BOO")
         }
         
     }
     
-    func sclAlert(showCloseButton: Bool, title: String, subtitle: String, closeText: String, style: SCLAlertViewStyle, colorInt: UInt, selectorClose: String, selectorNext:String){
+    func sclAlert(showCloseButton: Bool, title: String, subtitle: String, closeText: String, style: SCLAlertViewStyle, alertContext: String){
+        
+        var defaultColorInt: UInt {
+            switch style {
+            case .success:
+                return 0x22B573
+            case .error:
+                return 0xC1272D
+            case .notice:
+                return 0x727375
+            case .warning:
+                return 0xFFD110
+            case .info:
+                return 0x2866BF
+            case .edit:
+                return 0xA429FF
+            case .wait:
+                return 0xD62DA5
+            }
+            
+        }
+        
+        var colorInt: UInt = defaultColorInt
+        
         let appearance = SCLAlertView.SCLAppearance(
             showCloseButton:showCloseButton
         )
         
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 80, height: 80), false, 0)
         
-//        if(!alertVisible){
-//            alertVisible = true
-            let alertView = SCLAlertView(appearance: appearance)
-        
-        if(selectorClose != ""){
-            alertView.addButton("Close", target:self, selector:Selector(selectorClose))
-        }
-        if(selectorNext != ""){
-            alertView.addButton("Next", target:self, selector:Selector(selectorNext))
-        }
+        self.drawWarning()
+        let warningImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
 
         
+        let alertView = SCLAlertView(appearance: appearance)
+        if(alertContext != ""){
+            var selector = String()
+            var buttonTitle = String()
+
+            switch alertContext {
+                case "revealFlag":
+                    selector = "revealFlag"
+                    buttonTitle = "Reveal"
+                    colorInt = 0x2866BF
+                case "rightAnswer":
+                    selector = "loadCountry"
+                    buttonTitle = "Next"
+                    colorInt = 0x22B573
+                case "revealAnswer":
+                    selector = "revealAnswer"
+                    buttonTitle = "Reveal"
+                    colorInt = 0xA429FF
+            default: selector = ""
+            }
+            alertView.addButton(buttonTitle, target:self, selector:Selector(selector))
+        }
+//        var alertViewIcon = UIImage()
+//        if(customIcon != ""){
+//            alertViewIcon = UIImage(named: customIcon)!
+//        }
         alertView.showTitle(
             title, // Title of view
             subTitle: subtitle, // String of view
@@ -343,11 +497,9 @@ class GameVC: UIViewController, UITextFieldDelegate {
             completeText: closeText, // Optional button value, default: ""
             style: style, // Styles - see below.
             colorStyle: colorInt,
-            colorTextButton: 0xFFFFFF
+            colorTextButton: 0xFFFFFF,
+            circleIconImage: warningImage
         )
-//        }else{
-//            alertVisible = false
-//        }
     }
     
     
@@ -392,22 +544,25 @@ class GameVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func revealAnswerAlert() {
         if levelCountry.solved == 0 {
-            let alertController = UIAlertController(title: "Reveal Answer?", message: "10★", preferredStyle: .alert)
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-                // ...
-            }
-            alertController.addAction(cancelAction)
-            
-            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                self.revealAnswer()
-                // ...
-            }
-            alertController.addAction(OKAction)
-            
-            self.present(alertController, animated: true) {
-                // ...
-            }
+            self.sclAlert(showCloseButton: true, title: "Reveal Answer?", subtitle: "10★", closeText: "Cancel", style: .info, alertContext: "revealAnswer")
+
+//            let alertController = UIAlertController(title: "Reveal Answer?", message: "10★", preferredStyle: .alert)
+//            
+//            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+//                // ...
+//            }
+//            alertController.addAction(cancelAction)
+//            
+//            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+//                self.revealAnswer()
+//                // ...
+//            }
+//            alertController.addAction(OKAction)
+//            
+//            self.present(alertController, animated: true) {
+//                // ...
+//            }
 
         }
         
@@ -508,36 +663,46 @@ class GameVC: UIViewController, UITextFieldDelegate {
         if(modCompare % 12 != 0){
             let nextCountry = countryList[thisCountryIdx!+1]
             levelCountryName = nextCountry
-            let alertController = UIAlertController(title: "Correct!", message: "Here's your reward: 50★!", preferredStyle: .alert)
             
-            let cancelAction = UIAlertAction(title: "Back", style: .cancel) { (action) in
-                self.countryGuess.resignFirstResponder()
-                // ...
-            }
-            alertController.addAction(cancelAction)
-            
-            let OKAction = UIAlertAction(title: "Next", style: .default) { (action) in
+            let appearance = SCLAlertView.SCLAppearance(
+                showCloseButton: false
+            )
+            let alertView = SCLAlertView(appearance: appearance)
+            alertView.addButton("Next") {
                 self.loadCountry()
-                // ...
             }
-            alertController.addAction(OKAction)
-            
-            self.present(alertController, animated: true) {
-                // ...
-            }
-            
-        }else{
-            let alertController = UIAlertController(title: "Correct!", message: "Here's your reward: 50★!", preferredStyle: .alert)
-            
-            let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+            alertView.addButton("Back") {
                 self.performSegue(withIdentifier: "backToLevelVC", sender: self)
                 self.countryGuess.resignFirstResponder()
-                // ...
             }
-            alertController.addAction(cancelAction)
-            self.present(alertController, animated: true) {
-                // ...
+            alertView.showSuccess("Correct!", subTitle: "Here's Your Reward: 10★")
+            
+            
+        }else{
+            
+
+            let appearance = SCLAlertView.SCLAppearance(
+                showCloseButton: false
+            )
+            let alertView = SCLAlertView(appearance: appearance)
+            alertView.addButton("OK") {
+                self.performSegue(withIdentifier: "backToLevelVC", sender: self)
+                self.countryGuess.resignFirstResponder()
+//                print("Second button tapped")
             }
+            alertView.showSuccess("Correct!", subTitle: "Here's Your Reward: 10★")
+            
+//            let alertController = UIAlertController(title: "Correct!", message: "Here's your reward: 50★!", preferredStyle: .alert)
+//            
+//            let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+//                self.performSegue(withIdentifier: "backToLevelVC", sender: self)
+//                self.countryGuess.resignFirstResponder()
+//                // ...
+//            }
+//            alertController.addAction(cancelAction)
+//            self.present(alertController, animated: true) {
+//                // ...
+//            }
         }
         modified = true
 
@@ -549,6 +714,49 @@ class GameVC: UIViewController, UITextFieldDelegate {
         countryGuess.resignFirstResponder()
     }
 
+    func drawWarning() {
+        // Color Declarations
+//        let greyColor = UIColor(red: 0.236, green: 0.236, blue: 0.236, alpha: 1.000)
+        
+        // Warning Group
+        // Warning Circle Drawing
+        let warningCirclePath = UIBezierPath()
+        warningCirclePath.move(to: CGPoint(x: 40.94, y: 63.39))
+        warningCirclePath.addCurve(to: CGPoint(x: 36.03, y: 65.55), controlPoint1: CGPoint(x: 39.06, y: 63.39), controlPoint2: CGPoint(x: 37.36, y: 64.18))
+        warningCirclePath.addCurve(to: CGPoint(x: 34.14, y: 70.45), controlPoint1: CGPoint(x: 34.9, y: 66.92), controlPoint2: CGPoint(x: 34.14, y: 68.49))
+        warningCirclePath.addCurve(to: CGPoint(x: 36.22, y: 75.54), controlPoint1: CGPoint(x: 34.14, y: 72.41), controlPoint2: CGPoint(x: 34.9, y: 74.17))
+        warningCirclePath.addCurve(to: CGPoint(x: 40.94, y: 77.5), controlPoint1: CGPoint(x: 37.54, y: 76.91), controlPoint2: CGPoint(x: 39.06, y: 77.5))
+        warningCirclePath.addCurve(to: CGPoint(x: 45.86, y: 75.35), controlPoint1: CGPoint(x: 42.83, y: 77.5), controlPoint2: CGPoint(x: 44.53, y: 76.72))
+        warningCirclePath.addCurve(to: CGPoint(x: 47.93, y: 70.45), controlPoint1: CGPoint(x: 47.18, y: 74.17), controlPoint2: CGPoint(x: 47.93, y: 72.41))
+        warningCirclePath.addCurve(to: CGPoint(x: 45.86, y: 65.35), controlPoint1: CGPoint(x: 47.93, y: 68.49), controlPoint2: CGPoint(x: 47.18, y: 66.72))
+        warningCirclePath.addCurve(to: CGPoint(x: 40.94, y: 63.39), controlPoint1: CGPoint(x: 44.53, y: 64.18), controlPoint2: CGPoint(x: 42.83, y: 63.39))
+        warningCirclePath.close()
+        warningCirclePath.miterLimit = 4;
+        
+         UIColor.white.setFill()
+        warningCirclePath.fill()
+        
+        
+        // Warning Shape Drawing
+        let warningShapePath = UIBezierPath()
+        warningShapePath.move(to: CGPoint(x: 46.23, y: 4.26))
+        warningShapePath.addCurve(to: CGPoint(x: 40.94, y: 2.5), controlPoint1: CGPoint(x: 44.91, y: 3.09), controlPoint2: CGPoint(x: 43.02, y: 2.5))
+        warningShapePath.addCurve(to: CGPoint(x: 34.71, y: 4.26), controlPoint1: CGPoint(x: 38.68, y: 2.5), controlPoint2: CGPoint(x: 36.03, y: 3.09))
+        warningShapePath.addCurve(to: CGPoint(x: 31.5, y: 8.77), controlPoint1: CGPoint(x: 33.01, y: 5.44), controlPoint2: CGPoint(x: 31.5, y: 7.01))
+        warningShapePath.addLine(to: CGPoint(x: 31.5, y: 19.36))
+        warningShapePath.addLine(to: CGPoint(x: 34.71, y: 54.44))
+        warningShapePath.addCurve(to: CGPoint(x: 40.38, y: 58.16), controlPoint1: CGPoint(x: 34.9, y: 56.2), controlPoint2: CGPoint(x: 36.41, y: 58.16))
+        warningShapePath.addCurve(to: CGPoint(x: 45.67, y: 54.44), controlPoint1: CGPoint(x: 44.34, y: 58.16), controlPoint2: CGPoint(x: 45.67, y: 56.01))
+        warningShapePath.addLine(to: CGPoint(x: 48.5, y: 19.36))
+        warningShapePath.addLine(to: CGPoint(x: 48.5, y: 8.77))
+        warningShapePath.addCurve(to: CGPoint(x: 46.23, y: 4.26), controlPoint1: CGPoint(x: 48.5, y: 7.01), controlPoint2: CGPoint(x: 47.74, y: 5.44))
+        warningShapePath.close()
+        warningShapePath.miterLimit = 4;
+        
+        UIColor.white.setFill()
+        warningShapePath.fill()
+    }
+    
     /*
     // MARK: - Navigation
 

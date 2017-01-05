@@ -27,6 +27,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        UINavigationBar.appearance().setTitleVerticalPositionAdjustment(2, forBarMetrics: UIBarMetrics.Default)
 //        [[UINavigationBar appearance] setBarTintColor:[UIColor orangeColor]]
+        
+        
+        let defaults = UserDefaults.standard
+        if (defaults.object(forKey: "score") == nil)
+        {
+            print("creating score default")
+            defaults.set(0, forKey: "score")
+        }
+
         return true
     }
 
