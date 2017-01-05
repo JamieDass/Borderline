@@ -35,12 +35,12 @@ class LevelVC: UICollectionViewController {
 
         var indices = [IndexPath]()
         updateCollectionViewLayout(with: self.view.bounds.size)
-        if(changed){
-            indices.append(selectedIndex)
-//            self.collectionView?.reloadItems(at: indices)
-            self.collectionView?.reloadData()
-        }
-        
+//        if(changed){
+//            indices.append(selectedIndex)
+////            self.collectionView?.reloadItems(at: indices)
+//            self.collectionView?.reloadData()
+//        }
+        self.collectionView?.reloadData()
         
         
     }

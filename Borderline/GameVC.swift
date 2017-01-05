@@ -15,26 +15,16 @@ class GameVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var revealButton: UIButton!
     @IBOutlet weak var flagButton: UIButton!
     @IBOutlet weak var clueButton: UIButton!
-    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var viewBottom: NSLayoutConstraint!
     @IBOutlet weak var imageX: NSLayoutConstraint!
     
 //    @IBOutlet weak var countryGuessConstraint: NSLayoutConstraint!
-    @IBOutlet weak var clueView: UIView!
     @IBOutlet weak var gameImage: UIImageView!
     @IBOutlet weak var gameView: UIView!
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var countryView: UIView!
     @IBOutlet weak var countryGuess: UITextField!
-    
-    @IBOutlet weak var clue1: UITextView!
-    @IBOutlet weak var clue2: UITextView!
-    @IBOutlet weak var clue3: UITextView!
-    
-    @IBOutlet weak var clue1Button: UIButton!
-    @IBOutlet weak var clue2Button: UIButton!
-    @IBOutlet weak var clue3Button: UIButton!
-    
+        
     @IBOutlet weak var scoreBarItem: UIBarButtonItem!
     
 
@@ -79,7 +69,6 @@ class GameVC: UIViewController, UITextFieldDelegate {
 //        imageBottom.constant = screenSize.height/2
         super.viewWillAppear(true)
         imageX.constant += screenSize.width*0.075
-        clueView.isHidden = true
         self.updateScore()
 //        cluesShown = false
         
@@ -122,23 +111,14 @@ class GameVC: UIViewController, UITextFieldDelegate {
         levelCountryNumber = Int(ceilf(Float(countryIdx+1)/12.0))
         
         self.view.backgroundColor = UIColor.orange
-        clueTextViews = [clue1,clue2,clue3]
-        clueButtons = [clue1Button,clue2Button,clue3Button]
         
         
-        clueView.backgroundColor = GlobalConstants.defaultBlue
-        clueView.layer.borderColor = UIColor.orange.cgColor
-        clueView.layer.cornerRadius = 10
-        clueView.layer.borderWidth = 4.0
         self.countryGuess.delegate = self
         countryGuess.textColor = UIColor.orange
         countryGuess.text = ""
         let item : UITextInputAssistantItem = countryGuess.inputAssistantItem
         item.leadingBarButtonGroups = []
         item.trailingBarButtonGroups = []
-        
-        let image = UIImage(named: "Images/CloseButtonMed.png")! as UIImage
-        closeButton.setImage(image, for: UIControlState.normal)
         
         let revealBtnImage = UIImage(named: "Images/ClueRevealMed.png")! as UIImage
         revealButton.setImage(revealBtnImage, for: UIControlState.normal)
@@ -155,7 +135,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)        // Do any additional setup after loading the view.
         
         self.loadCountryView()
-        self.configureClues()
+//        self.configureClues()
         if levelCountry.solved! == 1 {
             countryGuess.text = levelCountryName.uppercased()
             countryGuess.isEnabled = false
@@ -360,6 +340,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
                     print("nothing")
                 }
                 self.showClues()
+//                self.countryGuess.becomeFirstResponder()
             }
             subAlertView.addButton("Cancel") {
                 self.showClues()
@@ -380,7 +361,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
     
      @IBAction func showFlagAlert(){
          if levelCountry.flagRevealed == 0 {
-            self.sclAlert(showCloseButton: true, title: "Reveal Flag?", subtitle: "3★", closeText: "Cancel", style: .warning, alertContext: "revealFlag")
+            self.sclAlert(showCloseButton: false, title: "Reveal Flag?", subtitle: "3★", closeText: "Cancel", style: .warning, alertContext: "revealFlag")
         }
     }
     
@@ -416,6 +397,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
                 self.loadCountryView()
             }
         }
+        self.countryGuess.becomeFirstResponder()
     }
     
      @IBAction func checkAnswer(){
@@ -430,7 +412,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
             self.rightAnswer()
 //            countryGuess.resignFirstResponder()
         }else{
-            self.sclAlert(showCloseButton: true, title: "Uh Oh!", subtitle: "Wrong Answer", closeText: "D'oh!", style: .error,  alertContext: "")
+            self.sclAlert(showCloseButton: false, title: "Uh Oh!", subtitle: "Wrong Answer", closeText: "D'oh!", style: .error,  alertContext: "")
 //            SCLAlertView().showError("Uh oh!", subTitle: "Wrong Answer",completeText: "D'oh!")
             print("BOO")
         }
@@ -476,7 +458,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
         if(alertContext != ""){
             var selector = String()
             var buttonTitle = String()
-
+            
             switch alertContext {
                 case "revealFlag":
                     selector = "revealFlag"
@@ -494,10 +476,16 @@ class GameVC: UIViewController, UITextFieldDelegate {
             }
             alertView.addButton(buttonTitle, target:self, selector:Selector(selector))
         }
+        alertView.addButton(closeText){
+            self.countryGuess.becomeFirstResponder()
+        }
+
+        
 //        var alertViewIcon = UIImage()
 //        if(customIcon != ""){
 //            alertViewIcon = UIImage(named: customIcon)!
 //        }
+        countryGuess.resignFirstResponder()
         alertView.showTitle(
             title, // Title of view
             subTitle: subtitle, // String of view
@@ -540,9 +528,6 @@ class GameVC: UIViewController, UITextFieldDelegate {
             clueIndex+=1
         }
         
-        clue1.text = levelCountry.continent
-        clue2.text = levelCountry.capital
-        clue3.text = levelCountry.clue
     }
     
     @IBAction func revealClue(sender: UIButton) {
@@ -553,7 +538,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
     @IBAction func revealAnswerAlert() {
         if levelCountry.solved == 0 {
             
-            self.sclAlert(showCloseButton: true, title: "Reveal Answer?", subtitle: "10★", closeText: "Cancel", style: .info, alertContext: "revealAnswer")
+            self.sclAlert(showCloseButton: false, title: "Reveal Answer?", subtitle: "10★", closeText: "Cancel", style: .info, alertContext: "revealAnswer")
 
 //            let alertController = UIAlertController(title: "Reveal Answer?", message: "10★", preferredStyle: .alert)
 //            
@@ -666,7 +651,6 @@ class GameVC: UIViewController, UITextFieldDelegate {
         
         
         let thisCountryIdx = countryList.index(of: levelCountryName)
-//        thisCountryIdx += 1
         let modCompare = thisCountryIdx!+1
         if(modCompare % 12 != 0){
             let nextCountry = countryList[thisCountryIdx!+1]
@@ -680,7 +664,9 @@ class GameVC: UIViewController, UITextFieldDelegate {
                 self.loadCountry()
             }
             alertView.addButton("Back") {
-                self.performSegue(withIdentifier: "backToLevelVC", sender: self)
+                if let navController = self.navigationController {
+                    navController.popViewController(animated: true)
+                }
                 self.countryGuess.resignFirstResponder()
             }
             alertView.showSuccess("Correct!", subTitle: "Here's Your Reward: 10★")
@@ -694,9 +680,11 @@ class GameVC: UIViewController, UITextFieldDelegate {
             )
             let alertView = SCLAlertView(appearance: appearance)
             alertView.addButton("OK") {
-                self.performSegue(withIdentifier: "backToLevelVC", sender: self)
+                if let navController = self.navigationController {
+                    navController.popViewController(animated: true)
+                }
                 self.countryGuess.resignFirstResponder()
-//                print("Second button tapped")
+
             }
             alertView.showSuccess("Correct!", subTitle: "Here's Your Reward: 10★")
             
