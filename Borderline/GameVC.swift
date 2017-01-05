@@ -31,11 +31,11 @@ class GameVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var clue2: UITextView!
     @IBOutlet weak var clue3: UITextView!
     
-    
-    
     @IBOutlet weak var clue1Button: UIButton!
     @IBOutlet weak var clue2Button: UIButton!
     @IBOutlet weak var clue3Button: UIButton!
+    
+    @IBOutlet weak var scoreBarItem: UIBarButtonItem!
     
 
     
@@ -65,7 +65,14 @@ class GameVC: UIViewController, UITextFieldDelegate {
     var levelCountryName : String!
     var levelCountryNumber : Int!
     var levelCountry : Country!
-
+    
+    func updateScore(){
+        let defaults = UserDefaults.standard
+        var score:String = defaults.string(forKey: "score")!
+        score = score+"★"
+        scoreBarItem.title = score
+        //        scoreBarItem.isEnabled = false
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         let screenSize: CGRect = UIScreen.main.bounds
@@ -73,7 +80,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(true)
         imageX.constant += screenSize.width*0.075
         clueView.isHidden = true
-
+        self.updateScore()
 //        cluesShown = false
         
          // Do any additional setup after loading the view.
@@ -93,6 +100,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Borderline"
         self.loadCountry()
         
     }

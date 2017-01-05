@@ -46,6 +46,7 @@ class ViewController: UIViewController {
         var score:String = defaults.string(forKey: "score")!
         score = score+"★"
         scoreBarItem.title = score
+//        scoreBarItem.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {

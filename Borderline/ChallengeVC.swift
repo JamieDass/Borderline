@@ -56,6 +56,7 @@ class ChallengeVC: UIViewController {
         var score:String = defaults.string(forKey: "score")!
         score = score+"★"
         scoreBarItem.title = score
+//        scoreBarItem.isEnabled = false
     }
     
     func configureButtons() {

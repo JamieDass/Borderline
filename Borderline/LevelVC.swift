@@ -50,6 +50,7 @@ class LevelVC: UICollectionViewController {
         var score:String = defaults.string(forKey: "score")!
         score = score+"★"
         scoreBarItem.title = score
+//        scoreBarItem.isEnabled = false
     }
 
     override func viewDidLoad() {
