@@ -39,7 +39,7 @@ class ChallengeVC: UIViewController {
     let levelStrings: NSArray = ["Level 1","Level 2","Level 3","Level 4","Level 5","Level 6"]
 
     override func viewWillAppear(_ animated: Bool) {
-        self.updateScore()
+        self.updateScoreLabel()
         self.configureButtons()
     }
     
@@ -51,11 +51,11 @@ class ChallengeVC: UIViewController {
         self.configureButtons()
         
     }
-    func updateScore() {
+    func updateScoreLabel() {
         let defaults = UserDefaults.standard
-        var score:String = defaults.string(forKey: "score")!
-        score = score+"★"
-        scoreBarItem.title = score
+        let score:Int = defaults.integer(forKey: "score")
+        let scoreLabel = String(score)+"★"
+        scoreBarItem.title = scoreLabel
 //        scoreBarItem.isEnabled = false
     }
     
@@ -100,7 +100,7 @@ class ChallengeVC: UIViewController {
             index += 1
             let level:NSNumber = index as NSNumber
             let passedLevel = countries.filter{ $0.level == level }.count
-            progressView.progress = Float(passedLevel)/12.0
+            progressView.progress = Float(passedLevel)/Float(GlobalConstants.countriesPerLevel)
             
         }
     }

@@ -26,30 +26,24 @@ class LevelVC: UICollectionViewController {
     var changed = Bool()
 
     override func viewWillAppear(_ animated: Bool) {
-        self.updateScore()
+        self.updateScoreLabel()
         if UIDevice.current.orientation.isPortrait {
             statusBar = true
         }else{
             statusBar = false
         }
 
-        var indices = [IndexPath]()
         updateCollectionViewLayout(with: self.view.bounds.size)
-//        if(changed){
-//            indices.append(selectedIndex)
-////            self.collectionView?.reloadItems(at: indices)
-//            self.collectionView?.reloadData()
-//        }
         self.collectionView?.reloadData()
         
         
     }
     
-    func updateScore() {
+    func updateScoreLabel() {
         let defaults = UserDefaults.standard
-        var score:String = defaults.string(forKey: "score")!
-        score = score+"★"
-        scoreBarItem.title = score
+        let score:Int = defaults.integer(forKey: "score")
+        let scoreLabel = String(score)+"★"
+        scoreBarItem.title = scoreLabel
 //        scoreBarItem.isEnabled = false
     }
 
@@ -80,7 +74,7 @@ class LevelVC: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return GlobalConstants.countriesPerLevel
     }
         
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -163,8 +157,6 @@ class LevelVC: UICollectionViewController {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-//        self.updateSize = size
-//        self.collectionView!.performBatchUpdates(nil, completion: nil)
 
         coordinator.animate(alongsideTransition: { context in
             // do whatever with your context
@@ -177,7 +169,6 @@ class LevelVC: UICollectionViewController {
     
     fileprivate func updateCollectionViewLayout(with size: CGSize) {
         if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout {
-//            let screenSize: CGRect = UIScreen.main.bounds
             let screenSize: CGRect = (collectionView?.bounds)!
             let navHeight: CGFloat = (self.navigationController?.navigationBar.frame.size.height)!
             let portrait:Bool = (size.height > size.width)
@@ -186,7 +177,6 @@ class LevelVC: UICollectionViewController {
             let portraitSize = min(screenSize.width*0.3, (screenSize.height-navHeight)*0.2)
             let landscapeSize = min(screenSize.width*0.2, (screenSize.height-navHeight)*0.3)
             
-            
             layout.itemSize = portrait ? CGSize(width: portraitSize, height: portraitSize) : CGSize(width: landscapeSize, height: landscapeSize)
             
             layout.minimumLineSpacing = vSpace
@@ -194,38 +184,6 @@ class LevelVC: UICollectionViewController {
             layout.sectionInset = UIEdgeInsetsMake(vSpace, hSpace*0.5, vSpace, hSpace*0.5)
         }
         
-//        if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout {
-//            
-////            print(self.navigationController?.navigationBar.frame.size.height)
-////            print("vc w: ",size.width)
-////            print("vc h: ",size.height,"\n")
-//
-////            print("\n",self.view.frame.size.height)
-//            let screenSize: CGRect = UIScreen.main.bounds
-//            let navHeight: CGFloat = (self.navigationController?.navigationBar.frame.size.height)!
-////            print(screenSize.height)
-////            print(screenSize.width)
-//
-//            let thinSpace: CGFloat = 10
-//            let thickSpace: CGFloat = 25
-//            
-//            let vertical: CGFloat = (screenSize.width-(4*thinSpace))/3
-//
-//            let horizontal: CGFloat = (screenSize.height-navHeight-(4*thinSpace))/3
-//            var sbheight: CGFloat = 0
-//            if statusBar {
-//                sbheight = 20
-//            }
-//
-//            let vInsets: CGFloat = (size.height-navHeight-sbheight-((4*vertical)+(3*thickSpace)))/2
-//            let hInsets: CGFloat = (size.width-((4*horizontal)+(3*thickSpace)))/2
-//
-//            layout.itemSize = (size.width < size.height) ? CGSize(width: vertical, height: vertical) : CGSize(width: horizontal, height: horizontal)
-//            layout.minimumLineSpacing = (size.width < size.height) ? thickSpace : thinSpace
-//            layout.minimumInteritemSpacing = (size.width < size.height) ? thinSpace : thickSpace
-//            layout.sectionInset = (size.width < size.height) ? UIEdgeInsetsMake(vInsets, 10, vInsets, 10) : UIEdgeInsetsMake(10, hInsets, 0, hInsets)
-//            layout.invalidateLayout()
-//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -234,11 +192,6 @@ class LevelVC: UICollectionViewController {
         
             destination.levelCountryName = selectedCountry.name!
             destination.countryNumber = (sender as! UICollectionViewCell).tag as NSNumber!
-//            destination.levelCountry = selectedCountry
-//            destination.levelCountry = selectedCountry
-//            if segue.identifier == "gameSegue"{
-//            destination.levelCountry = selectedCountry
-//            }
         }
     }
     

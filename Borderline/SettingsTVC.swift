@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SCLAlertView
 
 class SettingsTVC: UITableViewController{
     @IBOutlet weak var soundSwitch: UISwitch!
@@ -93,32 +94,50 @@ class SettingsTVC: UITableViewController{
 //    }
 
     func batchUpdate(){
-        let alertController = UIAlertController(title: "Are you sure?", message: "This will reset your progress and your score.", preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-            // ...
-        }
-        alertController.addAction(cancelAction)
-        
-        let OKAction = UIAlertAction(title: "Reset", style: .default) { (action) in
+        let alertView = SCLAlertView()
+        alertView.addButton("Reset"){
             self.resetProgress()
-            // ...
         }
-        alertController.addAction(OKAction)
+        alertView.showTitle(
+            "Are You Sure?", // Title of view
+            subTitle: "This Will Reset Your Progress and Your Score", // String of view
+            duration: 0.0, // Duration to show before closing automatically, default: 0.0
+            completeText: "Cancel", // Optional button value, default: ""
+            style: .warning, // Styles - see below.
+            colorStyle: 0xE96719,
+            colorTextButton: 0xFFFFFF
+        )
         
-        self.present(alertController, animated: true) {
-            // ...
-        }
+//        let alertController = UIAlertController(title: "Are you sure?", message: "This will reset your progress and your score.", preferredStyle: .alert)
+//        
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+//            // ...
+//        }
+//        alertController.addAction(cancelAction)
+//        
+//        let OKAction = UIAlertAction(title: "Reset", style: .default) { (action) in
+//            self.resetProgress()
+//            // ...
+//        }
+//        alertController.addAction(OKAction)
+//        
+//        self.present(alertController, animated: true) {
+//            // ...
+//        }
 
     }
     
     
     
     func resetProgress(){
+        let defaults = UserDefaults.standard
+        defaults.set(0, forKey: "score")
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let batchUpdateRequest = NSBatchUpdateRequest(entityName: "Country")
         batchUpdateRequest.propertiesToUpdate = ["solved": 0, "continentRevealed": 0, "capitalRevealed": 0, "clueRevealed": 0, "flagRevealed": 0]
+        
         
         
         batchUpdateRequest.resultType = .updatedObjectIDsResultType

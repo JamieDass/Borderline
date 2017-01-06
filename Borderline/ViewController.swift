@@ -41,27 +41,21 @@ class ViewController: UIViewController {
         }
     }
     
-    func updateScore(){
+    func updateScoreLabel(){
         let defaults = UserDefaults.standard
-        var score:String = defaults.string(forKey: "score")!
-        score = score+"★"
-        scoreBarItem.title = score
-//        scoreBarItem.isEnabled = false
+        let score:Int = defaults.integer(forKey: "score")
+        let scoreLabel = String(score)+"★"
+        scoreBarItem.title = scoreLabel
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.updateScore()
+        self.updateScoreLabel()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let controller = storyboard.instantiateViewControllerWithIdentifier("RootVC")
-//        self.presentViewController(controller, animated: true, completion: nil)
-//        RootVC().scoreLabel.text = "ahem"
-
         
         self.navigationItem.title = "Borderline"
-        let homeConstraints: NSArray = [challengeWidth,extraLevelsWidth,settingsWidth,creditsWidth]
+//        let homeConstraints: NSArray = [challengeWidth,extraLevelsWidth,settingsWidth,creditsWidth]
 
     let isiPad: Bool = (UIDevice.current.userInterfaceIdiom == .pad);
         if ( isiPad )
