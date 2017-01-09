@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 
 class ViewController: UIViewController {
@@ -20,7 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var settingsWidth: NSLayoutConstraint!
     @IBOutlet weak var creditsWidth: NSLayoutConstraint!
     @IBOutlet weak var scoreBarItem: UIBarButtonItem!
-
+    
     struct MyConstraint {
         static func changeMultiplier(_ constraint: NSLayoutConstraint, multiplier: CGFloat) -> NSLayoutConstraint {
             let newConstraint = NSLayoutConstraint(
@@ -56,6 +57,7 @@ class ViewController: UIViewController {
         
         self.navigationItem.title = "Borderline"
 //        let homeConstraints: NSArray = [challengeWidth,extraLevelsWidth,settingsWidth,creditsWidth]
+        initLevelCountries()
 
     let isiPad: Bool = (UIDevice.current.userInterfaceIdiom == .pad);
         if ( isiPad )
@@ -95,6 +97,8 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    
 
 
 }

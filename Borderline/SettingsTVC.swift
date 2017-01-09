@@ -133,6 +133,7 @@ class SettingsTVC: UITableViewController{
     func resetProgress(){
         let defaults = UserDefaults.standard
         defaults.set(0, forKey: "score")
+        defaults.set(0, forKey: "levelLists")
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let batchUpdateRequest = NSBatchUpdateRequest(entityName: "Country")

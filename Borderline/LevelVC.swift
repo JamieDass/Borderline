@@ -16,7 +16,6 @@ class LevelVC: UICollectionViewController {
     @IBOutlet weak var scoreBarItem: UIBarButtonItem!
     
     
-//    var fetchResultController:NSFetchedResultsController<AnyObject>!
     var fetchResultsController: NSFetchedResultsController<NSManagedObject>!
     var levelCountries = [NSMutableArray]()
     var levelName = NSString()
@@ -26,6 +25,8 @@ class LevelVC: UICollectionViewController {
     var changed = Bool()
 
     override func viewWillAppear(_ animated: Bool) {
+//        updateCollectionViewLayout(with: self.view.bounds.size)
+        updateCollectionViewLayout(with: UIScreen.main.bounds.size)
         self.updateScoreLabel()
         if UIDevice.current.orientation.isPortrait {
             statusBar = true
@@ -33,10 +34,13 @@ class LevelVC: UICollectionViewController {
             statusBar = false
         }
 
-        updateCollectionViewLayout(with: self.view.bounds.size)
         self.collectionView?.reloadData()
         
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+//          updateCollectionViewLayout(with: self.view.bounds.size)
     }
     
     func updateScoreLabel() {
@@ -67,6 +71,7 @@ class LevelVC: UICollectionViewController {
             }
         }
         
+        
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -84,12 +89,7 @@ class LevelVC: UICollectionViewController {
 //        var country: NSString = countries[(indexPath as NSIndexPath).row].name!
         
         let countrySel: Country = countries[(indexPath).row]
-        
-//        let tickImage = UIImage.init(named: "Images/Tick.png")
-//        let cellheight = cell.frame.height/4
-//        let tickView = UIImageView(frame: CGRect(x: cell.bounds.width-cellheight-2, y: cell.bounds.height-cellheight-2, width: cellheight, height: cellheight))
-//            tickView.image = tickImage
-        
+                
         
         var flagType : String!
         var flagPath : String!
@@ -105,6 +105,8 @@ class LevelVC: UICollectionViewController {
         country = country.replacingOccurrences(of: " ", with: "_")
         country = country.appending(flagType)
         
+//        print(country)
+        
         var path:String = "Images/Countries/"
         path = path.appending(flagPath)
         country = path.appending(country as String)
@@ -113,10 +115,6 @@ class LevelVC: UICollectionViewController {
         let bgView = UIImageView.init(image: flagImage)
         bgView.contentMode = UIViewContentMode.scaleAspectFit
     
-
-
-//        cell.backgroundColor = UIColor.blackColor()
-        // Configure the cell
         cell.layer.borderWidth = 0
         cell.layer.borderColor = UIColor.white.cgColor
         cell.tag = indexPath.row
@@ -157,31 +155,58 @@ class LevelVC: UICollectionViewController {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-
+        print("transitioning to")
         coordinator.animate(alongsideTransition: { context in
             // do whatever with your context
             context.viewController(forKey: UITransitionContextViewControllerKey.from)
             self.statusBar = (size.width > size.height) ? true : false
-        self.updateCollectionViewLayout(with: size)
+            self.updateCollectionViewLayout(with: size)
             }, completion: nil)
 
     }
     
     fileprivate func updateCollectionViewLayout(with size: CGSize) {
+        
         if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout {
-            let screenSize: CGRect = (collectionView?.bounds)!
+//            let screenSize: CGRect = (collectionView?.bounds)!
+            let screenSize: CGRect = UIScreen.main.bounds
             let navHeight: CGFloat = (self.navigationController?.navigationBar.frame.size.height)!
             let portrait:Bool = (size.height > size.width)
-            let hSpace: CGFloat = portrait ? screenSize.width*0.025 : screenSize.width*0.04
-            let vSpace: CGFloat = portrait ? (screenSize.height-navHeight)*0.04 : (screenSize.height-navHeight)*0.025
-            let portraitSize = min(screenSize.width*0.3, (screenSize.height-navHeight)*0.2)
-            let landscapeSize = min(screenSize.width*0.2, (screenSize.height-navHeight)*0.3)
+            
+            let longMultiplier:CGFloat = GlobalConstants.countriesPerLevel == 12 ? 0.2 : 0.15
+//            let nItems:CGFloat = GlobalConstants.countriesPerLevel == 12 ? 4 : 5
+            
+//            let longSpace:CGFloat = (1.0-(nItems*longMultiplier))/5.0
+            
+//            let hSpace: CGFloat = portrait ? screenSize.width*0.025 : screenSize.width*longSpace
+//            let vSpace: CGFloat = portrait ? (screenSize.height-navHeight)*longSpace : (screenSize.height-navHeight)*0.025
+            
+            var portraitSize = (screenSize.width/3 > screenSize.height/5) ? (screenSize.height-navHeight)*longMultiplier : screenSize.width*0.3
+            
+            var landscapeSize =  (screenSize.width/5 > screenSize.height/3) ? (screenSize.height-navHeight)*0.3 : screenSize.width*longMultiplier
+            
+           let iPad:Bool = UIDevice.current.userInterfaceIdiom == .pad
+            
+            portraitSize = iPad ? portraitSize : portraitSize*0.95
+            landscapeSize = iPad ? landscapeSize : landscapeSize*0.95
             
             layout.itemSize = portrait ? CGSize(width: portraitSize, height: portraitSize) : CGSize(width: landscapeSize, height: landscapeSize)
             
-            layout.minimumLineSpacing = vSpace
-            layout.minimumInteritemSpacing = hSpace
-            layout.sectionInset = UIEdgeInsetsMake(vSpace, hSpace*0.5, vSpace, hSpace*0.5)
+            let hDivisor: CGFloat = portrait ? screenSize.width : screenSize.height
+            let vDivisor: CGFloat = portrait ? screenSize.height-navHeight : screenSize.width
+            
+            let hSpace: CGFloat = ((1-(3*layout.itemSize.height/hDivisor))/4)*hDivisor
+            let vSpace: CGFloat = ((1-(5*layout.itemSize.height/vDivisor))/6)*vDivisor
+            
+            
+            layout.minimumLineSpacing = portrait ? vSpace : hSpace
+            layout.minimumInteritemSpacing = portrait ? hSpace : vSpace
+ 
+            
+            let hInset:CGFloat = iPad ? hSpace : hSpace*0.9
+            let vInset:CGFloat = iPad ? vSpace : vSpace*0.5
+            
+            layout.sectionInset = UIEdgeInsetsMake(vInset, hInset, vSpace, hInset)
         }
         
     }
@@ -192,6 +217,7 @@ class LevelVC: UICollectionViewController {
         
             destination.levelCountryName = selectedCountry.name!
             destination.countryNumber = (sender as! UICollectionViewCell).tag as NSNumber!
+            destination.levelName = levelName as String
         }
     }
     
