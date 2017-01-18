@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SCLAlertView
 
 class ChallengeVC: UIViewController {
     var fetchResultsController: NSFetchedResultsController<NSManagedObject>!
@@ -33,7 +34,15 @@ class ChallengeVC: UIViewController {
     @IBOutlet weak var progress6X: NSLayoutConstraint!
     @IBOutlet weak var scoreBarItem: UIBarButtonItem!
 
+    @IBOutlet weak var l1Progress: UILabel!
+    @IBOutlet weak var l2Progress: UILabel!
+    @IBOutlet weak var l3Progress: UILabel!
+    @IBOutlet weak var l4Progress: UILabel!
+    @IBOutlet weak var l5Progress: UILabel!
+    @IBOutlet weak var l6Progress: UILabel!
     
+    @IBOutlet weak var backgroundImage: UIImageView!
+//    private var lockLabels = [UILabel]()
     
     @IBOutlet weak var scoreLab: UILabel!
     let levelStrings: NSArray = ["Level 1","Level 2","Level 3","Level 4","Level 5","Level 6"]
@@ -45,11 +54,11 @@ class ChallengeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        backgroundImage.image = UIImage(named:"Images/Backgrounds/Pinstripes.png")
         self.navigationItem.title = "Challenge"
         self.configureButtons()
         
+        self.lockLevels()
     }
     func updateScoreLabel() {
         let defaults = UserDefaults.standard
@@ -57,6 +66,31 @@ class ChallengeVC: UIViewController {
         let scoreLabel = String(score)+"★"
         scoreBarItem.title = scoreLabel
 //        scoreBarItem.isEnabled = false
+    }
+    
+    @IBAction func gameProgress(){
+//        showProgress()
+        let alert = SCLAlertView(appearance: progressApp(showCloseButton: true))
+        showProgress(alert: alert)
+    }
+
+    
+    func lockLevels(){
+
+        let lockLabels:NSArray = [l1Progress,l2Progress,l3Progress,l4Progress,l5Progress,l6Progress]
+        
+        let nSolved:Int = countries.count
+        var thresholds: [Int:Int] = [0:-1,1:10,2:20,3:30,4:40,5:50]
+        var idx:Int = 0
+        for label in lockLabels{
+            if(nSolved<thresholds[idx]!){
+                (label as! UILabel).text = "🔒"
+            }else{
+                (label as! UILabel).text = ""
+            }
+            idx+=1
+        }
+
     }
     
     func configureButtons() {
@@ -81,13 +115,17 @@ class ChallengeVC: UIViewController {
         for button in levelButtons{
             (button as AnyObject).layer.cornerRadius = 13
             (button as AnyObject).layer.borderWidth = 4.0
-            (button as AnyObject).layer.backgroundColor = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0).cgColor
-            (button as AnyObject).layer.borderColor = UIColor.orange.cgColor
+//            (button as AnyObject).layer.backgroundColor = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0).cgColor
+               (button as AnyObject).layer.backgroundColor = GlobalConstants.darkBlue.cgColor
+  //          (button as AnyObject).layer.borderColor = UIColor.orange.cgColor
+              (button as AnyObject).layer.borderColor = GlobalConstants.darkBlue.cgColor
             (button as AnyObject).titleLabel??.numberOfLines = 1
             (button as AnyObject).titleLabel??.adjustsFontSizeToFitWidth = true
             (button as AnyObject).titleLabel??.lineBreakMode = NSLineBreakMode.byClipping
             (button as AnyObject).titleLabel??.textColor = UIColor.orange
             (button as AnyObject).titleLabel??.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title2)
+            (button as! UIButton).addTarget(self, action: #selector(goToLevel(_:)), for: .touchUpInside)
+            
             //            let edgeInsets: UIEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0)
             let bW = (button as AnyObject).bounds.size.width/20
             let constraint:NSLayoutConstraint = levelConstraints.object(at: index) as! NSLayoutConstraint
@@ -95,6 +133,7 @@ class ChallengeVC: UIViewController {
             (button as! UIButton).setInset(top: 0, left: bW, bottom: 0, right: 0)
             let progressView = levelProgress.object(at: index) as! UIProgressView
             progressView.tintColor = UIColor.white
+//                progressView.tintColor = GlobalConstants.darkBlue
             progressView.trackTintColor = UIColor.gray
             (button as AnyObject).addSubview(progressView)
             index += 1
@@ -105,13 +144,31 @@ class ChallengeVC: UIViewController {
         }
     }
     
+    func goToLevel(_ sender : UIButton) {
+        let nSolved:Int = countries.count
+        var thresholds: [Int:Int] = [0:-1,1:10,2:20,3:30,4:40,5:50]
+        if (nSolved >= thresholds[sender.tag]!){
+            self.performSegue(withIdentifier: "levelSegue", sender: sender)
+        }else{
+            let diff:Int = thresholds[sender.tag]! - countries.count
+            let diffString = "You Need to Solve "+String(diff)+" More Countries!"
+//            let appearance = SCLAlertView.SCLAppearance(kWindowHeight: 500.0)
+//            let alert = SCLAlertView(appearance: appearance)
+            SCLAlertView().showError("Uh oh!", subTitle:diffString, closeButtonTitle: "Will Do!")
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        LevelVC *targetVC = segue.destinationViewController
+//        if let destination = segue.destination as? LevelVC{
+//            destination.levelName = levelStrings[(sender! as AnyObject).tag] as! NSString
+//            destination.levelNumber = ((sender! as AnyObject).tag)+1 as NSNumber
+//        }
+        
         if let destination = segue.destination as? LevelVC{
             destination.levelName = levelStrings[(sender! as AnyObject).tag] as! NSString
-//            let target: NSNumber = (sender! as AnyObject).tag as NSNumber
             destination.levelNumber = ((sender! as AnyObject).tag)+1 as NSNumber
         }
+
     }
     
     override func didReceiveMemoryWarning() {

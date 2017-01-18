@@ -38,11 +38,12 @@ class SettingsTVC: UITableViewController{
             soundSwitch.isOn = false
         }
         
-        self.view.backgroundColor = GlobalConstants.defaultBlue
-        settingsTable.backgroundColor = GlobalConstants.defaultBlue
-        resetProgressCell.backgroundColor = GlobalConstants.defaultBlue
-        soundCell.backgroundColor = GlobalConstants.defaultBlue
-        soundSwitch.onTintColor = UIColor.orange
+//        self.view.backgroundColor = GlobalConstants.defaultBlue
+//        settingsTable.backgroundColor = GlobalConstants.defaultBlue
+//        resetProgressCell.backgroundColor = GlobalConstants.defaultBlue
+//        soundCell.backgroundColor = GlobalConstants.defaultBlue
+//        soundSwitch.onTintColor = UIColor.orange
+        soundSwitch.onTintColor = GlobalConstants.darkBlue
         
         soundSwitch.addTarget(self, action: #selector(switchToggled), for: UIControlEvents.valueChanged)
         

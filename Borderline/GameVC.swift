@@ -28,6 +28,9 @@ class GameVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var scoreBarItem: UIBarButtonItem!
     
+    @IBOutlet weak var backgroundImage: UIImageView!
+    
+    
     let kContinentCost:Int = 1
     let kCapitalCost:Int = 2
     let kClueCost:Int = 3
@@ -81,6 +84,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        backgroundImage.image = UIImage(named:"Images/Backgrounds/Pinstripes.png")
         self.navigationItem.title = "Borderline"
 
         self.loadLevelCountries()
@@ -131,11 +135,11 @@ class GameVC: UIViewController, UITextFieldDelegate {
         let countryIdx: Int = countryList.index(of: levelCountryName)!
         levelCountryNumber = Int(ceilf(Float(countryIdx+1)/Float(GlobalConstants.countriesPerLevel)))
         
-        self.view.backgroundColor = UIColor.orange
+//        self.view.backgroundColor = UIColor.orange
         
         
         self.countryGuess.delegate = self
-        countryGuess.textColor = UIColor.orange
+        countryGuess.textColor = GlobalConstants.darkBlue
         countryGuess.text = ""
         let item : UITextInputAssistantItem = countryGuess.inputAssistantItem
         item.leadingBarButtonGroups = []
@@ -150,8 +154,8 @@ class GameVC: UIViewController, UITextFieldDelegate {
         let clueBtnImage = UIImage(named: "Images/ClueMed.png")! as UIImage
         clueButton.setImage(clueBtnImage, for: UIControlState.normal)
         
-        gameView.backgroundColor = GlobalConstants.defaultBlue
-        bgView.backgroundColor = GlobalConstants.defaultBlue
+//        gameView.backgroundColor = GlobalConstants.defaultBlue
+//        bgView.backgroundColor = GlobalConstants.defaultBlue
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)        // Do any additional setup after loading the view.
         
@@ -199,6 +203,18 @@ class GameVC: UIViewController, UITextFieldDelegate {
         self.checkAnswer()
         return true
     }
+    
+    @IBAction func gameProgress(){
+        self.countryGuess.resignFirstResponder()
+        let alert = SCLAlertView(appearance: progressApp(showCloseButton: false))
+        alert.addButton("Cool!"){
+            self.countryGuess.becomeFirstResponder()
+        }
+        showProgress(alert: alert)
+        
+//        self.showGameProgress()
+    }
+
     
     // MARK: - Get Help
     
@@ -838,5 +854,59 @@ class GameVC: UIViewController, UITextFieldDelegate {
         return output
     }
     
+ //MARK: - Show Info
     
+    func showGameProgress(){
+        var solvedCountries:[Country] = []
+        if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
+            
+            let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Country")
+            // predicate to find all solved countries. CoreData doesn't accept BOOLs so this is stored as NSNumber 0,1
+            let solvedNumber:NSNumber = 1
+            fetchRequest.predicate = NSPredicate(format: "solved == %@", solvedNumber)
+            do {
+                solvedCountries = try managedObjectContext.fetch(fetchRequest) as! [Country]
+            } catch {
+                print("Failed to retrieve record")
+                print(error)
+            }
+        }
+        
+        let progress:String = "Score: "+String(getScore())+"★"
+        var levelProgress:String = "\n\n"
+        var lvl:Int = 1
+        while lvl <= 6{
+            let passedLevel:Int = solvedCountries.filter{ $0.level == NSNumber(value: lvl) }.count
+            var space:String = ""
+            if(passedLevel < 10){
+                space = " "
+            }
+            levelProgress += "Level "+String(lvl)+":\t\t"+space+String(passedLevel)+"/15"
+            if(lvl != 6){
+                levelProgress = levelProgress+"\n"
+            }
+            lvl += 1
+        }
+        
+        //    let passedLevel = countries.filter{ $0.level == level }.count
+        
+        
+        // Example of using the view to add two text fields to the alert
+        // Create the subview
+        let appearance = SCLAlertView.SCLAppearance(
+            kTitleFont: UIFont(name: "SFMono-Semibold", size: 20)!,
+            //        kTextFont: UIFont(name: "HelveticaNeue", size: 20)!,
+            kTextFont: UIFont(name: "SFMono-Semibold", size: 18)!,
+            kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
+            showCloseButton: false
+        )
+        
+        // Initialize SCLAlertView using custom Appearance
+        let alert = SCLAlertView(appearance: appearance)
+        alert.addButton("Cool!"){
+            self.countryGuess.becomeFirstResponder()
+        }
+        alert.showInfo(progress, subTitle: levelProgress,closeButtonTitle: "Cool!")
+    }
+
 }

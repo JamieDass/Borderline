@@ -2,20 +2,18 @@
 //  LevelVC.swift
 //  Borderline
 //
-//  Created by James Dassoulas on 2016-08-26.
-//  Copyright © 2016 Jetliner. All rights reserved.
+//  Created by James Dassoulas on 2017-01-11.
+//  Copyright © 2017 Jetliner. All rights reserved.
 //
 
 import UIKit
 import CoreData
+import SCLAlertView
 
-class LevelVC: UICollectionViewController {
+class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     fileprivate let reuseIdentifier = "countryCell"
     fileprivate var countries:[Country] = []
-    
-    @IBOutlet weak var scoreBarItem: UIBarButtonItem!
-    
-    
+
     var fetchResultsController: NSFetchedResultsController<NSManagedObject>!
     var levelCountries = [NSMutableArray]()
     var levelName = NSString()
@@ -24,39 +22,20 @@ class LevelVC: UICollectionViewController {
     var statusBar = Bool()
     var changed = Bool()
 
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var scoreBarItem: UIBarButtonItem!
+    @IBOutlet weak var collectionView: UICollectionView!
+
     override func viewWillAppear(_ animated: Bool) {
-//        updateCollectionViewLayout(with: self.view.bounds.size)
         updateCollectionViewLayout(with: UIScreen.main.bounds.size)
         self.updateScoreLabel()
-        if UIDevice.current.orientation.isPortrait {
-            statusBar = true
-        }else{
-            statusBar = false
-        }
-
-        self.collectionView?.reloadData()
-        
+        self.collectionView.reloadData()
         
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-//          updateCollectionViewLayout(with: self.view.bounds.size)
-    }
-    
-    func updateScoreLabel() {
-        let defaults = UserDefaults.standard
-        let score:Int = defaults.integer(forKey: "score")
-        let scoreLabel = String(score)+"★"
-        scoreBarItem.title = scoreLabel
-//        scoreBarItem.isEnabled = false
-    }
-
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        self.edgesForExtendedLayout = UIRectEdge()
-        self.view.backgroundColor = UIColor.orange
-        self.collectionView?.backgroundColor = GlobalConstants.defaultBlue
+        backgroundImage.image = UIImage(named:"Images/Backgrounds/Pinstripes.png")
+        self.updateScoreLabel()
         self.navigationItem.title = levelName as String
         
         if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
@@ -70,26 +49,44 @@ class LevelVC: UICollectionViewController {
                 print(error)
             }
         }
-        
-        
-    }
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        // Do any additional setup after loading the view.
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func updateScoreLabel() {
+        let defaults = UserDefaults.standard
+        let score:Int = defaults.integer(forKey: "score")
+        let scoreLabel = String(score)+"★"
+        scoreBarItem.title = scoreLabel
+    }
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return GlobalConstants.countriesPerLevel
     }
-        
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) 
 
-//        if let array = countries[(indexPath).row] as? [[NSObject:AnyObject]] {
-//        var country: NSString = countries[(indexPath as NSIndexPath).row].name!
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt minimumInteritemSpacingForSectionAtIndex:NSInteger) -> CGFloat{
+        return 10
+    }
+    
+    @IBAction func gameProgress(){
+//        showProgress()
+        let alert = SCLAlertView(appearance: progressApp(showCloseButton: true))
+        showProgress(alert: alert)
+    }
+
+
+  
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//    internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath)
         
         let countrySel: Country = countries[(indexPath).row]
-                
+        
         
         var flagType : String!
         var flagPath : String!
@@ -105,16 +102,16 @@ class LevelVC: UICollectionViewController {
         country = country.replacingOccurrences(of: " ", with: "_")
         country = country.appending(flagType)
         
-//        print(country)
+        //        print(country)
         
         var path:String = "Images/Countries/"
         path = path.appending(flagPath)
         country = path.appending(country as String)
-    
+        
         let flagImage = UIImage.init(named: country as String)
         let bgView = UIImageView.init(image: flagImage)
         bgView.contentMode = UIViewContentMode.scaleAspectFit
-    
+        
         cell.layer.borderWidth = 0
         cell.layer.borderColor = UIColor.white.cgColor
         cell.tag = indexPath.row
@@ -122,37 +119,18 @@ class LevelVC: UICollectionViewController {
         
         if(countrySel.solved == 1){
             tickImage = UIImage.init(named: "Images/Tick.png")!
-//            bgView.addSubview(tickView)
+            //            bgView.addSubview(tickView)
         }
-//        let combinedImage:UIImage = LevelVC.mergeImages(imageView: bgView)
-        let combinedImage:UIImage = self.mergeImages(backgroundImage: flagImage!, foregroundImage: tickImage)
+        let combinedImage:UIImage = mergeImages(backgroundImage: flagImage!, foregroundImage: tickImage)
         let combView = UIImageView.init(image: combinedImage)
         combView.contentMode = UIViewContentMode.scaleAspectFit
         
         
         cell.backgroundView = combView
+        
         return cell
     }
     
-//    func collectionView(collectionView: UICollectionView,
-//            layout collectionViewLayout: UICollectionViewLayout,
-//               insetForSectionAtIndex:NSInteger) -> UIEdgeInsets{
-//        return UIEdgeInsetsMake(10, 10, 0, 10)
-//    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-            layout collectionViewLayout: UICollectionViewLayout,
-               minimumInteritemSpacingForSectionAtIndex:NSInteger) -> CGFloat{
-        return 10
-    }
-    
-//    func collectionView(collectionView: UICollectionView,
-//            layout collectionViewLayout: UICollectionViewLayout,
-//                minimumLineSpacingForSectionAtIndex:NSInteger) -> CGFloat{
-//        return 25
-//    }
-//
-
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         print("transitioning to")
@@ -161,31 +139,32 @@ class LevelVC: UICollectionViewController {
             context.viewController(forKey: UITransitionContextViewControllerKey.from)
             self.statusBar = (size.width > size.height) ? true : false
             self.updateCollectionViewLayout(with: size)
-            }, completion: nil)
-
+        }, completion: nil)
+        
     }
     
     fileprivate func updateCollectionViewLayout(with size: CGSize) {
-        
-        if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout {
-//            let screenSize: CGRect = (collectionView?.bounds)!
+//        let collectionViewLayout = UICollectionViewFlowLayout()
+//        if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout {
+        if let layout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            //            let screenSize: CGRect = (collectionView?.bounds)!
             let screenSize: CGRect = UIScreen.main.bounds
             let navHeight: CGFloat = (self.navigationController?.navigationBar.frame.size.height)!
             let portrait:Bool = (size.height > size.width)
             
             let longMultiplier:CGFloat = GlobalConstants.countriesPerLevel == 12 ? 0.2 : 0.15
-//            let nItems:CGFloat = GlobalConstants.countriesPerLevel == 12 ? 4 : 5
+            //            let nItems:CGFloat = GlobalConstants.countriesPerLevel == 12 ? 4 : 5
             
-//            let longSpace:CGFloat = (1.0-(nItems*longMultiplier))/5.0
+            //            let longSpace:CGFloat = (1.0-(nItems*longMultiplier))/5.0
             
-//            let hSpace: CGFloat = portrait ? screenSize.width*0.025 : screenSize.width*longSpace
-//            let vSpace: CGFloat = portrait ? (screenSize.height-navHeight)*longSpace : (screenSize.height-navHeight)*0.025
+            //            let hSpace: CGFloat = portrait ? screenSize.width*0.025 : screenSize.width*longSpace
+            //            let vSpace: CGFloat = portrait ? (screenSize.height-navHeight)*longSpace : (screenSize.height-navHeight)*0.025
             
             var portraitSize = (screenSize.width/3 > screenSize.height/5) ? (screenSize.height-navHeight)*longMultiplier : screenSize.width*0.3
             
             var landscapeSize =  (screenSize.width/5 > screenSize.height/3) ? (screenSize.height-navHeight)*0.3 : screenSize.width*longMultiplier
             
-           let iPad:Bool = UIDevice.current.userInterfaceIdiom == .pad
+            let iPad:Bool = UIDevice.current.userInterfaceIdiom == .pad
             
             portraitSize = iPad ? portraitSize : portraitSize*0.95
             landscapeSize = iPad ? landscapeSize : landscapeSize*0.95
@@ -201,7 +180,7 @@ class LevelVC: UICollectionViewController {
             
             layout.minimumLineSpacing = portrait ? vSpace : hSpace
             layout.minimumInteritemSpacing = portrait ? hSpace : vSpace
- 
+            
             
             let hInset:CGFloat = iPad ? hSpace : hSpace*0.9
             let vInset:CGFloat = iPad ? vSpace : vSpace*0.5
@@ -211,10 +190,11 @@ class LevelVC: UICollectionViewController {
         
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? GameVC{
             let selectedCountry: Country = countries[(sender as! UICollectionViewCell).tag]
-        
+            
             destination.levelCountryName = selectedCountry.name!
             destination.countryNumber = (sender as! UICollectionViewCell).tag as NSNumber!
             destination.levelName = levelName as String
@@ -228,44 +208,23 @@ class LevelVC: UICollectionViewController {
             selectedIndex = selIdx as IndexPath
         }
     }
+
     
-//    class func mergeImages(imageView: UIImageView) -> UIImage {
-//        UIGraphicsBeginImageContextWithOptions(imageView.frame.size, false, 0.0)
-//        //        imageView.view.layer.render(in: UIGraphicsGetCurrentContext()!)
-//        imageView.superview!.layer.render(in: UIGraphicsGetCurrentContext()!)
-//        let image = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-//        
-//        return image!
-//    }
     
-    func mergeImages (backgroundImage : UIImage, foregroundImage : UIImage) -> UIImage {
-        
-        let bottomImage = backgroundImage
-        let topImage = foregroundImage
-        
-        let size = backgroundImage.size
-        let tickSize = size.width/4
-        UIGraphicsBeginImageContext(size)
-        
-        let areaSize = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        let tickareaSize = CGRect(x: size.width-tickSize-2, y: size.height-tickSize-2, width: tickSize, height: tickSize)
-        bottomImage.draw(in: areaSize)
-        
-        topImage.draw(in: tickareaSize, blendMode: .normal, alpha: 1.0)
-        
-        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-//        resultImageView.image = newImage
-        
-        UIGraphicsEndImageContext()
-        return newImage
-        
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
-//    func collectionView(collectionView: UICollectionView,
-//                          layout collectionViewLayout: UICollectionViewLayout,
-//                                 sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
-//        return CGSizeMake(100, 100)
-//    }
-    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
 }

@@ -17,16 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-
-        UINavigationBar.appearance().tintColor = GlobalConstants.defaultBlue
+        UINavigationBar.appearance().barStyle = .blackOpaque
+//        UINavigationBar.appearance().tintColor = GlobalConstants.defaultBlue
+            UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().isOpaque = true
-        UINavigationBar.appearance().barTintColor = UIColor.orange
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : GlobalConstants.defaultBlue, NSFontAttributeName : UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1)]
+//        UINavigationBar.appearance().barTintColor = UIColor.orange
+        UINavigationBar.appearance().barTintColor = GlobalConstants.darkBlue
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white, NSFontAttributeName : UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1)]
 //        setStatusBarBackgroundColor(UIColor.clear)
         
 //        UINavigationBar.appearance().setTitleVerticalPositionAdjustment(2, forBarMetrics: UIBarMetrics.Default)
 //        [[UINavigationBar appearance] setBarTintColor:[UIColor orangeColor]]
+        
         
         
         let defaults = UserDefaults.standard
@@ -34,6 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         {
             print("creating score default")
             defaults.set(0, forKey: "score")
+        }
+        if (defaults.object(forKey: "sounds") == nil)
+        {
+            print("creating sound bool")
+            defaults.set(true, forKey: "sounds")
         }
 
         return true
@@ -146,6 +154,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    
     func setStatusBarBackgroundColor(_ color: UIColor) {
         
         guard  let statusBar = (UIApplication.shared.value(forKey: "statusBarWindow") as AnyObject).value(forKey: "statusBar") as? UIView else {
