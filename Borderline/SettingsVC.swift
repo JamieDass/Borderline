@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import SCLAlertView
+import AVFoundation
 
 class SettingsVC: UIViewController {
 
@@ -59,6 +60,7 @@ class SettingsVC: UIViewController {
         let defaults = UserDefaults.standard
         if(defaults.bool(forKey: "sounds") == false){
             defaults.set(true, forKey: "sounds")
+            playClick()
             soundButton.backgroundColor = GlobalConstants.darkBlue
             soundButton.setTitleColor(UIColor.white, for: UIControlState.normal)
             soundButton.setTitle("Turn Sounds Off  🔈", for: UIControlState.normal)
@@ -76,6 +78,7 @@ class SettingsVC: UIViewController {
     }
     
     @IBAction func resetProgressAlert(){
+        playClick()
         let alertView = SCLAlertView()
         alertView.addButton("Reset"){
             self.resetProgress()
@@ -98,7 +101,7 @@ class SettingsVC: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let batchUpdateRequest = NSBatchUpdateRequest(entityName: "Country")
-        batchUpdateRequest.propertiesToUpdate = ["solved": 0, "continentRevealed": 0, "capitalRevealed": 0, "clueRevealed": 0, "flagRevealed": 0]
+        batchUpdateRequest.propertiesToUpdate = ["solved": 0, "regionRevealed": 0, "capitalRevealed": 0, "clueRevealed": 0, "flagRevealed": 0]
         
         
         

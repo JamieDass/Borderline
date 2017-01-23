@@ -10,6 +10,9 @@ import UIKit
 import Foundation
 import CoreData
 import SCLAlertView
+import AVFoundation
+
+    var player: AVAudioPlayer?
 
 func updateScore(increment : Int){
     let defaults = UserDefaults.standard
@@ -25,13 +28,16 @@ func getScore() -> Int{
 }
 
 func showProgress(alert: SCLAlertView){
+    playClick()
     var solvedCountries:[Country] = []
     if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
 
         let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Country")
         // predicate to find all solved countries. CoreData doesn't accept BOOLs so this is stored as NSNumber 0,1
         let solvedNumber:NSNumber = 1
-        fetchRequest.predicate = NSPredicate(format: "solved == %@", solvedNumber)
+        let solvedPredicate = NSPredicate(format: "solved == %@", solvedNumber)
+        let typePredicate = NSPredicate(format: "type == %@", "Country")
+        fetchRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: [typePredicate, solvedPredicate])
         do {
             solvedCountries = try managedObjectContext.fetch(fetchRequest) as! [Country]
         } catch {
@@ -39,7 +45,7 @@ func showProgress(alert: SCLAlertView){
             print(error)
         }
     }
-    
+        
     let score = "Score: "+String(getScore())+"★"
     var levelProgress = "\n"
     var lvl:Int = 1
@@ -90,11 +96,51 @@ func mergeImages (backgroundImage : UIImage, foregroundImage : UIImage) -> UIIma
     
 }
 
+func playSound(type: String){
+    let soundPath = "Sounds/"+type
+    
+    var soundID: SystemSoundID = 0
+    let soundURL = CFBundleCopyResourceURL(CFBundleGetMainBundle(), soundPath as CFString!, "wav" as CFString!, nil)
+    AudioServicesCreateSystemSoundID(soundURL!, &soundID)
+    let defaults = UserDefaults.standard
+    if(defaults.bool(forKey: "sounds") == true){
+        AudioServicesPlaySystemSound(soundID)
+    }
+    
+//    let url = Bundle.main.url(forResource: "Sounds/"+type, withExtension: "wav")!
+//    do {
+//        if #available(iOS 10.0, *) {
+//            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, mode: AVAudioSessionModeDefault, options: AVAudioSessionCategoryOptions.mixWithOthers)
+//        } else {
+//            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+//            try AVAudioSession.sharedInstance().setMode(AVAudioSessionModeDefault)
+//        }
+//        try AVAudioSession.sharedInstance().setActive(true)
+//        player = try AVAudioPlayer(contentsOf: url)
+//        guard let player = player else { return }
+//        player.prepareToPlay()
+//        let defaults = UserDefaults.standard
+//        if(defaults.bool(forKey: "sounds") == true){
+//            player.play()
+//        }
+//    } catch let error {
+//        print(error.localizedDescription)
+//    }
+}
+
+func playClick(){
+    let defaults = UserDefaults.standard
+    if(defaults.bool(forKey: "sounds") == true){
+        AudioServicesPlaySystemSound(1306)
+    }
+}
+
 func initLevelCountries(){
     var allCountries:[Country] = []
     if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
         
         let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Country")
+//        fetchRequest.predicate = NSPredicate(format: "type == %@", "Country")
         do {
             allCountries = try managedObjectContext.fetch(fetchRequest) as! [Country]
         } catch {
@@ -104,7 +150,7 @@ func initLevelCountries(){
     }
     
     
-    var level1Countries, level2Countries, level3Countries, level4Countries, level5Countries, level6Countries:[Country]
+    var level1Countries, level2Countries, level3Countries, level4Countries, level5Countries, level6Countries, formerCountries, level1States, level2States, level3States, level4States, level5States:[Country]
     
     let level1CountryNames = NSMutableArray()
     let level2CountryNames = NSMutableArray()
@@ -112,13 +158,31 @@ func initLevelCountries(){
     let level4CountryNames = NSMutableArray()
     let level5CountryNames = NSMutableArray()
     let level6CountryNames = NSMutableArray()
+    let formerCountryNames = NSMutableArray()
     
-    level1Countries = allCountries.filter() { $0.level == 1 }
-    level2Countries = allCountries.filter() { $0.level == 2 }
-    level3Countries = allCountries.filter() { $0.level == 3 }
-    level4Countries = allCountries.filter() { $0.level == 4 }
-    level5Countries = allCountries.filter() { $0.level == 5 }
-    level6Countries = allCountries.filter() { $0.level == 6 }
+    let level1StateNames = NSMutableArray()
+    let level2StateNames = NSMutableArray()
+    let level3StateNames = NSMutableArray()
+    let level4StateNames = NSMutableArray()
+    let level5StateNames = NSMutableArray()
+
+    
+    
+    
+    level1Countries = allCountries.filter() { $0.level == 1 && $0.type == "Country"}
+    level2Countries = allCountries.filter() { $0.level == 2 && $0.type == "Country"}
+    level3Countries = allCountries.filter() { $0.level == 3 && $0.type == "Country"}
+    level4Countries = allCountries.filter() { $0.level == 4 && $0.type == "Country"}
+    level5Countries = allCountries.filter() { $0.level == 5 && $0.type == "Country"}
+    level6Countries = allCountries.filter() { $0.level == 6 && $0.type == "Country"}
+    
+    formerCountries = allCountries.filter() { $0.level == 1 && $0.type == "FormerCountry"}
+
+    level1States = allCountries.filter() { $0.level == 1 && $0.type == "State"}
+    level2States = allCountries.filter() { $0.level == 2 && $0.type == "State"}
+    level3States = allCountries.filter() { $0.level == 3 && $0.type == "State"}
+    level4States = allCountries.filter() { $0.level == 4 && $0.type == "State"}
+    level5States = allCountries.filter() { $0.level == 5 && $0.type == "State"}
     
     for Country in level1Countries{
         level1CountryNames.add(Country.name!)
@@ -139,6 +203,26 @@ func initLevelCountries(){
         level6CountryNames.add(Country.name!)
     }
 
+    for Country in formerCountries{
+        formerCountryNames.add(Country.name!)
+    }
+
+    for Country in level1States{
+        level1StateNames.add(Country.name!)
+    }
+    for Country in level2States{
+        level2StateNames.add(Country.name!)
+    }
+    for Country in level3States{
+        level3StateNames.add(Country.name!)
+    }
+    for Country in level4States{
+        level4StateNames.add(Country.name!)
+    }
+    for Country in level5States{
+        level5StateNames.add(Country.name!)
+    }
+    
     
     let defaults = UserDefaults.standard
     if (defaults.integer(forKey: "levelLists") != 1)
@@ -151,6 +235,13 @@ func initLevelCountries(){
         defaults.set(level4CountryNames, forKey:"Level 4")
         defaults.set(level5CountryNames, forKey:"Level 5")
         defaults.set(level6CountryNames, forKey:"Level 6")
+        defaults.set(formerCountryNames, forKey:"Former Countries")
+        defaults.set(level1StateNames, forKey:"US States 1")
+        defaults.set(level2StateNames, forKey:"US States 2")
+        defaults.set(level3StateNames, forKey:"US States 3")
+        defaults.set(level4StateNames, forKey:"US States 4")
+        defaults.set(level5StateNames, forKey:"US States 5")
+
     }
     
     

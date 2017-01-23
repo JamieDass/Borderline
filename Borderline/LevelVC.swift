@@ -21,7 +21,9 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
     var selectedIndex = IndexPath()
     var statusBar = Bool()
     var changed = Bool()
-
+    
+    var levelType = String()
+    
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var scoreBarItem: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -41,7 +43,10 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
         if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
             
             let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Country")
-            fetchRequest.predicate = NSPredicate(format: "level == %@", levelNumber)
+            let levelPredicate = NSPredicate(format: "level == %@", levelNumber)
+            let typePredicate = NSPredicate(format: "type == %@", levelType)
+            fetchRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: [typePredicate, levelPredicate])
+//            fetchRequest.predicate = NSPredicate(format: "level == %@", levelNumber)
             do {
                 countries = try managedObjectContext.fetch(fetchRequest) as! [Country]
             } catch {
@@ -79,7 +84,9 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
         showProgress(alert: alert)
     }
 
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        playClick()
+    }
   
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 //    internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -37,9 +37,9 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>LiberationMono-Bold.ttf</string>
-		<string>LiberationMono-Regular.ttf</string>
-		<string>SFMono-Semibold.otf</string>
+		<string>Fonts/LiberationMono-Bold.ttf</string>
+		<string>Fonts/LiberationMono-Regular.ttf</string>
+		<string>Fonts/SFMono-Semibold.otf</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>

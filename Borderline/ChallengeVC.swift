@@ -102,6 +102,7 @@ class ChallengeVC: UIViewController {
             fetchRequest.predicate = NSPredicate(format: "solved == %@", solvedNumber)
             do {
                 countries = try managedObjectContext.fetch(fetchRequest) as! [Country]
+                
             } catch {
                 print("Failed to retrieve record")
                 print(error)
@@ -112,61 +113,61 @@ class ChallengeVC: UIViewController {
         let levelProgress: NSArray = [progress1View,progress2View,progress3View,progress4View,progress5View,progress6View]
         let levelConstraints: NSArray = [progress1X,progress2X,progress3X,progress4X,progress5X,progress6X]
         var index:Int = 0
-        for button in levelButtons{
-            (button as AnyObject).layer.cornerRadius = 13
-            (button as AnyObject).layer.borderWidth = 4.0
-//            (button as AnyObject).layer.backgroundColor = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0).cgColor
-               (button as AnyObject).layer.backgroundColor = GlobalConstants.darkBlue.cgColor
-  //          (button as AnyObject).layer.borderColor = UIColor.orange.cgColor
-              (button as AnyObject).layer.borderColor = GlobalConstants.darkBlue.cgColor
-            (button as AnyObject).titleLabel??.numberOfLines = 1
-            (button as AnyObject).titleLabel??.adjustsFontSizeToFitWidth = true
-            (button as AnyObject).titleLabel??.lineBreakMode = NSLineBreakMode.byClipping
-            (button as AnyObject).titleLabel??.textColor = UIColor.orange
-            (button as AnyObject).titleLabel??.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title2)
-            (button as! UIButton).addTarget(self, action: #selector(goToLevel(_:)), for: .touchUpInside)
+        for button in levelButtons as! [UIButton]{
+//        for button in levelButtons{
+            button.layer.cornerRadius = 13
+            button.layer.borderWidth = 4.0
+//            button.layer.backgroundColor = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0).cgColor
+               button.layer.backgroundColor = GlobalConstants.darkBlue.cgColor
+  //          button.layer.borderColor = UIColor.orange.cgColor
+              button.layer.borderColor = GlobalConstants.darkBlue.cgColor
+            button.titleLabel?.numberOfLines = 1
+            button.titleLabel?.adjustsFontSizeToFitWidth = true
+            button.titleLabel?.lineBreakMode = NSLineBreakMode.byClipping
+            button.titleLabel?.textColor = UIColor.orange
+            button.titleLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title2)
+            button.addTarget(self, action: #selector(goToLevel(_:)), for: .touchUpInside)
+//            (button as! UIButton).addTarget(self, action: #selector(goToLevel(_:)), for: .touchUpInside)
             
             //            let edgeInsets: UIEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0)
-            let bW = (button as AnyObject).bounds.size.width/20
+            let bW = button.bounds.size.width/20
             let constraint:NSLayoutConstraint = levelConstraints.object(at: index) as! NSLayoutConstraint
             constraint.constant = bW
-            (button as! UIButton).setInset(top: 0, left: bW, bottom: 0, right: 0)
+            button.setInset(top: 0, left: bW, bottom: 0, right: 0)
             let progressView = levelProgress.object(at: index) as! UIProgressView
             progressView.tintColor = UIColor.white
 //                progressView.tintColor = GlobalConstants.darkBlue
             progressView.trackTintColor = UIColor.gray
-            (button as AnyObject).addSubview(progressView)
+            button.addSubview(progressView)
             index += 1
             let level:NSNumber = index as NSNumber
             let passedLevel = countries.filter{ $0.level == level }.count
             progressView.progress = Float(passedLevel)/Float(GlobalConstants.countriesPerLevel)
-            
         }
     }
     
     func goToLevel(_ sender : UIButton) {
+//        AudioServicesPlaySystemSound(1306)
         let nSolved:Int = countries.count
         var thresholds: [Int:Int] = [0:-1,1:10,2:20,3:30,4:40,5:50]
         if (nSolved >= thresholds[sender.tag]!){
+            playClick()
+//            AudioServicesPlaySystemSound(1306)
             self.performSegue(withIdentifier: "levelSegue", sender: sender)
         }else{
+            playSound(type: "Wrong")
             let diff:Int = thresholds[sender.tag]! - countries.count
             let diffString = "You Need to Solve "+String(diff)+" More Countries!"
-//            let appearance = SCLAlertView.SCLAppearance(kWindowHeight: 500.0)
-//            let alert = SCLAlertView(appearance: appearance)
             SCLAlertView().showError("Uh oh!", subTitle:diffString, closeButtonTitle: "Will Do!")
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let destination = segue.destination as? LevelVC{
-//            destination.levelName = levelStrings[(sender! as AnyObject).tag] as! NSString
-//            destination.levelNumber = ((sender! as AnyObject).tag)+1 as NSNumber
-//        }
         
         if let destination = segue.destination as? LevelVC{
             destination.levelName = levelStrings[(sender! as AnyObject).tag] as! NSString
             destination.levelNumber = ((sender! as AnyObject).tag)+1 as NSNumber
+            destination.levelType = "Country"
         }
 
     }

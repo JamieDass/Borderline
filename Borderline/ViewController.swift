@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var creditsWidth: NSLayoutConstraint!
     @IBOutlet weak var scoreBarItem: UIBarButtonItem!
     @IBOutlet weak var backgroundImage: UIImageView!
-    
+//    var player: AVAudioPlayer!
     
     struct MyConstraint {
         static func changeMultiplier(_ constraint: NSLayoutConstraint, multiplier: CGFloat) -> NSLayoutConstraint {
@@ -61,7 +61,7 @@ class ViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.printFonts()
+        self.printFonts()
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationItem.title = "Borderline"
         backgroundImage.image = UIImage(named:"Images/Backgrounds/Pinstripes.png")
@@ -86,24 +86,29 @@ class ViewController: UIViewController {
         }
         
         let homeButtons: NSArray = [challengeButton,extraLevelsButton,settingsButton,creditsButton]
-        for button in homeButtons{
-            (button as AnyObject).layer.cornerRadius = 13
-            (button as AnyObject).layer.borderWidth = 4.0
-//            (button as AnyObject).layer.backgroundColor = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0).cgColor
-            (button as AnyObject).layer.backgroundColor = GlobalConstants.darkBlue.cgColor
-            //          (button as AnyObject).layer.borderColor = UIColor.orange.cgColor
-            (button as AnyObject).layer.borderColor = GlobalConstants.darkBlue.cgColor
-            (button as AnyObject).titleLabel??.numberOfLines = 1
-            (button as AnyObject).titleLabel??.adjustsFontSizeToFitWidth = true
-            (button as AnyObject).titleLabel??.lineBreakMode = NSLineBreakMode.byClipping
-            (button as AnyObject).titleLabel??.textColor = UIColor.orange
-            (button as AnyObject).titleLabel??.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title2)
-            
+        for button in homeButtons as! [UIButton]{
+//        for button in homeButtons{
+            button.layer.cornerRadius = 13
+            button.layer.borderWidth = 4.0
+//            button.layer.backgroundColor = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0).cgColor
+            button.layer.backgroundColor = GlobalConstants.darkBlue.cgColor
+            //          button.layer.borderColor = UIColor.orange.cgColor
+            button.layer.borderColor = GlobalConstants.darkBlue.cgColor
+            button.titleLabel?.numberOfLines = 1
+            button.titleLabel?.adjustsFontSizeToFitWidth = true
+            button.titleLabel?.lineBreakMode = NSLineBreakMode.byClipping
+//            button.titleLabel?.textColor = UIColor.orange
+            button.titleLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title2)
+            button.addTarget(self, action: #selector(clickSound(_:)), for: .touchUpInside)
             
 //            button.setTitleColor(UIColor.orangeColor(), forState: .Normal)
         }
         
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func clickSound(_ sender : UIButton){
+        playClick()
     }
     
     func printFonts() {
