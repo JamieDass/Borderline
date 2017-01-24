@@ -61,7 +61,7 @@ class ViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.printFonts()
+//        self.printFonts()
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationItem.title = "Borderline"
         backgroundImage.image = UIImage(named:"Images/Backgrounds/Pinstripes.png")

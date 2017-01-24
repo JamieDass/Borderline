@@ -77,7 +77,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
         let screenSize: CGRect = UIScreen.main.bounds
         //        imageBottom.constant = screenSize.height/2
         super.viewWillAppear(true)
-        imageX.constant += screenSize.width*0.075
+//        imageX.constant += screenSize.width*0.075
         self.updateScoreLabel()
         //        cluesShown = false
         
@@ -137,8 +137,6 @@ class GameVC: UIViewController, UITextFieldDelegate {
         let countryIdx: Int = countryList.index(of: levelCountryName)!
         levelCountryNumber = Int(ceilf(Float(countryIdx+1)/Float(GlobalConstants.countriesPerLevel)))
         
-//        self.view.backgroundColor = UIColor.orange
-        
         
         self.countryGuess.delegate = self
         countryGuess.textColor = GlobalConstants.darkBlue
@@ -156,13 +154,11 @@ class GameVC: UIViewController, UITextFieldDelegate {
         let clueBtnImage = UIImage(named: "Images/ClueMed.png")! as UIImage
         clueButton.setImage(clueBtnImage, for: UIControlState.normal)
         
-//        gameView.backgroundColor = GlobalConstants.defaultBlue
-//        bgView.backgroundColor = GlobalConstants.defaultBlue
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)        // Do any additional setup after loading the view.
         
         self.loadCountryView()
         if levelCountry.solved! == 1 {
+            imageX.priority = 1000
             countryGuess.text = levelCountryName.uppercased()
             countryGuess.isEnabled = false
             clueButton.isHidden = true
@@ -175,7 +171,6 @@ class GameVC: UIViewController, UITextFieldDelegate {
             flagButton.isHidden = false
             revealButton.isHidden = false
         }
-        
     }
     
     func loadCountryView(){
@@ -213,10 +208,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
             self.countryGuess.becomeFirstResponder()
         }
         showProgress(alert: alert)
-        
-//        self.showGameProgress()
     }
-
     
     // MARK: - Get Help
     
