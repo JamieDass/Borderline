@@ -70,15 +70,25 @@ class GameVC: UIViewController, UITextFieldDelegate {
     var levelCountryNumber : Int!
     var levelCountry : Country!
     var levelName = String()
+    var levelType = String()
     
+    var regionClue = String()
     // MARK: - Initial Load
     
     override func viewWillAppear(_ animated: Bool) {
-        let screenSize: CGRect = UIScreen.main.bounds
+//        let screenSize: CGRect = UIScreen.main.bounds
         //        imageBottom.constant = screenSize.height/2
         super.viewWillAppear(true)
 //        imageX.constant += screenSize.width*0.075
         self.updateScoreLabel()
+        switch levelType {
+        case "State":
+            regionClue = "Time Zone(s)"
+        default:
+            regionClue = "Region"
+        }
+
+        
         //        cluesShown = false
         
         // Do any additional setup after loading the view.
@@ -123,7 +133,6 @@ class GameVC: UIViewController, UITextFieldDelegate {
         self.updateScoreLabel()
         
         if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
-            
             let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Country")
             fetchRequest.predicate = NSPredicate(format: "name == %@", levelCountryName)
             do {
@@ -134,8 +143,6 @@ class GameVC: UIViewController, UITextFieldDelegate {
                 print(error)
             }
         }
-        let countryIdx: Int = countryList.index(of: levelCountryName)!
-        levelCountryNumber = Int(ceilf(Float(countryIdx+1)/Float(GlobalConstants.countriesPerLevel)))
         
         
         self.countryGuess.delegate = self
@@ -174,6 +181,18 @@ class GameVC: UIViewController, UITextFieldDelegate {
     }
     
     func loadCountryView(){
+        
+        var countryPath = String()
+        switch levelType {
+        case "State":
+            countryPath = "States"
+        case "FormerCountry":
+            countryPath = "FormerCountries"
+        default:
+            countryPath = "Countries"
+        }
+
+        
         var flagType : String!
         var flagPath : String!
         if levelCountry.flagRevealed == 0 {
@@ -187,7 +206,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
         var country: String = (levelCountry.name)!
         country = country.replacingOccurrences(of: " ", with: "_")
         country = country.appending(flagType)
-        var path:String = "Images/Countries/"
+        var path:String = "Images/"+countryPath+"/"
         path = path.appending(flagPath)
         country = path.appending(country as String)
         flagImage = UIImage.init(named: country as String)
@@ -238,12 +257,12 @@ class GameVC: UIViewController, UITextFieldDelegate {
                 print("Failed to retrieve record")
                 print(error)
             }
-            var button1Title:String = "Reveal Region (1★)"
+            var button1Title:String = "Reveal "+self.regionClue+" (1★)"
             var button2Title:String = "Reveal Capital (2★)"
             var button3Title:String = "Reveal Clue (3★)"
             
             if thisCountry.regionRevealed == 1 {
-                button1Title = "Show Region"
+                button1Title = "Show "+self.regionClue+""
             }
             if thisCountry.capitalRevealed == 1 {
                 button2Title = "Show Capital"
@@ -263,7 +282,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
                         self.showClueAlert(button: 1)
                     }
                 }else{
-                    alertViewResponder.setTitle("Region:")
+                    alertViewResponder.setTitle(self.regionClue+":")
                     alertViewResponder.setSubTitle(thisCountry.region!)
                 }
             }
@@ -332,7 +351,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
             var subTitle = String()
             switch button {
             case 1:
-                title = "Reveal Region?"
+                title = "Reveal "+self.regionClue+"?"
                 subTitle = "Cost: "+String(self.kRegionCost)+"★"
             case 2:
                 title = "Reveal Capital?"
@@ -353,8 +372,10 @@ class GameVC: UIViewController, UITextFieldDelegate {
                 case 1:
                     updateScore(increment: -self.kRegionCost)
                     thisCountry.regionRevealed = 1
-                    self.clueTitle = "Region:"
-                    self.clueSubTitle = thisCountry.region!
+                    self.clueTitle = self.regionClue+":"
+                    let timeZoneName: String = thisCountry.region!.replacingOccurrences(of: ", ", with: "\n")
+                    self.clueSubTitle = timeZoneName
+//                    self.clueSubTitle = thisCountry.region!
                 case 2:
                     updateScore(increment: -self.kCapitalCost)
                     thisCountry.capitalRevealed = 1
@@ -406,18 +427,15 @@ class GameVC: UIViewController, UITextFieldDelegate {
             self.updateScoreLabel()
             var thisCountry : Country!
             if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
-                
                 let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Country")
                 fetchRequest.predicate = NSPredicate(format: "name == %@", levelCountryName)
                 do {
                     let countries = try managedObjectContext.fetch(fetchRequest) as! [Country]
                     thisCountry = countries[0]
-                    //                print(thisCountry.objectID)
                 } catch {
                     print("Failed to retrieve record")
                     print(error)
                 }
-                //        }
                 
                 if levelCountry.flagRevealed == 0 {
                     thisCountry.flagRevealed = 1
@@ -523,9 +541,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
     func rightAnswer(){
         playSound(type: "RightAnswer")
 //        updateScore(increment: self.kReward)
-        
         countryGuess.resignFirstResponder()
-        
         var thisCountry : Country!
         if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
             
@@ -570,12 +586,11 @@ class GameVC: UIViewController, UITextFieldDelegate {
     func nextLevel(){
 
         let thisCountryIdx = levelCountries.index(of: levelCountryName)
+
         let modCompare = thisCountryIdx!+1
         levelCountries.remove(at: thisCountryIdx!)
         let defaults = UserDefaults.standard
         defaults.set(levelCountries, forKey:levelName)
-        
-        
 
         if(levelCountries.count != 0){ // if there are more countries to complete in this level
             var nextIdx:Int = thisCountryIdx!

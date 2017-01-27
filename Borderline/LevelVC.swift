@@ -32,8 +32,8 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
         updateCollectionViewLayout(with: UIScreen.main.bounds.size)
         self.updateScoreLabel()
         self.collectionView.reloadData()
-        
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundImage.image = UIImage(named:"Images/Backgrounds/Pinstripes.png")
@@ -69,8 +69,14 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return GlobalConstants.countriesPerLevel
+        switch levelType {
+            case "State":
+                return 10
+            case "FormerCountry":
+                return 5
+            default:
+                return GlobalConstants.countriesPerLevel
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -95,7 +101,6 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
         
         let countrySel: Country = countries[(indexPath).row]
         
-        
         var flagType : String!
         var flagPath : String!
         if countrySel.flagRevealed == 0 {
@@ -106,13 +111,21 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
             flagPath = "clear/200/"
         }
         
+        var countryPath = String()
+        switch levelType {
+        case "State":
+            countryPath = "States"
+        case "FormerCountry":
+            countryPath = "FormerCountries"
+        default:
+            countryPath = "Countries"
+        }
+        
         var country: String = (countrySel.name)!
         country = country.replacingOccurrences(of: " ", with: "_")
         country = country.appending(flagType)
         
-        //        print(country)
-        
-        var path:String = "Images/Countries/"
+        var path:String = "Images/"+countryPath+"/"
         path = path.appending(flagPath)
         country = path.appending(country as String)
         
@@ -135,6 +148,8 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
         
         
         cell.backgroundView = combView
+        
+        
         
         return cell
     }
@@ -202,10 +217,11 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? GameVC{
             let selectedCountry: Country = countries[(sender as! UICollectionViewCell).tag]
-            
+
             destination.levelCountryName = selectedCountry.name!
             destination.countryNumber = (sender as! UICollectionViewCell).tag as NSNumber!
             destination.levelName = levelName as String
+            destination.levelType = levelType
         }
     }
     

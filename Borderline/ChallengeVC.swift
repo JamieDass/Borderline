@@ -50,15 +50,16 @@ class ChallengeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.updateScoreLabel()
         self.configureButtons()
+        self.lockLevels()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundImage.image = UIImage(named:"Images/Backgrounds/Pinstripes.png")
         self.navigationItem.title = "Challenge"
-        self.configureButtons()
+//        self.configureButtons()
         
-        self.lockLevels()
+//        self.lockLevels()
     }
     func updateScoreLabel() {
         let defaults = UserDefaults.standard
