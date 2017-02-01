@@ -539,6 +539,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
     }
     
     func rightAnswer(){
+        print("1")
         playSound(type: "RightAnswer")
 //        updateScore(increment: self.kReward)
         countryGuess.resignFirstResponder()
@@ -549,6 +550,8 @@ class GameVC: UIViewController, UITextFieldDelegate {
             fetchRequest.predicate = NSPredicate(format: "name == %@", levelCountryName)
             do {
                 let countries = try managedObjectContext.fetch(fetchRequest) as! [Country]
+                print("getting")
+                print(countries[0])
                 thisCountry = countries[0]
                 //                print(thisCountry.objectID)
             } catch {
@@ -556,7 +559,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
                 print(error)
             }
             //        }
-            
+            print("setting")
             thisCountry.flagRevealed = 1
             thisCountry.solved = 1
             levelCountry.flagRevealed = 1
@@ -565,16 +568,22 @@ class GameVC: UIViewController, UITextFieldDelegate {
             flagButton.isHidden = true
             revealButton.isHidden = true
             modified = true
+            print("set")
             do {
+                print("save")
                 try managedObjectContext.save()
+                print("saved")
             } catch {
                 print("Failed to save record")
                 print(error)
                 
                 // Do something in response to error condition
             }
+            print("load View")
             self.loadCountryView()
+            print("loaded")
             updateScore(increment: self.kReward)
+            print("score updated")
         }
         
         self.nextLevel()
@@ -584,11 +593,12 @@ class GameVC: UIViewController, UITextFieldDelegate {
     }
     
     func nextLevel(){
-
+        print(levelCountries)
         let thisCountryIdx = levelCountries.index(of: levelCountryName)
 
         let modCompare = thisCountryIdx!+1
         levelCountries.remove(at: thisCountryIdx!)
+        print(levelCountries)
         let defaults = UserDefaults.standard
         defaults.set(levelCountries, forKey:levelName)
 

@@ -117,6 +117,7 @@ class SettingsVC: UIViewController {
             })
         } catch {
         }
+        initLevelCountries()
     }
     
     

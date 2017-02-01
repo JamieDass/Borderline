@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ws6-kV-vnP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ws6-kV-vnP">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -840,6 +840,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZqH-hK-oTT" userLabel="GameView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K6V-Ik-UCn" userLabel="squareView">
+                                        <rect key="frame" x="-76" y="0.0" width="920" height="920"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="K6V-Ik-UCn" secondAttribute="height" multiplier="1:1" id="ghP-PR-QcY"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dM6-mz-uu2" userLabel="ControlView">
+                                        <rect key="frame" x="-101" y="0.0" width="970" height="920"/>
+                                    </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LzB-Q5-Yl8">
                                         <rect key="frame" x="58" y="134" width="652" height="652"/>
                                         <constraints>
@@ -862,12 +871,19 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="wnf-Q8-6ic" firstAttribute="centerX" secondItem="ZqH-hK-oTT" secondAttribute="centerX" id="213-8X-9w7"/>
+                                    <constraint firstItem="dM6-mz-uu2" firstAttribute="width" secondItem="K6V-Ik-UCn" secondAttribute="width" constant="50" id="46W-Qi-z88"/>
+                                    <constraint firstItem="dM6-mz-uu2" firstAttribute="centerY" secondItem="ZqH-hK-oTT" secondAttribute="centerY" constant="-20" id="4JY-5O-yvD"/>
                                     <constraint firstItem="LzB-Q5-Yl8" firstAttribute="width" relation="lessThanOrEqual" secondItem="ZqH-hK-oTT" secondAttribute="width" multiplier="0.85" id="7jY-gG-rOh"/>
+                                    <constraint firstItem="dM6-mz-uu2" firstAttribute="height" secondItem="ZqH-hK-oTT" secondAttribute="height" constant="-40" id="Emm-IP-2Kl"/>
                                     <constraint firstAttribute="bottom" secondItem="wnf-Q8-6ic" secondAttribute="bottom" id="Js4-Ho-R3r"/>
+                                    <constraint firstItem="dM6-mz-uu2" firstAttribute="centerX" secondItem="K6V-Ik-UCn" secondAttribute="centerX" id="Mzi-Bf-KAz"/>
                                     <constraint firstItem="LzB-Q5-Yl8" firstAttribute="centerX" secondItem="ZqH-hK-oTT" secondAttribute="centerX" priority="750" id="P3m-ng-ZVY"/>
                                     <constraint firstItem="LzB-Q5-Yl8" firstAttribute="centerY" secondItem="ZqH-hK-oTT" secondAttribute="centerY" constant="-20" id="YvJ-3d-7CE"/>
                                     <constraint firstItem="wnf-Q8-6ic" firstAttribute="width" secondItem="ZqH-hK-oTT" secondAttribute="width" id="ZEt-nk-LNQ"/>
+                                    <constraint firstItem="K6V-Ik-UCn" firstAttribute="centerY" secondItem="ZqH-hK-oTT" secondAttribute="centerY" constant="-20" id="aA5-7c-EWb"/>
                                     <constraint firstItem="LzB-Q5-Yl8" firstAttribute="height" secondItem="ZqH-hK-oTT" secondAttribute="height" priority="999" constant="-40" id="h6f-uM-vaJ"/>
+                                    <constraint firstItem="K6V-Ik-UCn" firstAttribute="height" secondItem="ZqH-hK-oTT" secondAttribute="height" constant="-40" id="o8y-EY-1a8"/>
+                                    <constraint firstItem="K6V-Ik-UCn" firstAttribute="centerX" secondItem="ZqH-hK-oTT" secondAttribute="centerX" id="poS-84-bj3"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="548-bN-i3j" userLabel="ButtonsView">
@@ -989,7 +1005,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ws6-kV-vnP" customClass="NavVC" customModule="Borderline" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="v5Q-jQ-jzw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="v5Q-jQ-jzw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

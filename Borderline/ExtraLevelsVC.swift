@@ -73,8 +73,10 @@ class ExtraLevelsVC: UIViewController {
     // MARK: - Navigation
 
     func goToStates(_ sender : UIButton) {
+        self.performSegue(withIdentifier: "statesSegue", sender: sender)
+        /*
         if BorderlineProducts.store.isProductPurchased(BorderlineProducts.USStates) {
-            self.performSegue(withIdentifier: "statesSegue", sender: sender)
+//            self.performSegue(withIdentifier: "statesSegue", sender: sender)
         }else{
             let alert = SCLAlertView()
             alert.addButton("Proceed"){
@@ -83,6 +85,7 @@ class ExtraLevelsVC: UIViewController {
             alert.showInfo("Unlock US States?", subTitle: "Extra Levels!\nAll 50 US States.\nHave you mastered the countries of the world?\nTry your hand at the United States.\nThis is a tough one…",closeButtonTitle: "No Thanks!")
 //        alert.showInfo(progress, subTitle: levelProgress,closeButtonTitle: "Cool!")
         }
+ */
 
     }
     
