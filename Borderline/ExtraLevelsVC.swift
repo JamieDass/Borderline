@@ -20,13 +20,16 @@ class ExtraLevelsVC: UIViewController {
     var products = [SKProduct]()
     
     override func viewWillAppear(_ animated: Bool) {
+        if(self.products.count == 0){
+            loadProducts()
+        }
         self.updateScoreLabel()
-        self.configureButtons()
-        loadProducts()
+//        self.configureButtons()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        products = loadProducts()
         backgroundImage.image = UIImage(named:"Images/Backgrounds/Pinstripes.png")
         self.configureButtons()
         self.navigationItem.title = "Extra Levels"
@@ -54,6 +57,12 @@ class ExtraLevelsVC: UIViewController {
             button.titleLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title2)
             if(idx == 0){
                 button.addTarget(self, action: #selector(goToStates(_:)), for: .touchUpInside)
+                if (BorderlineProducts.store.isProductPurchased("co.jetliner.borderline.usstates")){
+                    button.setTitle("US States", for: UIControlState.normal)
+                }else{
+                    button.setTitle("US States 🔒🛒", for: UIControlState.normal)
+                }
+                
             }
         }
     }
@@ -73,31 +82,70 @@ class ExtraLevelsVC: UIViewController {
     // MARK: - Navigation
 
     func goToStates(_ sender : UIButton) {
-        self.performSegue(withIdentifier: "statesSegue", sender: sender)
-        /*
+        
         if BorderlineProducts.store.isProductPurchased(BorderlineProducts.USStates) {
-//            self.performSegue(withIdentifier: "statesSegue", sender: sender)
+            self.performSegue(withIdentifier: "statesSegue", sender: sender)
         }else{
-            let alert = SCLAlertView()
-            alert.addButton("Proceed"){
-                BorderlineProducts.store.buyProduct(self.products[0])
-            }
-            alert.showInfo("Unlock US States?", subTitle: "Extra Levels!\nAll 50 US States.\nHave you mastered the countries of the world?\nTry your hand at the United States.\nThis is a tough one…",closeButtonTitle: "No Thanks!")
-//        alert.showInfo(progress, subTitle: levelProgress,closeButtonTitle: "Cool!")
-        }
- */
+            if(self.products.count > 0){
+                let appearance = SCLAlertView.SCLAppearance(
+                    kTitleFont: UIFont(name: "HelveticaNeue", size: 20)!,
+                    kTextFont: UIFont(name: "HelveticaNeue", size: 18)!
+                )
 
+                let alert = SCLAlertView(appearance: appearance)
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .currency
+                formatter.locale = NSLocale.current
+                var title: String = "Unlock US States?"
+                var closeText: String = "No Thanks!"
+                var subTitle: String = "\nMastered the countries of the world?\nTry your hand at the United States.\n\n"+formatter.string(from: self.products[0].price)!
+                if(IAPHelper.canMakePayments()){
+                    alert.addButton("Buy"){
+                        BorderlineProducts.store.buyProduct(self.products[0])
+                        NotificationCenter.default.addObserver(self, selector: #selector(ExtraLevelsVC.purchaseSucceeded), name: NSNotification.Name(rawValue: IAPHelper.IAPHelperPurchaseNotification), object: nil)
+                    }
+                    alert.addButton("Restore Purchases"){
+                        BorderlineProducts.store.restorePurchases()
+                         NotificationCenter.default.addObserver(self, selector: #selector(ExtraLevelsVC.restoreSucceeded), name: NSNotification.Name(rawValue: IAPHelper.IAPHelperPurchaseNotification), object: nil)
+                    }
+
+                }else{
+                    title = "Purchases Disabled"
+                    subTitle = "You must be authorised to make payments to proceed."
+                    closeText = "OK!"
+                }
+                alert.showInfo(title, subTitle: subTitle,closeButtonTitle: closeText)
+            }
+        }// else
+ 
+
+    }
+
+    func purchaseSucceeded(sender : UIButton) {
+        print("purchased!")
+        self.configureButtons()
+        self.performSegue(withIdentifier: "statesSegue", sender: sender)
+    }
+    
+    func restoreSucceeded(sender : UIButton) {
+        self.configureButtons()
+        SCLAlertView().showSuccess(
+            "Success!", // Title of view
+            subTitle: "Purchase Restored.", // String of view
+            closeButtonTitle: "Cool!",
+            duration: 2.0 // Duration to show before closing automatically, default: 0.0
+        )
+        self.performSegue(withIdentifier: "statesSegue", sender: sender)
+        
     }
     
     func loadProducts() {
         products = []
-        
         BorderlineProducts.store.requestProducts{success, products in
             if success {
                 self.products = products!
             }
         }
-        print(self.products)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

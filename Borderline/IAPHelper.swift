@@ -57,7 +57,7 @@ extension IAPHelper {
   public func requestProducts(completionHandler: @escaping ProductsRequestCompletionHandler) {
     productsRequest?.cancel()
     productsRequestCompletionHandler = completionHandler
-
+    print(productIdentifiers)
     productsRequest = SKProductsRequest(productIdentifiers: productIdentifiers)
     productsRequest!.delegate = self
     productsRequest!.start()

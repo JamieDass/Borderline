@@ -338,6 +338,9 @@
 							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 0;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -718,7 +721,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7BF86C96692E5E4BE42BA491 /* Pods-Borderline.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Borderline/Borderline.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -735,7 +738,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 73476EC30FEEF2DC03E1FAE9 /* Pods-Borderline.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Borderline/Borderline.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

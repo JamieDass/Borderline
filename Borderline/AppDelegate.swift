@@ -43,7 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("creating sound bool")
             defaults.set(true, forKey: "sounds")
         }
-
         return true
     }
 
@@ -163,5 +162,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         statusBar.backgroundColor = color
     }
+    
 }
 

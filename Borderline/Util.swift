@@ -11,6 +11,7 @@ import Foundation
 import CoreData
 import SCLAlertView
 import AVFoundation
+import StoreKit
 
     var player: AVAudioPlayer?
 
@@ -73,6 +74,7 @@ func progressApp(showCloseButton: Bool) -> SCLAlertView.SCLAppearance{
     )
     return appearance
 }
+
 
 func mergeImages (backgroundImage : UIImage, foregroundImage : UIImage) -> UIImage {
     

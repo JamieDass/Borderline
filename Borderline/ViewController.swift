@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import SCLAlertView
+import StoreKit
 
 class ViewController: UIViewController {
     
@@ -22,7 +23,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var creditsWidth: NSLayoutConstraint!
     @IBOutlet weak var scoreBarItem: UIBarButtonItem!
     @IBOutlet weak var backgroundImage: UIImageView!
-//    var player: AVAudioPlayer!
+
+    var products = [SKProduct]()
     
     struct MyConstraint {
         static func changeMultiplier(_ constraint: NSLayoutConstraint, multiplier: CGFloat) -> NSLayoutConstraint {
@@ -57,6 +59,7 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        loadProducts()
         self.updateScoreLabel()
     }
     override func viewDidLoad() {
@@ -119,7 +122,22 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    func loadProducts() {
+        products = []
+        BorderlineProducts.store.requestProducts{success, products in
+            if success {
+                self.products = products!
+            }
+        }
+    }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //        print("segue")
+        if let destination = segue.destination as? ExtraLevelsVC{
+            destination.products = self.products
+        }
+    }
     @IBAction func gameProgress(){
         let alert = SCLAlertView(appearance: progressApp(showCloseButton: true))
         showProgress(alert: alert)
