@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import SCLAlertView
+import AVFoundation
 
 class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     fileprivate let reuseIdentifier = "countryCell"
@@ -92,6 +93,8 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        playSound(type: "Click")
+//        AudioServicesPlaySystemSound(1306)
         playClick()
     }
   
@@ -156,7 +159,6 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        print("transitioning to")
         coordinator.animate(alongsideTransition: { context in
             // do whatever with your context
             context.viewController(forKey: UITransitionContextViewControllerKey.from)
@@ -217,7 +219,7 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? GameVC{
             let selectedCountry: Country = countries[(sender as! UICollectionViewCell).tag]
-
+//            print(selectedCountry.name!,"\t",(sender as! UICollectionViewCell).tag as NSNumber!,"\t",levelName as String,"\t",levelType)
             destination.levelCountryName = selectedCountry.name!
             destination.countryNumber = (sender as! UICollectionViewCell).tag as NSNumber!
             destination.levelName = levelName as String
@@ -228,7 +230,7 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
     @IBAction func cancelToLevelVC(segue:UIStoryboardSegue) {
         if let sourceViewController = segue.source as? GameVC {
             changed = sourceViewController.modified
-            let selIdx = NSIndexPath(row: sourceViewController.countryNumber as Int, section: 0)
+            let selIdx = NSIndexPath(row: sourceViewController.countryNumber as! Int, section: 0)
             selectedIndex = selIdx as IndexPath
         }
     }

@@ -13,7 +13,7 @@ import SCLAlertView
 import AVFoundation
 import StoreKit
 
-    var player: AVAudioPlayer?
+var player: AVAudioPlayer?
 
 func updateScore(increment : Int){
     let defaults = UserDefaults.standard
@@ -99,42 +99,34 @@ func mergeImages (backgroundImage : UIImage, foregroundImage : UIImage) -> UIIma
 }
 
 func playSound(type: String){
-    let soundPath = "Sounds/"+type
-    
-    var soundID: SystemSoundID = 0
-    let soundURL = CFBundleCopyResourceURL(CFBundleGetMainBundle(), soundPath as CFString!, "wav" as CFString!, nil)
-    AudioServicesCreateSystemSoundID(soundURL!, &soundID)
     let defaults = UserDefaults.standard
     if(defaults.bool(forKey: "sounds") == true){
-        AudioServicesPlaySystemSound(soundID)
+        let soundPath = "Sounds/"+type
+        guard let url = Bundle.main.url(forResource: soundPath, withExtension: "wav") else {
+            print("error")
+            return
+        }
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            player = try AVAudioPlayer(contentsOf: url)
+            guard let player = player else { return }
+            
+            player.play()
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
     
-//    let url = Bundle.main.url(forResource: "Sounds/"+type, withExtension: "wav")!
-//    do {
-//        if #available(iOS 10.0, *) {
-//            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, mode: AVAudioSessionModeDefault, options: AVAudioSessionCategoryOptions.mixWithOthers)
-//        } else {
-//            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
-//            try AVAudioSession.sharedInstance().setMode(AVAudioSessionModeDefault)
-//        }
-//        try AVAudioSession.sharedInstance().setActive(true)
-//        player = try AVAudioPlayer(contentsOf: url)
-//        guard let player = player else { return }
-//        player.prepareToPlay()
-//        let defaults = UserDefaults.standard
-//        if(defaults.bool(forKey: "sounds") == true){
-//            player.play()
-//        }
-//    } catch let error {
-//        print(error.localizedDescription)
-//    }
 }
 
 func playClick(){
-    let defaults = UserDefaults.standard
-    if(defaults.bool(forKey: "sounds") == true){
-        AudioServicesPlaySystemSound(1306)
-    }
+    playSound(type: "Select")
+//    let defaults = UserDefaults.standard
+//    if(defaults.bool(forKey: "sounds") == true){
+//        AudioServicesPlaySystemSound(1306)
+//    }
 }
 
 func initLevelCountries(){

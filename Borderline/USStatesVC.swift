@@ -124,7 +124,7 @@ class USStatesVC: UIViewController {
             let button = buttons as! UIButton
             //        for button in levelButtons{
             button.layer.cornerRadius = 13
-            button.layer.borderWidth = 4.0
+            button.layer.borderWidth = 0.0
             //            button.layer.backgroundColor = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0).cgColor
             button.layer.backgroundColor = GlobalConstants.darkBlue.cgColor
             //          button.layer.borderColor = UIColor.orange.cgColor

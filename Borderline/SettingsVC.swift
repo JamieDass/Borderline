@@ -37,7 +37,7 @@ class SettingsVC: UIViewController {
         let buttons: NSArray = [soundButton,progressButton,rateButton,shareButton]
         for button in buttons as! [UIButton]{
             button.layer.cornerRadius = 13
-            button.layer.borderWidth = 4.0
+            button.layer.borderWidth = 0.0
             button.layer.backgroundColor = GlobalConstants.darkBlue.cgColor
             button.layer.borderColor = GlobalConstants.darkBlue.cgColor
             button.titleLabel?.numberOfLines = 1
@@ -45,6 +45,15 @@ class SettingsVC: UIViewController {
             button.titleLabel?.lineBreakMode = NSLineBreakMode.byClipping
             button.titleLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title2)
             button.setTitleColor(UIColor.white, for: UIControlState.normal)
+            
+            button.addTarget(self, action: #selector(touchButton(_:)), for: .touchDown)
+            button.addTarget(self, action: #selector(releaseButton(_:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(releaseButton(_:)), for: .touchUpOutside)
+            button.layer.shadowColor = GlobalConstants.shadowColour.cgColor
+            button.layer.shadowRadius = 0
+            button.layer.shadowOffset = CGSize(width:5.0,height:5.0)
+            button.layer.masksToBounds = false
+            button.layer.shadowOpacity = 1
             
             if (button == soundButton){
                 if(defaults.bool(forKey: "sounds") == false){
@@ -54,6 +63,18 @@ class SettingsVC: UIViewController {
                 }
             }
         }
+    }
+    func touchButton(_ sender : UIButton){
+        let iframe = sender.frame
+        let frame = CGRect(x: iframe.origin.x+5, y: iframe.origin.y+5, width: iframe.width, height: iframe.height)
+        sender.layer.shadowOffset = CGSize(width:0.0,height:0.0)
+        sender.frame = frame
+    }
+    func releaseButton(_ sender : UIButton){
+        let iframe = sender.frame
+        let frame = CGRect(x: iframe.origin.x-5, y: iframe.origin.y-5, width: iframe.width, height: iframe.height)
+        sender.layer.shadowOffset = CGSize(width:5.0,height:5.0)
+        sender.frame = frame
     }
     
     @IBAction func toggleSound(){

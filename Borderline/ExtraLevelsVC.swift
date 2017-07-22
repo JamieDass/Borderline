@@ -32,7 +32,7 @@ class ExtraLevelsVC: UIViewController {
 //        products = loadProducts()
         backgroundImage.image = UIImage(named:"Images/Backgrounds/Pinstripes.png")
         self.configureButtons()
-        self.navigationItem.title = "Extra Levels"
+        self.navigationItem.title = "Extras"
         // Do any additional setup after loading the view.
     }
 
@@ -48,7 +48,7 @@ class ExtraLevelsVC: UIViewController {
         for (idx,buttons) in extraLevelButtons.enumerated(){
             let button = buttons as! UIButton
             button.layer.cornerRadius = 13
-            button.layer.borderWidth = 4.0
+            button.layer.borderWidth = 0.0
             button.layer.backgroundColor = GlobalConstants.darkBlue.cgColor
             button.layer.borderColor = GlobalConstants.darkBlue.cgColor
             button.titleLabel?.numberOfLines = 1
@@ -59,14 +59,35 @@ class ExtraLevelsVC: UIViewController {
                 button.addTarget(self, action: #selector(goToStates(_:)), for: .touchUpInside)
                 if (BorderlineProducts.store.isProductPurchased("co.jetliner.borderline.usstates")){
                     button.setTitle("US States", for: UIControlState.normal)
-                }else{
-                    button.setTitle("US States 🔒🛒", for: UIControlState.normal)
                 }
+//                else{
+//                    button.setTitle("US States 🔒🛒", for: UIControlState.normal)
+//                }
                 
             }
+            button.addTarget(self, action: #selector(touchButton(_:)), for: .touchDown)
+            button.addTarget(self, action: #selector(releaseButton(_:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(releaseButton(_:)), for: .touchUpOutside)
+            button.layer.shadowColor = GlobalConstants.shadowColour.cgColor
+            button.layer.shadowRadius = 0
+            button.layer.shadowOffset = CGSize(width:5.0,height:5.0)
+            button.layer.masksToBounds = false
+            button.layer.shadowOpacity = 1
         }
     }
     
+    func touchButton(_ sender : UIButton){
+        let iframe = sender.frame
+        let frame = CGRect(x: iframe.origin.x+5, y: iframe.origin.y+5, width: iframe.width, height: iframe.height)
+        sender.layer.shadowOffset = CGSize(width:0.0,height:0.0)
+        sender.frame = frame
+    }
+    func releaseButton(_ sender : UIButton){
+        let iframe = sender.frame
+        let frame = CGRect(x: iframe.origin.x-5, y: iframe.origin.y-5, width: iframe.width, height: iframe.height)
+        sender.layer.shadowOffset = CGSize(width:5.0,height:5.0)
+        sender.frame = frame
+    }
     func updateScoreLabel() {
         let defaults = UserDefaults.standard
         let score:Int = defaults.integer(forKey: "score")

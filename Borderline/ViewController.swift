@@ -10,17 +10,18 @@ import UIKit
 import CoreData
 import SCLAlertView
 import StoreKit
+import AVFoundation
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var challengeButton: UIButton!
     @IBOutlet weak var extraLevelsButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
-    @IBOutlet weak var creditsButton: UIButton!
+    @IBOutlet weak var aboutButton: UIButton!
     @IBOutlet weak var challengeWidth: NSLayoutConstraint!
     @IBOutlet weak var extraLevelsWidth: NSLayoutConstraint!
     @IBOutlet weak var settingsWidth: NSLayoutConstraint!
-    @IBOutlet weak var creditsWidth: NSLayoutConstraint!
+    @IBOutlet weak var aboutWidth: NSLayoutConstraint!
     @IBOutlet weak var scoreBarItem: UIBarButtonItem!
     @IBOutlet weak var backgroundImage: UIImageView!
 
@@ -64,50 +65,74 @@ class ViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+//        print(UserDefaults.standard.dictionaryRepresentation())
 //        self.printFonts()
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationItem.title = "Borderline"
         backgroundImage.image = UIImage(named:"Images/Backgrounds/Pinstripes.png")
         
 //        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Images/Backgrounds/Pinstripes.png")!)
-//        let homeConstraints: NSArray = [challengeWidth,extraLevelsWidth,settingsWidth,creditsWidth]
+//        let homeConstraints: NSArray = [challengeWidth,extraLevelsWidth,settingsWidth,aboutWidth]
         initLevelCountries()
 
     let isiPad: Bool = (UIDevice.current.userInterfaceIdiom == .pad);
         if ( isiPad )
         {
-            challengeWidth = MyConstraint.changeMultiplier(challengeWidth, multiplier: 0.75)
-            extraLevelsWidth = MyConstraint.changeMultiplier(extraLevelsWidth, multiplier: 0.75)
-            settingsWidth = MyConstraint.changeMultiplier(settingsWidth, multiplier: 0.75)
-            creditsWidth = MyConstraint.changeMultiplier(creditsWidth, multiplier: 0.75)
+            challengeWidth = MyConstraint.changeMultiplier(challengeWidth, multiplier: 0.85)
+            extraLevelsWidth = MyConstraint.changeMultiplier(extraLevelsWidth, multiplier: 0.85)
+            settingsWidth = MyConstraint.changeMultiplier(settingsWidth, multiplier: 0.85)
+            aboutWidth = MyConstraint.changeMultiplier(aboutWidth, multiplier: 0.85)
         }else{
             challengeWidth = MyConstraint.changeMultiplier(challengeWidth, multiplier: 0.93)
             extraLevelsWidth = MyConstraint.changeMultiplier(extraLevelsWidth, multiplier: 0.93)
             settingsWidth = MyConstraint.changeMultiplier(settingsWidth, multiplier: 0.93)
-            creditsWidth = MyConstraint.changeMultiplier(creditsWidth, multiplier: 0.93)
+            aboutWidth = MyConstraint.changeMultiplier(aboutWidth, multiplier: 0.93)
 
         }
         
-        let homeButtons: NSArray = [challengeButton,extraLevelsButton,settingsButton,creditsButton]
+        initButtons()
+        
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func initButtons(){
+        let homeButtons: NSArray = [challengeButton,extraLevelsButton,settingsButton,aboutButton]
         for button in homeButtons as! [UIButton]{
-//        for button in homeButtons{
-            button.layer.cornerRadius = 13
-            button.layer.borderWidth = 4.0
-//            button.layer.backgroundColor = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0).cgColor
+            //        for button in homeButtons{
+            button.layer.cornerRadius = 10
+            button.layer.borderWidth = 0.0
+            //            button.layer.backgroundColor = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0).cgColor
             button.layer.backgroundColor = GlobalConstants.darkBlue.cgColor
             //          button.layer.borderColor = UIColor.orange.cgColor
             button.layer.borderColor = GlobalConstants.darkBlue.cgColor
             button.titleLabel?.numberOfLines = 1
             button.titleLabel?.adjustsFontSizeToFitWidth = true
             button.titleLabel?.lineBreakMode = NSLineBreakMode.byClipping
-//            button.titleLabel?.textColor = UIColor.orange
+            //            button.titleLabel?.textColor = UIColor.orange
             button.titleLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title2)
             button.addTarget(self, action: #selector(clickSound(_:)), for: .touchUpInside)
-            
-//            button.setTitleColor(UIColor.orangeColor(), forState: .Normal)
+            button.addTarget(self, action: #selector(touchButton(_:)), for: .touchDown)
+            button.addTarget(self, action: #selector(releaseButton(_:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(releaseButton(_:)), for: .touchUpOutside)
+            button.layer.shadowColor = GlobalConstants.shadowColour.cgColor
+            button.layer.shadowRadius = 0
+            button.layer.shadowOffset = CGSize(width:5.0,height:5.0)
+            button.layer.masksToBounds = false
+            button.layer.shadowOpacity = 1
         }
-        
-        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func touchButton(_ sender : UIButton){
+        let iframe = sender.frame
+        let frame = CGRect(x: iframe.origin.x+5, y: iframe.origin.y+5, width: iframe.width, height: iframe.height)
+        sender.layer.shadowOffset = CGSize(width:0.0,height:0.0)
+        sender.frame = frame
+    }
+    func releaseButton(_ sender : UIButton){
+        let iframe = sender.frame
+        let frame = CGRect(x: iframe.origin.x-5, y: iframe.origin.y-5, width: iframe.width, height: iframe.height)
+        sender.layer.shadowOffset = CGSize(width:5.0,height:5.0)
+        sender.frame = frame
     }
     
     func clickSound(_ sender : UIButton){

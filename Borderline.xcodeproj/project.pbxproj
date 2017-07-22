@@ -22,6 +22,10 @@
 		7D25AEA81D69354C00319F5B /* BorderlineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D25AEA71D69354C00319F5B /* BorderlineUITests.swift */; };
 		7D25AEB71D6939C500319F5B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D25AEB61D6939C500319F5B /* CloudKit.framework */; };
 		7D25AEB91D6939D200319F5B /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D25AEB81D6939D200319F5B /* GameKit.framework */; };
+		7D2733C81E92E7EF00EEEF70 /* JetlinerBlueOrangeLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2733C71E92E7EF00EEEF70 /* JetlinerBlueOrangeLogo.png */; };
+		7D2733CD1E92E85000EEEF70 /* Pinstripes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2733CA1E92E85000EEEF70 /* Pinstripes@2x.png */; };
+		7D2733CE1E92E85000EEEF70 /* Pinstripes@2x-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2733CB1E92E85000EEEF70 /* Pinstripes@2x-iphone.png */; };
+		7D2733CF1E92E85000EEEF70 /* Pinstripes@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2733CC1E92E85000EEEF70 /* Pinstripes@3x.png */; };
 		7D62CE381E253BF30072D7DD /* Backgrounds.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D62CE371E253BF30072D7DD /* Backgrounds.xcassets */; };
 		7D6E5DF01E26A82900D4E5A6 /* LevelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E5DEF1E26A82900D4E5A6 /* LevelVC.swift */; };
 		7D761B781E1EFF4400ABD2EB /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D761B771E1EFF4400ABD2EB /* Util.swift */; };
@@ -33,11 +37,14 @@
 		7D9A22A41D7120FB002E9EC2 /* NavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A22A31D7120FB002E9EC2 /* NavVC.swift */; };
 		7D9A22A61D73859F002E9EC2 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A22A51D73859F002E9EC2 /* GameVC.swift */; };
 		7DA1FFB21DE34330008D5B44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DA1FFB11DE34330008D5B44 /* Assets.xcassets */; };
+		7DA4B5ED1F0DCAA100771D1F /* BorderlineMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DA4B5EC1F0DCAA100771D1F /* BorderlineMap.png */; };
 		7DA67F271DDCFAE300768537 /* ProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA67F261DDCFAE300768537 /* ProgressButton.swift */; };
 		7DA67F291DDD01B200768537 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA67F281DDD01B200768537 /* Extensions.swift */; };
 		7DEFC7011D70B45A003DA9CF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFC7001D70B45A003DA9CF /* Constants.swift */; };
 		7DEFC7101D70E81C003DA9CF /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFC70F1D70E81C003DA9CF /* Country.swift */; };
 		7DEFC7201D70EE27003DA9CF /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 7DEFC71F1D70EE27003DA9CF /* Images */; };
+		7DF04B931E92DAA8005C57EB /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF04B921E92DAA8005C57EB /* AboutVC.swift */; };
+		7DF04B971E92E42D005C57EB /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DF04B961E92E42D005C57EB /* Launch.storyboard */; };
 		7DF18BDC1E37E6A000F65D37 /* USStatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF18BDB1E37E6A000F65D37 /* USStatesVC.swift */; };
 		7DF18BE01E38108E00F65D37 /* BorderlineCountries.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7DF18BDD1E38108E00F65D37 /* BorderlineCountries.sqlite */; };
 		7DF18BE11E38108E00F65D37 /* BorderlineCountries.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 7DF18BDE1E38108E00F65D37 /* BorderlineCountries.sqlite-shm */; };
@@ -89,6 +96,10 @@
 		7D25AEB51D6939C000319F5B /* Borderline.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Borderline.entitlements; sourceTree = "<group>"; };
 		7D25AEB61D6939C500319F5B /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		7D25AEB81D6939D200319F5B /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		7D2733C71E92E7EF00EEEF70 /* JetlinerBlueOrangeLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JetlinerBlueOrangeLogo.png; sourceTree = "<group>"; };
+		7D2733CA1E92E85000EEEF70 /* Pinstripes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pinstripes@2x.png"; sourceTree = "<group>"; };
+		7D2733CB1E92E85000EEEF70 /* Pinstripes@2x-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pinstripes@2x-iphone.png"; sourceTree = "<group>"; };
+		7D2733CC1E92E85000EEEF70 /* Pinstripes@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pinstripes@3x.png"; sourceTree = "<group>"; };
 		7D62CE371E253BF30072D7DD /* Backgrounds.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Backgrounds.xcassets; sourceTree = "<group>"; };
 		7D6E5DEF1E26A82900D4E5A6 /* LevelVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelVC.swift; sourceTree = "<group>"; };
 		7D761B771E1EFF4400ABD2EB /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -100,11 +111,14 @@
 		7D9A22A31D7120FB002E9EC2 /* NavVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavVC.swift; sourceTree = "<group>"; };
 		7D9A22A51D73859F002E9EC2 /* GameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
 		7DA1FFB11DE34330008D5B44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7DA4B5EC1F0DCAA100771D1F /* BorderlineMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BorderlineMap.png; sourceTree = "<group>"; };
 		7DA67F261DDCFAE300768537 /* ProgressButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressButton.swift; sourceTree = "<group>"; };
 		7DA67F281DDD01B200768537 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7DEFC7001D70B45A003DA9CF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7DEFC70F1D70E81C003DA9CF /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		7DEFC71F1D70EE27003DA9CF /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
+		7DF04B921E92DAA8005C57EB /* AboutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
+		7DF04B961E92E42D005C57EB /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		7DF18BDB1E37E6A000F65D37 /* USStatesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = USStatesVC.swift; sourceTree = "<group>"; };
 		7DF18BDD1E38108E00F65D37 /* BorderlineCountries.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = BorderlineCountries.sqlite; sourceTree = "<group>"; };
 		7DF18BDE1E38108E00F65D37 /* BorderlineCountries.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BorderlineCountries.sqlite-shm"; sourceTree = "<group>"; };
@@ -194,6 +208,7 @@
 				7D1143321E3BB5D000B3C8B1 /* IAPHelper.swift */,
 				7D1143301E3BB5C300B3C8B1 /* BorderlineProducts.swift */,
 				7D8A257C1E296563001073A1 /* SettingsVC.swift */,
+				7DF04B921E92DAA8005C57EB /* AboutVC.swift */,
 				7D8382B91D6A684300320083 /* ChallengeVC.swift */,
 				7DF18BDB1E37E6A000F65D37 /* USStatesVC.swift */,
 				7D0D90221E37D2390025FDE7 /* ExtraLevelsVC.swift */,
@@ -209,6 +224,8 @@
 				7D9A22A51D73859F002E9EC2 /* GameVC.swift */,
 				7DEFC70F1D70E81C003DA9CF /* Country.swift */,
 				7D25AE881D69354C00319F5B /* Main.storyboard */,
+				7DF04B961E92E42D005C57EB /* Launch.storyboard */,
+				7D2733C91E92E7F700EEEF70 /* Resources */,
 				7DA67F261DDCFAE300768537 /* ProgressButton.swift */,
 				7DA1FFB11DE34330008D5B44 /* Assets.xcassets */,
 				7DEFC71F1D70EE27003DA9CF /* Images */,
@@ -238,6 +255,18 @@
 				7D25AEA91D69354C00319F5B /* Info.plist */,
 			);
 			path = BorderlineUITests;
+			sourceTree = "<group>";
+		};
+		7D2733C91E92E7F700EEEF70 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7DA4B5EC1F0DCAA100771D1F /* BorderlineMap.png */,
+				7D2733C71E92E7EF00EEEF70 /* JetlinerBlueOrangeLogo.png */,
+				7D2733CA1E92E85000EEEF70 /* Pinstripes@2x.png */,
+				7D2733CB1E92E85000EEEF70 /* Pinstripes@2x-iphone.png */,
+				7D2733CC1E92E85000EEEF70 /* Pinstripes@3x.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		93100F5D2A10EB0BA2A73F09 /* Frameworks */ = {
@@ -384,13 +413,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D86372F1E32AE2A009563EF /* Sounds in Resources */,
+				7D2733CD1E92E85000EEEF70 /* Pinstripes@2x.png in Resources */,
+				7D2733CE1E92E85000EEEF70 /* Pinstripes@2x-iphone.png in Resources */,
 				7D25AE921D69354C00319F5B /* LaunchScreen.storyboard in Resources */,
 				7D25AE8A1D69354C00319F5B /* Main.storyboard in Resources */,
 				7DF18BE11E38108E00F65D37 /* BorderlineCountries.sqlite-shm in Resources */,
 				7D0E5DDC1E36721800AF8091 /* Fonts in Resources */,
 				7DF18BE21E38108E00F65D37 /* BorderlineCountries.sqlite-wal in Resources */,
+				7DA4B5ED1F0DCAA100771D1F /* BorderlineMap.png in Resources */,
 				7DF18BE01E38108E00F65D37 /* BorderlineCountries.sqlite in Resources */,
+				7D2733C81E92E7EF00EEEF70 /* JetlinerBlueOrangeLogo.png in Resources */,
 				7D62CE381E253BF30072D7DD /* Backgrounds.xcassets in Resources */,
+				7D2733CF1E92E85000EEEF70 /* Pinstripes@3x.png in Resources */,
+				7DF04B971E92E42D005C57EB /* Launch.storyboard in Resources */,
 				7DA1FFB21DE34330008D5B44 /* Assets.xcassets in Resources */,
 				7DEFC7201D70EE27003DA9CF /* Images in Resources */,
 			);
@@ -568,6 +603,7 @@
 				7D25AE851D69354C00319F5B /* AppDelegate.swift in Sources */,
 				7DF18BDC1E37E6A000F65D37 /* USStatesVC.swift in Sources */,
 				7DA67F271DDCFAE300768537 /* ProgressButton.swift in Sources */,
+				7DF04B931E92DAA8005C57EB /* AboutVC.swift in Sources */,
 				7D9A22A61D73859F002E9EC2 /* GameVC.swift in Sources */,
 				7D1143311E3BB5C300B3C8B1 /* BorderlineProducts.swift in Sources */,
 				7D6E5DF01E26A82900D4E5A6 /* LevelVC.swift in Sources */,

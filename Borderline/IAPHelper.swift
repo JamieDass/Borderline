@@ -39,9 +39,9 @@ open class IAPHelper : NSObject  {
       let purchased = UserDefaults.standard.bool(forKey: productIdentifier)
       if purchased {
         purchasedProductIdentifiers.insert(productIdentifier)
-        print("Previously purchased: \(productIdentifier)")
+//        print("Previously purchased: \(productIdentifier)")
       } else {
-        print("Not purchased: \(productIdentifier)")
+//        print("Not purchased: \(productIdentifier)")
       }
     }
     super.init()
@@ -57,7 +57,7 @@ extension IAPHelper {
   public func requestProducts(completionHandler: @escaping ProductsRequestCompletionHandler) {
     productsRequest?.cancel()
     productsRequestCompletionHandler = completionHandler
-    print(productIdentifiers)
+//    print(productIdentifiers)
     productsRequest = SKProductsRequest(productIdentifiers: productIdentifiers)
     productsRequest!.delegate = self
     productsRequest!.start()
@@ -88,13 +88,13 @@ extension IAPHelper: SKProductsRequestDelegate {
 
   public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
     let products = response.products
-    print("Loaded list of products...")
+//    print("Loaded list of products...")
     productsRequestCompletionHandler?(true, products)
     clearRequestAndHandler()
     
-    print("products: ",products.count)
+//    print("products: ",products.count)
     for p in products {
-      print("Found product: \(p.productIdentifier) \(p.localizedTitle) \(p.price.floatValue)")
+//      print("Found product: \(p.productIdentifier) \(p.localizedTitle) \(p.price.floatValue)")
     }
   }
   
@@ -151,9 +151,9 @@ extension IAPHelper: SKPaymentTransactionObserver {
  
   private func fail(transaction: SKPaymentTransaction) {
     print("fail...")
-    if let transactionError = transaction.error as? NSError {
+    if let transactionError = transaction.error as NSError? {
       if transactionError.code != SKError.paymentCancelled.rawValue {
-        print("Transaction Error: \(transaction.error?.localizedDescription)")
+        print("Transaction Error: \(String(describing: transaction.error?.localizedDescription))")
       }
     }
  

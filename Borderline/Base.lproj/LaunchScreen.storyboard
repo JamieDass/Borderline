@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,7 +22,27 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pinstripes.png" translatesAutoresizingMaskIntoConstraints="NO" id="SdH-1x-elE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JetlinerBlueOrangeLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Gca-OS-by8">
+                                <rect key="frame" x="37" y="258.5" width="300" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Gca-OS-by8" secondAttribute="height" multiplier="2:1" id="KdW-aY-1mC"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="SdH-1x-elE" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="9f2-KC-hNo"/>
+                            <constraint firstItem="Gca-OS-by8" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="VKP-le-VHh"/>
+                            <constraint firstItem="SdH-1x-elE" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="W6M-rw-BDj"/>
+                            <constraint firstItem="Gca-OS-by8" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.8" id="bm8-Et-Y1e"/>
+                            <constraint firstItem="SdH-1x-elE" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="r3V-Pl-8eW"/>
+                            <constraint firstItem="Gca-OS-by8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="tqf-at-BWU"/>
+                            <constraint firstItem="SdH-1x-elE" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="zwd-uv-JZF"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -28,4 +50,8 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="JetlinerBlueOrangeLogo.png" width="802" height="402"/>
+        <image name="Pinstripes.png" width="1366" height="1366"/>
+    </resources>
 </document>

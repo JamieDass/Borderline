@@ -118,8 +118,8 @@ class ChallengeVC: UIViewController {
         var index:Int = 0
         for button in levelButtons as! [UIButton]{
 //        for button in levelButtons{
-            button.layer.cornerRadius = 13
-            button.layer.borderWidth = 4.0
+            button.layer.cornerRadius = 10
+            button.layer.borderWidth = 0.0
 //            button.layer.backgroundColor = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0).cgColor
                button.layer.backgroundColor = GlobalConstants.darkBlue.cgColor
   //          button.layer.borderColor = UIColor.orange.cgColor
@@ -130,6 +130,17 @@ class ChallengeVC: UIViewController {
             button.titleLabel?.textColor = UIColor.orange
             button.titleLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title2)
             button.addTarget(self, action: #selector(goToLevel(_:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(touchButton(_:)), for: .touchDown)
+            button.addTarget(self, action: #selector(releaseButton(_:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(releaseButton(_:)), for: .touchUpOutside)
+            button.layer.shadowColor = GlobalConstants.shadowColour.cgColor
+            button.layer.shadowRadius = 0
+            button.layer.shadowOffset = CGSize(width:5.0,height:5.0)
+            button.layer.masksToBounds = false
+            button.layer.shadowOpacity = 1
+
+            
+            
 //            (button as! UIButton).addTarget(self, action: #selector(goToLevel(_:)), for: .touchUpInside)
             
             //            let edgeInsets: UIEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0)
@@ -149,6 +160,18 @@ class ChallengeVC: UIViewController {
         }
     }
     
+    func touchButton(_ sender : UIButton){
+        let iframe = sender.frame
+        let frame = CGRect(x: iframe.origin.x+5, y: iframe.origin.y+5, width: iframe.width, height: iframe.height)
+        sender.layer.shadowOffset = CGSize(width:0.0,height:0.0)
+        sender.frame = frame
+    }
+    func releaseButton(_ sender : UIButton){
+        let iframe = sender.frame
+        let frame = CGRect(x: iframe.origin.x-5, y: iframe.origin.y-5, width: iframe.width, height: iframe.height)
+        sender.layer.shadowOffset = CGSize(width:5.0,height:5.0)
+        sender.frame = frame
+    }
     func goToLevel(_ sender : UIButton) {
 //        AudioServicesPlaySystemSound(1306)
         let nSolved:Int = countries.count
