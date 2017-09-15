@@ -38,7 +38,6 @@
 		7D9A22A61D73859F002E9EC2 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A22A51D73859F002E9EC2 /* GameVC.swift */; };
 		7DA1FFB21DE34330008D5B44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DA1FFB11DE34330008D5B44 /* Assets.xcassets */; };
 		7DA4B5ED1F0DCAA100771D1F /* BorderlineMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DA4B5EC1F0DCAA100771D1F /* BorderlineMap.png */; };
-		7DA67F271DDCFAE300768537 /* ProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA67F261DDCFAE300768537 /* ProgressButton.swift */; };
 		7DA67F291DDD01B200768537 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA67F281DDD01B200768537 /* Extensions.swift */; };
 		7DEFC7011D70B45A003DA9CF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFC7001D70B45A003DA9CF /* Constants.swift */; };
 		7DEFC7101D70E81C003DA9CF /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFC70F1D70E81C003DA9CF /* Country.swift */; };
@@ -112,7 +111,6 @@
 		7D9A22A51D73859F002E9EC2 /* GameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
 		7DA1FFB11DE34330008D5B44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7DA4B5EC1F0DCAA100771D1F /* BorderlineMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BorderlineMap.png; sourceTree = "<group>"; };
-		7DA67F261DDCFAE300768537 /* ProgressButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressButton.swift; sourceTree = "<group>"; };
 		7DA67F281DDD01B200768537 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7DEFC7001D70B45A003DA9CF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7DEFC70F1D70E81C003DA9CF /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
@@ -226,7 +224,6 @@
 				7D25AE881D69354C00319F5B /* Main.storyboard */,
 				7DF04B961E92E42D005C57EB /* Launch.storyboard */,
 				7D2733C91E92E7F700EEEF70 /* Resources */,
-				7DA67F261DDCFAE300768537 /* ProgressButton.swift */,
 				7DA1FFB11DE34330008D5B44 /* Assets.xcassets */,
 				7DEFC71F1D70EE27003DA9CF /* Images */,
 				7D25AE901D69354C00319F5B /* LaunchScreen.storyboard */,
@@ -602,7 +599,6 @@
 				7D761B781E1EFF4400ABD2EB /* Util.swift in Sources */,
 				7D25AE851D69354C00319F5B /* AppDelegate.swift in Sources */,
 				7DF18BDC1E37E6A000F65D37 /* USStatesVC.swift in Sources */,
-				7DA67F271DDCFAE300768537 /* ProgressButton.swift in Sources */,
 				7DF04B931E92DAA8005C57EB /* AboutVC.swift in Sources */,
 				7D9A22A61D73859F002E9EC2 /* GameVC.swift in Sources */,
 				7D1143311E3BB5C300B3C8B1 /* BorderlineProducts.swift in Sources */,

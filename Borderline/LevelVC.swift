@@ -33,6 +33,7 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
         updateCollectionViewLayout(with: UIScreen.main.bounds.size)
         self.updateScoreLabel()
         self.collectionView.reloadData()
+
     }
     
     override func viewDidLoad() {
@@ -55,6 +56,9 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
                 print(error)
             }
         }
+        collectionView.layoutIfNeeded()
+        print(collectionView.visibleCells.count)
+        print(collectionView.indexPathsForVisibleItems.count)
 
         // Do any additional setup after loading the view.
     }
@@ -151,8 +155,6 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
         
         
         cell.backgroundView = combView
-        
-        
         
         return cell
     }

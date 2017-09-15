@@ -112,8 +112,10 @@ class ChallengeVC: UIViewController {
             }
         }
         
+        
         let levelButtons: NSArray = [level1Button,level2Button,level3Button,level4Button,level5Button,level6Button]
         let levelProgress: NSArray = [progress1View,progress2View,progress3View,progress4View,progress5View,progress6View]
+        let lockLabels:NSArray = [l1Progress,l2Progress,l3Progress,l4Progress,l5Progress,l6Progress]
         let levelConstraints: NSArray = [progress1X,progress2X,progress3X,progress4X,progress5X,progress6X]
         var index:Int = 0
         for button in levelButtons as! [UIButton]{
@@ -138,8 +140,6 @@ class ChallengeVC: UIViewController {
             button.layer.shadowOffset = CGSize(width:5.0,height:5.0)
             button.layer.masksToBounds = false
             button.layer.shadowOpacity = 1
-
-            
             
 //            (button as! UIButton).addTarget(self, action: #selector(goToLevel(_:)), for: .touchUpInside)
             
@@ -157,6 +157,7 @@ class ChallengeVC: UIViewController {
             let level:NSNumber = index as NSNumber
             let passedLevel = countries.filter{ $0.level == level }.count
             progressView.progress = Float(passedLevel)/Float(GlobalConstants.countriesPerLevel)
+            
         }
     }
     
