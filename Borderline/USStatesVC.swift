@@ -153,7 +153,7 @@ class USStatesVC: UIViewController {
         }
     }
     
-    func goToLevel(_ sender : UIButton) {
+    @objc func goToLevel(_ sender : UIButton) {
         //        AudioServicesPlaySystemSound(1306)
         let nSolved:Int = countries.count
         var thresholds: [Int:Int] = [0:-1,1:8,2:16,3:24,4:32,5:40]

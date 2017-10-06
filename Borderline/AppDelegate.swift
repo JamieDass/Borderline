@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().isOpaque = true
 //        UINavigationBar.appearance().barTintColor = UIColor.orange
         UINavigationBar.appearance().barTintColor = GlobalConstants.darkBlue
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white, NSFontAttributeName : UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1)]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white, NSAttributedStringKey.font : UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1)]
 //        setStatusBarBackgroundColor(UIColor.clear)
         
 //        UINavigationBar.appearance().setTitleVerticalPositionAdjustment(2, forBarMetrics: UIBarMetrics.Default)

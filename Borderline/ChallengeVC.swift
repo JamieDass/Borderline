@@ -115,7 +115,7 @@ class ChallengeVC: UIViewController {
         
         let levelButtons: NSArray = [level1Button,level2Button,level3Button,level4Button,level5Button,level6Button]
         let levelProgress: NSArray = [progress1View,progress2View,progress3View,progress4View,progress5View,progress6View]
-        let lockLabels:NSArray = [l1Progress,l2Progress,l3Progress,l4Progress,l5Progress,l6Progress]
+//        let lockLabels:NSArray = [l1Progress,l2Progress,l3Progress,l4Progress,l5Progress,l6Progress]
         let levelConstraints: NSArray = [progress1X,progress2X,progress3X,progress4X,progress5X,progress6X]
         var index:Int = 0
         for button in levelButtons as! [UIButton]{
@@ -161,26 +161,28 @@ class ChallengeVC: UIViewController {
         }
     }
     
-    func touchButton(_ sender : UIButton){
+    @objc func touchButton(_ sender : UIButton){
         let iframe = sender.frame
         let frame = CGRect(x: iframe.origin.x+5, y: iframe.origin.y+5, width: iframe.width, height: iframe.height)
         sender.layer.shadowOffset = CGSize(width:0.0,height:0.0)
         sender.frame = frame
     }
-    func releaseButton(_ sender : UIButton){
+    @objc func releaseButton(_ sender : UIButton){
         let iframe = sender.frame
         let frame = CGRect(x: iframe.origin.x-5, y: iframe.origin.y-5, width: iframe.width, height: iframe.height)
         sender.layer.shadowOffset = CGSize(width:5.0,height:5.0)
         sender.frame = frame
     }
-    func goToLevel(_ sender : UIButton) {
+    @objc func goToLevel(_ sender : UIButton) {
 //        AudioServicesPlaySystemSound(1306)
         let nSolved:Int = countries.count
         var thresholds: [Int:Int] = [0:-1,1:10,2:20,3:30,4:40,5:50]
         if (nSolved >= thresholds[sender.tag]!){
             playClick()
 //            AudioServicesPlaySystemSound(1306)
+            DispatchQueue.main.async {
             self.performSegue(withIdentifier: "levelSegue", sender: sender)
+            }
         }else{
             playSound(type: "Wrong")
             let diff:Int = thresholds[sender.tag]! - countries.count

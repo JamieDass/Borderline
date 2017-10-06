@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     struct MyConstraint {
         static func changeMultiplier(_ constraint: NSLayoutConstraint, multiplier: CGFloat) -> NSLayoutConstraint {
             let newConstraint = NSLayoutConstraint(
-                item: constraint.firstItem,
+                item: constraint.firstItem!,
                 attribute: constraint.firstAttribute,
                 relatedBy: constraint.relation,
                 toItem: constraint.secondItem,
@@ -122,20 +122,20 @@ class ViewController: UIViewController {
         }
     }
     
-    func touchButton(_ sender : UIButton){
+    @objc func touchButton(_ sender : UIButton){
         let iframe = sender.frame
         let frame = CGRect(x: iframe.origin.x+5, y: iframe.origin.y+5, width: iframe.width, height: iframe.height)
         sender.layer.shadowOffset = CGSize(width:0.0,height:0.0)
         sender.frame = frame
     }
-    func releaseButton(_ sender : UIButton){
+    @objc func releaseButton(_ sender : UIButton){
         let iframe = sender.frame
         let frame = CGRect(x: iframe.origin.x-5, y: iframe.origin.y-5, width: iframe.width, height: iframe.height)
         sender.layer.shadowOffset = CGSize(width:5.0,height:5.0)
         sender.frame = frame
     }
     
-    func clickSound(_ sender : UIButton){
+    @objc func clickSound(_ sender : UIButton){
         playClick()
     }
     

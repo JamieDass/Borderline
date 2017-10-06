@@ -110,14 +110,30 @@ class GameVC: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
-            
+            print(keyboardHeight)
             UIView.animate(withDuration: 0.1, animations: {self.viewBottom.constant = keyboardHeight})
-            
         }
     }
+
+//    @objc func keyboardWillShow(notification: NSNotification) {
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            let keyboardHeight = keyboardSize.height
+//            print(keyboardHeight)
+//            UIView.animate(withDuration: 0.1, animations: {self.viewBottom.constant = keyboardHeight})
+//        }
+//    }
+
+//    func keyboardWillShow(_ notification: Notification) {
+//        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+//            let keyboardRectangle = keyboardFrame.cgRectValue
+//            let keyboardHeight = keyboardRectangle.height
+//            print(keyboardHeight)
+//            UIView.animate(withDuration: 0.1, animations: {self.viewBottom.constant = keyboardHeight})
+//        }
+//    }
     
     func loadLevelCountries(){
         let defaults = UserDefaults.standard
@@ -161,6 +177,8 @@ class GameVC: UIViewController, UITextFieldDelegate {
         clueButton.setImage(clueBtnImage, for: UIControlState.normal)
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)        // Do any additional setup after loading the view.
+//        NotificationCenter.default.addObserver(self, selector: "keyboardWillShow:", name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+
 
         self.loadCountryView()
 
@@ -710,6 +728,8 @@ class GameVC: UIViewController, UITextFieldDelegate {
                 return 0xA429FF
             case .wait:
                 return 0xD62DA5
+            case .question:
+                return 0xD62DA5
             }
             
         }
@@ -761,9 +781,9 @@ class GameVC: UIViewController, UITextFieldDelegate {
         alertView.showTitle(
             title, // Title of view
             subTitle: subtitle, // String of view
-            duration: 0.0, // Duration to show before closing automatically, default: 0.0
-            completeText: closeText, // Optional button value, default: ""
+//            timeout: 0.0, // Duration to show before closing automatically, default: 0.0
             style: style, // Styles - see below.
+            closeButtonTitle: closeText, // Optional button value, default: ""
             colorStyle: colorInt,
             colorTextButton: 0xFFFFFF,
             circleIconImage: iconImage

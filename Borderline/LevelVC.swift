@@ -57,8 +57,8 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
             }
         }
         collectionView.layoutIfNeeded()
-        print(collectionView.visibleCells.count)
-        print(collectionView.indexPathsForVisibleItems.count)
+//        print(collectionView.visibleCells.count)
+//        print(collectionView.indexPathsForVisibleItems.count)
 
         // Do any additional setup after loading the view.
     }

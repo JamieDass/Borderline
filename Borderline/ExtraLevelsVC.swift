@@ -76,13 +76,13 @@ class ExtraLevelsVC: UIViewController {
         }
     }
     
-    func touchButton(_ sender : UIButton){
+    @objc func touchButton(_ sender : UIButton){
         let iframe = sender.frame
         let frame = CGRect(x: iframe.origin.x+5, y: iframe.origin.y+5, width: iframe.width, height: iframe.height)
         sender.layer.shadowOffset = CGSize(width:0.0,height:0.0)
         sender.frame = frame
     }
-    func releaseButton(_ sender : UIButton){
+    @objc func releaseButton(_ sender : UIButton){
         let iframe = sender.frame
         let frame = CGRect(x: iframe.origin.x-5, y: iframe.origin.y-5, width: iframe.width, height: iframe.height)
         sender.layer.shadowOffset = CGSize(width:5.0,height:5.0)
@@ -102,7 +102,7 @@ class ExtraLevelsVC: UIViewController {
 
     // MARK: - Navigation
 
-    func goToStates(_ sender : UIButton) {
+    @objc func goToStates(_ sender : UIButton) {
         
         if BorderlineProducts.store.isProductPurchased(BorderlineProducts.USStates) {
             self.performSegue(withIdentifier: "statesSegue", sender: sender)
@@ -142,19 +142,19 @@ class ExtraLevelsVC: UIViewController {
 
     }
 
-    func purchaseSucceeded(sender : UIButton) {
+    @objc func purchaseSucceeded(sender : UIButton) {
         print("purchased!")
         self.configureButtons()
         self.performSegue(withIdentifier: "statesSegue", sender: sender)
     }
     
-    func restoreSucceeded(sender : UIButton) {
+    @objc func restoreSucceeded(sender : UIButton) {
         self.configureButtons()
         SCLAlertView().showSuccess(
             "Success!", // Title of view
             subTitle: "Purchase Restored.", // String of view
-            closeButtonTitle: "Cool!",
-            duration: 2.0 // Duration to show before closing automatically, default: 0.0
+            closeButtonTitle: "Cool!"//,
+//            timeout: 2.0 // Duration to show before closing automatically, default: 0.0
         )
         self.performSegue(withIdentifier: "statesSegue", sender: sender)
         

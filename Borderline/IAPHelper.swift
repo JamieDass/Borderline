@@ -93,9 +93,9 @@ extension IAPHelper: SKProductsRequestDelegate {
     clearRequestAndHandler()
     
 //    print("products: ",products.count)
-    for p in products {
+//    for p in products {
 //      print("Found product: \(p.productIdentifier) \(p.localizedTitle) \(p.price.floatValue)")
-    }
+//    }
   }
   
   public func request(_ request: SKRequest, didFailWithError error: Error) {

@@ -64,13 +64,13 @@ class SettingsVC: UIViewController {
             }
         }
     }
-    func touchButton(_ sender : UIButton){
+    @objc func touchButton(_ sender : UIButton){
         let iframe = sender.frame
         let frame = CGRect(x: iframe.origin.x+5, y: iframe.origin.y+5, width: iframe.width, height: iframe.height)
         sender.layer.shadowOffset = CGSize(width:0.0,height:0.0)
         sender.frame = frame
     }
-    func releaseButton(_ sender : UIButton){
+    @objc func releaseButton(_ sender : UIButton){
         let iframe = sender.frame
         let frame = CGRect(x: iframe.origin.x-5, y: iframe.origin.y-5, width: iframe.width, height: iframe.height)
         sender.layer.shadowOffset = CGSize(width:5.0,height:5.0)
@@ -107,9 +107,9 @@ class SettingsVC: UIViewController {
         alertView.showTitle(
             "Are You Sure?", // Title of view
             subTitle: "This Will Reset Your Progress and Your Score", // String of view
-            duration: 0.0, // Duration to show before closing automatically, default: 0.0
-            completeText: "Cancel", // Optional button value, default: ""
+//            timeout: 0.0, // Duration to show before closing automatically, default: 0.0
             style: .warning, // Styles - see below.
+            closeButtonTitle: "Cancel", // Optional button value, default: ""
             colorStyle: 0xE96719,
             colorTextButton: 0xFFFFFF
         )
