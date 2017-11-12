@@ -32,7 +32,7 @@ class ExtraLevelsVC: UIViewController {
 //        products = loadProducts()
         backgroundImage.image = UIImage(named:"Images/Backgrounds/Pinstripes.png")
         self.configureButtons()
-        self.navigationItem.title = "Extras"
+        self.navigationItem.title = "Extra Levels"
         // Do any additional setup after loading the view.
     }
 
@@ -47,14 +47,16 @@ class ExtraLevelsVC: UIViewController {
         
         for (idx,buttons) in extraLevelButtons.enumerated(){
             let button = buttons as! UIButton
-            button.layer.cornerRadius = 13
-            button.layer.borderWidth = 0.0
-            button.layer.backgroundColor = GlobalConstants.darkBlue.cgColor
-            button.layer.borderColor = GlobalConstants.darkBlue.cgColor
-            button.titleLabel?.numberOfLines = 1
-            button.titleLabel?.adjustsFontSizeToFitWidth = true
-            button.titleLabel?.lineBreakMode = NSLineBreakMode.byClipping
-            button.titleLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title2)
+//            button.layer.cornerRadius = 13
+//            button.layer.borderWidth = 0.0
+//            button.layer.backgroundColor = GlobalConstants.darkBlue.cgColor
+//            button.layer.borderColor = GlobalConstants.darkBlue.cgColor
+//            button.titleLabel?.numberOfLines = 1
+//            button.titleLabel?.adjustsFontSizeToFitWidth = true
+//            button.titleLabel?.lineBreakMode = NSLineBreakMode.byClipping
+//            button.titleLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title2)
+            styleButton(button: button, locked: false)
+            
             if(idx == 0){
                 button.addTarget(self, action: #selector(goToStates(_:)), for: .touchUpInside)
                 if (BorderlineProducts.store.isProductPurchased("co.jetliner.borderline.usstates")){
@@ -68,11 +70,6 @@ class ExtraLevelsVC: UIViewController {
             button.addTarget(self, action: #selector(touchButton(_:)), for: .touchDown)
             button.addTarget(self, action: #selector(releaseButton(_:)), for: .touchUpInside)
             button.addTarget(self, action: #selector(releaseButton(_:)), for: .touchUpOutside)
-            button.layer.shadowColor = GlobalConstants.shadowColour.cgColor
-            button.layer.shadowRadius = 0
-            button.layer.shadowOffset = CGSize(width:5.0,height:5.0)
-            button.layer.masksToBounds = false
-            button.layer.shadowOpacity = 1
         }
     }
     

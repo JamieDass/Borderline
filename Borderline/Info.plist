@@ -27,6 +27,8 @@
 		<string>Fonts/LiberationMono-Bold.ttf</string>
 		<string>Fonts/LiberationMono-Regular.ttf</string>
 		<string>Fonts/SFMono-Semibold.otf</string>
+		<string>Fonts/Arvo-Bold.ttf</string>
+		<string>Fonts/Arvo-Regular.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

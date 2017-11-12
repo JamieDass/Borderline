@@ -39,6 +39,8 @@
 		7DA1FFB21DE34330008D5B44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DA1FFB11DE34330008D5B44 /* Assets.xcassets */; };
 		7DA4B5ED1F0DCAA100771D1F /* BorderlineMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DA4B5EC1F0DCAA100771D1F /* BorderlineMap.png */; };
 		7DA67F291DDD01B200768537 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA67F281DDD01B200768537 /* Extensions.swift */; };
+		7DCE0B491FB8EB4B008D5EBA /* Arvo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7DCE0B481FB8EB4B008D5EBA /* Arvo.plist */; };
+		7DCE0B4B1FB8EED2008D5EBA /* ScaledFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCE0B4A1FB8EED2008D5EBA /* ScaledFont.swift */; };
 		7DEFC7011D70B45A003DA9CF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFC7001D70B45A003DA9CF /* Constants.swift */; };
 		7DEFC7101D70E81C003DA9CF /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFC70F1D70E81C003DA9CF /* Country.swift */; };
 		7DEFC7201D70EE27003DA9CF /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 7DEFC71F1D70EE27003DA9CF /* Images */; };
@@ -112,6 +114,8 @@
 		7DA1FFB11DE34330008D5B44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7DA4B5EC1F0DCAA100771D1F /* BorderlineMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BorderlineMap.png; sourceTree = "<group>"; };
 		7DA67F281DDD01B200768537 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		7DCE0B481FB8EB4B008D5EBA /* Arvo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Arvo.plist; sourceTree = "<group>"; };
+		7DCE0B4A1FB8EED2008D5EBA /* ScaledFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaledFont.swift; sourceTree = "<group>"; };
 		7DEFC7001D70B45A003DA9CF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7DEFC70F1D70E81C003DA9CF /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		7DEFC71F1D70EE27003DA9CF /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				7D25AEB51D6939C000319F5B /* Borderline.entitlements */,
+				7DCE0B4A1FB8EED2008D5EBA /* ScaledFont.swift */,
 				7D25AE841D69354C00319F5B /* AppDelegate.swift */,
 				7D25AE861D69354C00319F5B /* ViewController.swift */,
 				7D1143321E3BB5D000B3C8B1 /* IAPHelper.swift */,
@@ -218,6 +223,7 @@
 				7D6E5DEF1E26A82900D4E5A6 /* LevelVC.swift */,
 				7D9A22A31D7120FB002E9EC2 /* NavVC.swift */,
 				7DEFC7001D70B45A003DA9CF /* Constants.swift */,
+				7DCE0B481FB8EB4B008D5EBA /* Arvo.plist */,
 				7D761B771E1EFF4400ABD2EB /* Util.swift */,
 				7D9A22A51D73859F002E9EC2 /* GameVC.swift */,
 				7DEFC70F1D70E81C003DA9CF /* Country.swift */,
@@ -414,6 +420,7 @@
 				7D2733CE1E92E85000EEEF70 /* Pinstripes@2x-iphone.png in Resources */,
 				7D25AE921D69354C00319F5B /* LaunchScreen.storyboard in Resources */,
 				7D25AE8A1D69354C00319F5B /* Main.storyboard in Resources */,
+				7DCE0B491FB8EB4B008D5EBA /* Arvo.plist in Resources */,
 				7DF18BE11E38108E00F65D37 /* BorderlineCountries.sqlite-shm in Resources */,
 				7D0E5DDC1E36721800AF8091 /* Fonts in Resources */,
 				7DF18BE21E38108E00F65D37 /* BorderlineCountries.sqlite-wal in Resources */,
@@ -588,6 +595,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D9A22A41D7120FB002E9EC2 /* NavVC.swift in Sources */,
+				7DCE0B4B1FB8EED2008D5EBA /* ScaledFont.swift in Sources */,
 				7D25AE871D69354C00319F5B /* ViewController.swift in Sources */,
 				7D8A257B1E29560D001073A1 /* TableViewController.swift in Sources */,
 				7DEFC7101D70E81C003DA9CF /* Country.swift in Sources */,
@@ -772,7 +780,7 @@
 				CODE_SIGN_ENTITLEMENTS = Borderline/Borderline.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Borderline/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.jetliner.borderline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -790,7 +798,7 @@
 				CODE_SIGN_ENTITLEMENTS = Borderline/Borderline.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Borderline/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.jetliner.borderline;
 				PRODUCT_NAME = "$(TARGET_NAME)";

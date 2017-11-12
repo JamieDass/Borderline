@@ -15,6 +15,12 @@ import StoreKit
 
 var player: AVAudioPlayer?
 
+private let fontName = "Arvo"
+private var scaledFont: ScaledFont = {
+    return ScaledFont(fontName: fontName)
+}()
+
+
 func updateScore(increment : Int){
     let defaults = UserDefaults.standard
     var score:Int = defaults.integer(forKey: "score")
@@ -75,6 +81,32 @@ func progressApp(showCloseButton: Bool) -> SCLAlertView.SCLAppearance{
     return appearance
 }
 
+func styleButton (button: UIButton, locked: Bool){
+    
+    button.layer.cornerRadius = 10
+    button.layer.borderWidth = GlobalConstants.borderWidth
+    
+    button.titleLabel?.numberOfLines = 1
+    button.titleLabel?.adjustsFontSizeToFitWidth = true
+    button.titleLabel?.lineBreakMode = NSLineBreakMode.byClipping
+    button.titleLabel?.font = scaledFont.font(forTextStyle: UIFontTextStyle.title2)
+    button.titleLabel?.adjustsFontForContentSizeCategory = true
+    button.layer.shadowRadius = 0
+    button.layer.shadowOffset = CGSize(width:5.0,height:5.0)
+    button.layer.masksToBounds = false
+    button.layer.shadowOpacity = 1
+    button.layer.backgroundColor = GlobalConstants.darkBlue.cgColor
+    button.layer.borderColor = GlobalConstants.borderColour.cgColor
+    button.layer.shadowColor = GlobalConstants.shadowColour.cgColor
+button.setTitleColor(UIColor.white, for: .normal)
+    
+    if(locked){
+        button.layer.backgroundColor = GlobalConstants.lightGrey.cgColor
+        button.layer.borderColor = GlobalConstants.lightGrey2.cgColor
+//        button.layer.shadowColor = GlobalConstants.shadowColour.cgColor
+        button.setTitleColor(GlobalConstants.midGrey, for: .normal)
+    }
+}
 
 func mergeImages (backgroundImage : UIImage, foregroundImage : UIImage) -> UIImage {
     
@@ -122,7 +154,7 @@ func playSound(type: String){
 }
 
 func playClick(){
-    playSound(type: "Select")
+//    playSound(type: "Select")
 //    let defaults = UserDefaults.standard
 //    if(defaults.bool(forKey: "sounds") == true){
 //        AudioServicesPlaySystemSound(1306)

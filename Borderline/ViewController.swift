@@ -91,34 +91,24 @@ class ViewController: UIViewController {
         }
         
         initButtons()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(preferredContentSizeChanged(_:)), name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
+    
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    @objc func preferredContentSizeChanged(_ notification: Notification) {
+        print("size changed")
+        initButtons()
+    }
     func initButtons(){
         let homeButtons: NSArray = [challengeButton,extraLevelsButton,settingsButton,aboutButton]
         for button in homeButtons as! [UIButton]{
             //        for button in homeButtons{
-            button.layer.cornerRadius = 10
-            button.layer.borderWidth = 0.0
-            //            button.layer.backgroundColor = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0).cgColor
-            button.layer.backgroundColor = GlobalConstants.darkBlue.cgColor
-            //          button.layer.borderColor = UIColor.orange.cgColor
-            button.layer.borderColor = GlobalConstants.darkBlue.cgColor
-            button.titleLabel?.numberOfLines = 1
-            button.titleLabel?.adjustsFontSizeToFitWidth = true
-            button.titleLabel?.lineBreakMode = NSLineBreakMode.byClipping
-            //            button.titleLabel?.textColor = UIColor.orange
-            button.titleLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title2)
+            styleButton(button: button, locked: false)
             button.addTarget(self, action: #selector(clickSound(_:)), for: .touchUpInside)
             button.addTarget(self, action: #selector(touchButton(_:)), for: .touchDown)
             button.addTarget(self, action: #selector(releaseButton(_:)), for: .touchUpInside)
             button.addTarget(self, action: #selector(releaseButton(_:)), for: .touchUpOutside)
-            button.layer.shadowColor = GlobalConstants.shadowColour.cgColor
-            button.layer.shadowRadius = 0
-            button.layer.shadowOffset = CGSize(width:5.0,height:5.0)
-            button.layer.masksToBounds = false
-            button.layer.shadowOpacity = 1
         }
     }
     
@@ -140,11 +130,11 @@ class ViewController: UIViewController {
     }
     
     func printFonts() {
-        for familyName in UIFont.familyNames {
-            print("\n-- \(familyName) \n")
-            for fontName in UIFont.fontNames(forFamilyName: familyName) {
-                print(fontName)
-            }
+        let families = UIFont.familyNames
+        families.sorted().forEach {
+            print("\($0)")
+            let names = UIFont.fontNames(forFamilyName: $0)
+            print(names)
         }
     }
     
@@ -158,7 +148,6 @@ class ViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //        print("segue")
         if let destination = segue.destination as? ExtraLevelsVC{
             destination.products = self.products
         }

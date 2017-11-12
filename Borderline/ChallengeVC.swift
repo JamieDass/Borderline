@@ -84,6 +84,7 @@ class ChallengeVC: UIViewController {
         var thresholds: [Int:Int] = [0:-1,1:10,2:20,3:30,4:40,5:50]
         var idx:Int = 0
         for label in lockLabels{
+            (label as! UILabel).isUserInteractionEnabled = false
             if(nSolved<thresholds[idx]!){
                 (label as! UILabel).text = "🔒"
             }else{
@@ -118,30 +119,24 @@ class ChallengeVC: UIViewController {
 //        let lockLabels:NSArray = [l1Progress,l2Progress,l3Progress,l4Progress,l5Progress,l6Progress]
         let levelConstraints: NSArray = [progress1X,progress2X,progress3X,progress4X,progress5X,progress6X]
         var index:Int = 0
+        let nSolved:Int = countries.count
+        var thresholds: [Int:Int] = [0:-1,1:10,2:20,3:30,4:40,5:50]
+        
         for button in levelButtons as! [UIButton]{
-//        for button in levelButtons{
-            button.layer.cornerRadius = 10
-            button.layer.borderWidth = 0.0
-//            button.layer.backgroundColor = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0).cgColor
-               button.layer.backgroundColor = GlobalConstants.darkBlue.cgColor
-  //          button.layer.borderColor = UIColor.orange.cgColor
-              button.layer.borderColor = GlobalConstants.darkBlue.cgColor
-            button.titleLabel?.numberOfLines = 1
-            button.titleLabel?.adjustsFontSizeToFitWidth = true
-            button.titleLabel?.lineBreakMode = NSLineBreakMode.byClipping
-            button.titleLabel?.textColor = UIColor.orange
-            button.titleLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title2)
+//            var btitle:String = button.title(for: .normal)!
+            var locked:Bool = false
+             if(nSolved<thresholds[index]!){
+                locked = true
+//                btitle.append("🔒")
+//                button.setTitle(btitle, for: .normal)
+//                button.setTitleColor(UIColor(red: 163/255, green: 163/255, blue: 163/255, alpha: 1.0), for: .normal)
+             }
+            styleButton(button: button, locked: locked)
+
             button.addTarget(self, action: #selector(goToLevel(_:)), for: .touchUpInside)
             button.addTarget(self, action: #selector(touchButton(_:)), for: .touchDown)
             button.addTarget(self, action: #selector(releaseButton(_:)), for: .touchUpInside)
             button.addTarget(self, action: #selector(releaseButton(_:)), for: .touchUpOutside)
-            button.layer.shadowColor = GlobalConstants.shadowColour.cgColor
-            button.layer.shadowRadius = 0
-            button.layer.shadowOffset = CGSize(width:5.0,height:5.0)
-            button.layer.masksToBounds = false
-            button.layer.shadowOpacity = 1
-            
-//            (button as! UIButton).addTarget(self, action: #selector(goToLevel(_:)), for: .touchUpInside)
             
             //            let edgeInsets: UIEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0)
             let bW = button.bounds.size.width/20
@@ -157,7 +152,6 @@ class ChallengeVC: UIViewController {
             let level:NSNumber = index as NSNumber
             let passedLevel = countries.filter{ $0.level == level }.count
             progressView.progress = Float(passedLevel)/Float(GlobalConstants.countriesPerLevel)
-            
         }
     }
     
@@ -179,8 +173,7 @@ class ChallengeVC: UIViewController {
         var thresholds: [Int:Int] = [0:-1,1:10,2:20,3:30,4:40,5:50]
         if (nSolved >= thresholds[sender.tag]!){
             playClick()
-//            AudioServicesPlaySystemSound(1306)
-            DispatchQueue.main.async {
+                DispatchQueue.main.async {
             self.performSegue(withIdentifier: "levelSegue", sender: sender)
             }
         }else{

@@ -36,24 +36,12 @@ class SettingsVC: UIViewController {
         
         let buttons: NSArray = [soundButton,progressButton,rateButton,shareButton]
         for button in buttons as! [UIButton]{
-            button.layer.cornerRadius = 13
-            button.layer.borderWidth = 0.0
-            button.layer.backgroundColor = GlobalConstants.darkBlue.cgColor
-            button.layer.borderColor = GlobalConstants.darkBlue.cgColor
-            button.titleLabel?.numberOfLines = 1
-            button.titleLabel?.adjustsFontSizeToFitWidth = true
-            button.titleLabel?.lineBreakMode = NSLineBreakMode.byClipping
-            button.titleLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title2)
-            button.setTitleColor(UIColor.white, for: UIControlState.normal)
+
+            styleButton(button: button, locked: false)
             
             button.addTarget(self, action: #selector(touchButton(_:)), for: .touchDown)
             button.addTarget(self, action: #selector(releaseButton(_:)), for: .touchUpInside)
             button.addTarget(self, action: #selector(releaseButton(_:)), for: .touchUpOutside)
-            button.layer.shadowColor = GlobalConstants.shadowColour.cgColor
-            button.layer.shadowRadius = 0
-            button.layer.shadowOffset = CGSize(width:5.0,height:5.0)
-            button.layer.masksToBounds = false
-            button.layer.shadowOpacity = 1
             
             if (button == soundButton){
                 if(defaults.bool(forKey: "sounds") == false){

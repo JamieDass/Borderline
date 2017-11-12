@@ -119,21 +119,18 @@ class USStatesVC: UIViewController {
         let levelProgress: NSArray = [progress1View,progress2View,progress3View,progress4View,progress5View]
         let levelConstraints: NSArray = [progress1X,progress2X,progress3X,progress4X,progress5X]
         var index:Int = 0
+        let nSolved:Int = countries.count
+        var thresholds: [Int:Int] = [0:-1,1:8,2:16,3:24,4:32,5:40]
+
 //        for (index, button) in levelButtons.enumerated() as! [UIButton]{
         for (idx, buttons) in levelButtons.enumerated(){
             let button = buttons as! UIButton
             //        for button in levelButtons{
-            button.layer.cornerRadius = 13
-            button.layer.borderWidth = 0.0
-            //            button.layer.backgroundColor = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0).cgColor
-            button.layer.backgroundColor = GlobalConstants.darkBlue.cgColor
-            //          button.layer.borderColor = UIColor.orange.cgColor
-            button.layer.borderColor = GlobalConstants.darkBlue.cgColor
-            button.titleLabel?.numberOfLines = 1
-            button.titleLabel?.adjustsFontSizeToFitWidth = true
-            button.titleLabel?.lineBreakMode = NSLineBreakMode.byClipping
-            button.titleLabel?.textColor = UIColor.orange
-            button.titleLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title2)
+            var locked:Bool = false
+            if(nSolved<thresholds[index]!){
+                locked = true
+            }
+            styleButton(button: button, locked: locked)
             button.addTarget(self, action: #selector(goToLevel(_:)), for: .touchUpInside)
             
             

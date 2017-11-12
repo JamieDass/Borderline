@@ -24,6 +24,14 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
     var changed = Bool()
     
     var levelType = String()
+    var countryPath = String()
+    
+    var flagType : String!
+    var flagPath : String!
+    var rootPath : String!
+    var path : String!
+    
+    var tickImage = UIImage()
     
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var scoreBarItem: UIBarButtonItem!
@@ -33,7 +41,6 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
         updateCollectionViewLayout(with: UIScreen.main.bounds.size)
         self.updateScoreLabel()
         self.collectionView.reloadData()
-
     }
     
     override func viewDidLoad() {
@@ -43,12 +50,12 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
         self.navigationItem.title = levelName as String
         
         if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
-            
+
             let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Country")
+            fetchRequest.fetchBatchSize = GlobalConstants.countriesPerLevel
             let levelPredicate = NSPredicate(format: "level == %@", levelNumber)
             let typePredicate = NSPredicate(format: "type == %@", levelType)
-            fetchRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: [typePredicate, levelPredicate])
-//            fetchRequest.predicate = NSPredicate(format: "level == %@", levelNumber)
+            fetchRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: [levelPredicate, typePredicate])
             do {
                 countries = try managedObjectContext.fetch(fetchRequest) as! [Country]
             } catch {
@@ -56,6 +63,17 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
                 print(error)
             }
         }
+        switch levelType {
+        case "State":
+            countryPath = "States"
+        case "FormerCountry":
+            countryPath = "FormerCountries"
+        default:
+            countryPath = "Countries"
+        }
+        rootPath = "Images/"+countryPath+"/"
+        
+        tickImage = UIImage.init(named: "Images/Tick.png")!
         collectionView.layoutIfNeeded()
 //        print(collectionView.visibleCells.count)
 //        print(collectionView.indexPathsForVisibleItems.count)
@@ -108,8 +126,6 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
         
         let countrySel: Country = countries[(indexPath).row]
         
-        var flagType : String!
-        var flagPath : String!
         if countrySel.flagRevealed == 0 {
             flagType = "_mask_200.png"
             flagPath = "masks/200/"
@@ -117,44 +133,29 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
             flagType = "_clear_200.png"
             flagPath = "clear/200/"
         }
-        
-        var countryPath = String()
-        switch levelType {
-        case "State":
-            countryPath = "States"
-        case "FormerCountry":
-            countryPath = "FormerCountries"
-        default:
-            countryPath = "Countries"
-        }
-        
+
         var country: String = (countrySel.name)!
         country = country.replacingOccurrences(of: " ", with: "_")
         country = country.appending(flagType)
         
-        var path:String = "Images/"+countryPath+"/"
-        path = path.appending(flagPath)
+        path = rootPath.appending(flagPath)
         country = path.appending(country as String)
-        
         let flagImage = UIImage.init(named: country as String)
         let bgView = UIImageView.init(image: flagImage)
         bgView.contentMode = UIViewContentMode.scaleAspectFit
-        
-        cell.layer.borderWidth = 0
-        cell.layer.borderColor = UIColor.white.cgColor
-        cell.tag = indexPath.row
-        var tickImage = UIImage()
-        
+       
+        var combinedImage:UIImage = flagImage!
         if(countrySel.solved == 1){
-            tickImage = UIImage.init(named: "Images/Tick.png")!
-            //            bgView.addSubview(tickView)
+            combinedImage = mergeImages(backgroundImage: flagImage!, foregroundImage: tickImage)
         }
-        let combinedImage:UIImage = mergeImages(backgroundImage: flagImage!, foregroundImage: tickImage)
+//        let combinedImage:UIImage = mergeImages(backgroundImage: flagImage!, foregroundImage: tickImage)
         let combView = UIImageView.init(image: combinedImage)
         combView.contentMode = UIViewContentMode.scaleAspectFit
-        
-        
         cell.backgroundView = combView
+
+        cell.layer.borderWidth = 0
+//        cell.layer.borderColor = UIColor.clear.cgColor
+        cell.tag = indexPath.row
         
         return cell
     }

@@ -113,27 +113,9 @@ class GameVC: UIViewController, UITextFieldDelegate {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
-            print(keyboardHeight)
             UIView.animate(withDuration: 0.1, animations: {self.viewBottom.constant = keyboardHeight})
         }
     }
-
-//    @objc func keyboardWillShow(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            let keyboardHeight = keyboardSize.height
-//            print(keyboardHeight)
-//            UIView.animate(withDuration: 0.1, animations: {self.viewBottom.constant = keyboardHeight})
-//        }
-//    }
-
-//    func keyboardWillShow(_ notification: Notification) {
-//        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-//            let keyboardRectangle = keyboardFrame.cgRectValue
-//            let keyboardHeight = keyboardRectangle.height
-//            print(keyboardHeight)
-//            UIView.animate(withDuration: 0.1, animations: {self.viewBottom.constant = keyboardHeight})
-//        }
-//    }
     
     func loadLevelCountries(){
         let defaults = UserDefaults.standard
@@ -153,6 +135,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
         if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
             let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Country")
             fetchRequest.predicate = NSPredicate(format: "name == %@", levelCountryName)
+//            fetchRequest.fetchBatchSize = 1
             do {
                 let countries = try managedObjectContext.fetch(fetchRequest) as! [Country]
                 levelCountry = countries[0]
@@ -288,17 +271,19 @@ class GameVC: UIViewController, UITextFieldDelegate {
             var button3TextColor:UIColor = UIColor.white
             
             if thisCountry.regionRevealed == 1 {
-                button1Title = "Show "+self.regionClue+""
+                button1Title = thisCountry.region!//"Show "+self.regionClue+""
                 button1Color = GlobalConstants.lightBlue
                 button1TextColor = UIColor.black
             }
             if thisCountry.capitalRevealed == 1 {
-                button2Title = "Show Capital"
+                button2Title = thisCountry.capital!//"Show Capital"
                 button2Color = GlobalConstants.lightBlue
                 button2TextColor = UIColor.black
             }
             if thisCountry.clueRevealed == 1 {
-                button3Title = "Show Clue"
+                var countryClue: String = thisCountry.clue!.replacingOccurrences(of: " ", with: "    ")
+                countryClue = countryClue.replacingOccurrences(of: "_", with: "‑")
+                button3Title = countryClue//thisCountry.clue!//"Show Clue"
                 button3Color = GlobalConstants.lightBlue
                 button3TextColor = UIColor.black
             }
@@ -311,10 +296,11 @@ class GameVC: UIViewController, UITextFieldDelegate {
                         alertViewResponder.close()
                         self.showClueAlert(button: 1)
                     }
-                }else{
-                    alertViewResponder.setTitle(self.regionClue+":")
-                    alertViewResponder.setSubTitle(thisCountry.region!)
                 }
+//                }else{
+//                    alertViewResponder.setTitle(self.regionClue+":")
+//                    alertViewResponder.setSubTitle(thisCountry.region!)
+//                }
             }
             alertView.addButton(button2Title, backgroundColor:button2Color, textColor: button2TextColor) {
                 if thisCountry.capitalRevealed == 0 {
@@ -324,10 +310,11 @@ class GameVC: UIViewController, UITextFieldDelegate {
                         alertViewResponder.close()
                         self.showClueAlert(button: 2)
                     }
-                }else{
-                    alertViewResponder.setTitle("Capital:")
-                    alertViewResponder.setSubTitle(thisCountry.capital!)
                 }
+//                }else{
+//                    alertViewResponder.setTitle("Capital:")
+//                    alertViewResponder.setSubTitle(thisCountry.capital!)
+//                }
             }
             alertView.addButton(button3Title, backgroundColor:button3Color, textColor: button3TextColor) {
                 if thisCountry.clueRevealed == 0 {
@@ -337,10 +324,11 @@ class GameVC: UIViewController, UITextFieldDelegate {
                         alertViewResponder.close()
                         self.showClueAlert(button: 3)
                     }
-                }else{
-                    alertViewResponder.setTitle("Name:")
-                    alertViewResponder.setSubTitle(thisCountry.clue!)
                 }
+//                }else{
+//                    alertViewResponder.setTitle("Name:")
+//                    alertViewResponder.setSubTitle(thisCountry.clue!)
+//                }
             }
             alertView.addButton("Back", backgroundColor: GlobalConstants.lightGrey, textColor: UIColor.black) {
                 alertViewResponder.close()
@@ -402,23 +390,23 @@ class GameVC: UIViewController, UITextFieldDelegate {
                 case 1:
                     updateScore(increment: -self.kRegionCost)
                     thisCountry.regionRevealed = 1
-                    self.clueTitle = self.regionClue+":"
+//                    self.clueTitle = self.regionClue+":"
                     let timeZoneName: String = thisCountry.region!.replacingOccurrences(of: ", ", with: "\n")
-                    self.clueSubTitle = timeZoneName
+//                    self.clueSubTitle = timeZoneName
 //                    self.clueSubTitle = thisCountry.region!
                 case 2:
                     updateScore(increment: -self.kCapitalCost)
                     thisCountry.capitalRevealed = 1
-                    self.clueTitle = "Capital:"
-                    self.clueSubTitle = thisCountry.capital!
+//                    self.clueTitle = "Capital:"
+//                    self.clueSubTitle = thisCountry.capital!
                 case 3:
                     updateScore(increment: -self.kClueCost)
                     thisCountry.clueRevealed = 1
-                    self.clueTitle = "Name:"
+  //                  self.clueTitle = "Name:"
                     var countryName: String = thisCountry.clue!.replacingOccurrences(of: " ", with: "\n")
                     countryName = self.insert(separator: " ", afterEveryXChars: 1, intoString: countryName)
 //                    let countryName:String = self.insert(separator: "\u{00a0}", afterEveryXChars: 1, intoString: thisCountry.clue!)
-                    self.clueSubTitle = countryName
+//                    self.clueSubTitle = countryName
                 default:
                     print("nothing")
                 }
@@ -429,7 +417,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
             subAlertView.addButton("Cancel", backgroundColor: GlobalConstants.lightGrey, textColor: UIColor.black) {
                 self.showClues()
             }
-            subAlertView.showInfo(title, subTitle: subTitle, animationStyle:.leftToRight)
+            subAlertView.showInfo(title, subTitle: subTitle, animationStyle:.bottomToTop)
             do {
                 try managedObjectContext.save()
             } catch {
@@ -448,7 +436,6 @@ class GameVC: UIViewController, UITextFieldDelegate {
             self.sclAlert(showCloseButton: false, title: "Reveal Flag?", subtitle: "2★", closeText: "Cancel", style: .warning, alertContext: "revealFlag")
         }
     }
-    
     func revealFlag(){
         if(getScore()<self.kFlagCost){
             self.noStars()
@@ -466,7 +453,6 @@ class GameVC: UIViewController, UITextFieldDelegate {
                     print("Failed to retrieve record")
                     print(error)
                 }
-                
                 if levelCountry.flagRevealed == 0 {
                     thisCountry.flagRevealed = 1
                     levelCountry.flagRevealed = 1
@@ -479,7 +465,6 @@ class GameVC: UIViewController, UITextFieldDelegate {
                         
                         // Do something in response to error condition
                     }
-                    
                     self.loadCountryView()
                 }
             }
@@ -591,6 +576,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
     
     func rightAnswer(){
         playSound(type: "RightAnswer")
+        
 //        updateScore(increment: self.kReward)
         countryGuess.resignFirstResponder()
         var thisCountry : Country!
@@ -766,7 +752,16 @@ class GameVC: UIViewController, UITextFieldDelegate {
                 colorInt = 0xA429FF
             default: selector = ""
             }
-            alertView.addButton(buttonTitle, target:self, selector:Selector(selector))
+//            alertView.addButton(buttonTitle, target:self, selector:Selector(selector))
+            alertView.addButton(buttonTitle){
+                switch alertContext {
+                case "revealFlag":
+                    self.revealFlag()
+                case "revealAnswer":
+                    self.revealAnswer()
+                default: print("no context provided")
+                }
+            }
         }
         alertView.addButton(closeText, backgroundColor: GlobalConstants.lightGrey, textColor: UIColor.black){
             self.countryGuess.becomeFirstResponder()
