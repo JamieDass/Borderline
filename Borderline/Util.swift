@@ -73,9 +73,9 @@ func showProgress(alert: SCLAlertView){
 
 func progressApp(showCloseButton: Bool) -> SCLAlertView.SCLAppearance{
     let appearance = SCLAlertView.SCLAppearance(
-        kTitleFont: UIFont(name: "SFMono-Semibold", size: 20)!,
+        kTitleFont: UIFont(name: "Arvo-Bold", size: 20)!,
         kTextFont: UIFont(name: "SFMono-Semibold", size: 18)!,
-        kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
+        kButtonFont: UIFont(name: "Arvo-Bold", size: 16)!,
         showCloseButton: showCloseButton
     )
     return appearance

@@ -11,6 +11,11 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+//    private let fontName = "Arvo"
+//    private var scaledFont: ScaledFont = {
+//        return ScaledFont(fontName: fontName)
+//    }()
 
     var window: UIWindow?
 //    let defaultBlue = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0)
@@ -24,7 +29,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().isOpaque = true
 //        UINavigationBar.appearance().barTintColor = UIColor.orange
         UINavigationBar.appearance().barTintColor = GlobalConstants.darkBlue
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white, NSAttributedStringKey.font : UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1)]
+        let scaledFont : ScaledFont = ScaledFont(fontName: "Arvo")
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white, NSAttributedStringKey.font : scaledFont.font(forTextStyle: UIFontTextStyle.title1)
+        ]
+        
+        UIBarButtonItem.appearance().setTitleTextAttributes(
+            [
+                NSAttributedStringKey.font : scaledFont.font(forTextStyle: UIFontTextStyle.title3),
+                NSAttributedStringKey.foregroundColor : UIColor.white,
+                ], for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes(
+            [
+                NSAttributedStringKey.font : scaledFont.font(forTextStyle: UIFontTextStyle.title3),
+                NSAttributedStringKey.foregroundColor : UIColor.white,
+                ], for: .highlighted)
 //        setStatusBarBackgroundColor(UIColor.clear)
         
 //        UINavigationBar.appearance().setTitleVerticalPositionAdjustment(2, forBarMetrics: UIBarMetrics.Default)
