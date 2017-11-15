@@ -103,6 +103,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
         self.navigationItem.title = "Borderline"
         self.loadLevelCountries()
         self.loadCountry()
+        self.countryGuess.font = UIFont(name: "Arvo-Bold", size: 29)!
     }
     
     override func didReceiveMemoryWarning() {
@@ -110,10 +111,23 @@ class GameVC: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewSafeAreaInsetsDidChange() {
+        if #available(iOS 11.0, *) {
+            super.viewSafeAreaInsetsDidChange()
+//            view.safeAreaInsets.bottom // This value is the bottom safe area place value.
+//            print(view.safeAreaInsets)
+        }
+    }
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
-            UIView.animate(withDuration: 0.1, animations: {self.viewBottom.constant = keyboardHeight})
+            var newHeight = keyboardHeight
+//            print(view.safeAreaInsets)
+            if(view.safeAreaInsets.bottom > 0.0){
+                newHeight = keyboardHeight - view.safeAreaInsets.bottom
+            }
+            UIView.animate(withDuration: 0.1, animations: {self.viewBottom.constant = newHeight})
         }
     }
     

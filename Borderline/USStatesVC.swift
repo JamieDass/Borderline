@@ -132,7 +132,10 @@ class USStatesVC: UIViewController {
             }
             styleButton(button: button, locked: locked)
             button.addTarget(self, action: #selector(goToLevel(_:)), for: .touchUpInside)
-            
+            button.addTarget(self, action: #selector(touchButton(_:)), for: .touchDown)
+            button.addTarget(self, action: #selector(releaseButton(_:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(releaseButton(_:)), for: .touchUpOutside)
+
             
             let bW = button.bounds.size.width/20
             let constraint:NSLayoutConstraint = levelConstraints.object(at: idx) as! NSLayoutConstraint
@@ -148,6 +151,27 @@ class USStatesVC: UIViewController {
             let passedLevel = countries.filter{ $0.level == level }.count
             progressView.progress = Float(passedLevel)/Float(10)
         }
+    }
+    
+    @objc func touchButton(_ sender : UIButton){
+        let iframe = sender.frame
+        let frame = CGRect(x: iframe.origin.x+5, y: iframe.origin.y+5, width: iframe.width, height: iframe.height)
+        sender.layer.shadowOffset = CGSize(width:0.0,height:0.0)
+        sender.frame = frame
+        let lockLabels:NSArray = [l1Progress,l2Progress,l3Progress,l4Progress,l5Progress]
+        let lockLabel = lockLabels.object(at: sender.tag) as! UILabel
+        let lframe = lockLabel.frame
+        lockLabel.frame = CGRect(x: lframe.origin.x+5, y: lframe.origin.y+5, width: lframe.width, height: lframe.height)
+    }
+    @objc func releaseButton(_ sender : UIButton){
+        let iframe = sender.frame
+        let frame = CGRect(x: iframe.origin.x-5, y: iframe.origin.y-5, width: iframe.width, height: iframe.height)
+        sender.layer.shadowOffset = CGSize(width:5.0,height:5.0)
+        sender.frame = frame
+        let lockLabels:NSArray = [l1Progress,l2Progress,l3Progress,l4Progress,l5Progress]
+        let lockLabel = lockLabels.object(at: sender.tag) as! UILabel
+        let lframe = lockLabel.frame
+        lockLabel.frame = CGRect(x: lframe.origin.x-5, y: lframe.origin.y-5, width: lframe.width, height: lframe.height)
     }
     
     @objc func goToLevel(_ sender : UIButton) {

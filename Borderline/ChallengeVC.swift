@@ -148,6 +148,9 @@ class ChallengeVC: UIViewController {
 //                progressView.tintColor = GlobalConstants.darkBlue
             progressView.trackTintColor = UIColor.gray
             button.addSubview(progressView)
+//            let lockLabel = lockLabels.object(at: index) as! UILabel
+//            button.addSubview(lockLabel)
+            
             index += 1
             let level:NSNumber = index as NSNumber
             let passedLevel = countries.filter{ $0.level == level }.count
@@ -160,12 +163,20 @@ class ChallengeVC: UIViewController {
         let frame = CGRect(x: iframe.origin.x+5, y: iframe.origin.y+5, width: iframe.width, height: iframe.height)
         sender.layer.shadowOffset = CGSize(width:0.0,height:0.0)
         sender.frame = frame
+        let lockLabels:NSArray = [l1Progress,l2Progress,l3Progress,l4Progress,l5Progress,l6Progress]
+        let lockLabel = lockLabels.object(at: sender.tag) as! UILabel
+        let lframe = lockLabel.frame
+        lockLabel.frame = CGRect(x: lframe.origin.x+5, y: lframe.origin.y+5, width: lframe.width, height: lframe.height)
     }
     @objc func releaseButton(_ sender : UIButton){
         let iframe = sender.frame
         let frame = CGRect(x: iframe.origin.x-5, y: iframe.origin.y-5, width: iframe.width, height: iframe.height)
         sender.layer.shadowOffset = CGSize(width:5.0,height:5.0)
         sender.frame = frame
+        let lockLabels:NSArray = [l1Progress,l2Progress,l3Progress,l4Progress,l5Progress,l6Progress]
+        let lockLabel = lockLabels.object(at: sender.tag) as! UILabel
+        let lframe = lockLabel.frame
+        lockLabel.frame = CGRect(x: lframe.origin.x-5, y: lframe.origin.y-5, width: lframe.width, height: lframe.height)
     }
     @objc func goToLevel(_ sender : UIButton) {
 //        AudioServicesPlaySystemSound(1306)
