@@ -26,6 +26,7 @@
 		7D2733CD1E92E85000EEEF70 /* Pinstripes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2733CA1E92E85000EEEF70 /* Pinstripes@2x.png */; };
 		7D2733CE1E92E85000EEEF70 /* Pinstripes@2x-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2733CB1E92E85000EEEF70 /* Pinstripes@2x-iphone.png */; };
 		7D2733CF1E92E85000EEEF70 /* Pinstripes@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2733CC1E92E85000EEEF70 /* Pinstripes@3x.png */; };
+		7D5D5F2F1FBF959700C31538 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5D5F2E1FBF959600C31538 /* UIView+Extension.swift */; };
 		7D62CE381E253BF30072D7DD /* Backgrounds.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D62CE371E253BF30072D7DD /* Backgrounds.xcassets */; };
 		7D6E5DF01E26A82900D4E5A6 /* LevelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E5DEF1E26A82900D4E5A6 /* LevelVC.swift */; };
 		7D761B781E1EFF4400ABD2EB /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D761B771E1EFF4400ABD2EB /* Util.swift */; };
@@ -101,6 +102,7 @@
 		7D2733CA1E92E85000EEEF70 /* Pinstripes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pinstripes@2x.png"; sourceTree = "<group>"; };
 		7D2733CB1E92E85000EEEF70 /* Pinstripes@2x-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pinstripes@2x-iphone.png"; sourceTree = "<group>"; };
 		7D2733CC1E92E85000EEEF70 /* Pinstripes@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pinstripes@3x.png"; sourceTree = "<group>"; };
+		7D5D5F2E1FBF959600C31538 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		7D62CE371E253BF30072D7DD /* Backgrounds.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Backgrounds.xcassets; sourceTree = "<group>"; };
 		7D6E5DEF1E26A82900D4E5A6 /* LevelVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelVC.swift; sourceTree = "<group>"; };
 		7D761B771E1EFF4400ABD2EB /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				7D761B771E1EFF4400ABD2EB /* Util.swift */,
 				7D9A22A51D73859F002E9EC2 /* GameVC.swift */,
 				7DEFC70F1D70E81C003DA9CF /* Country.swift */,
+				7D5D5F2E1FBF959600C31538 /* UIView+Extension.swift */,
 				7D25AE881D69354C00319F5B /* Main.storyboard */,
 				7DF04B961E92E42D005C57EB /* Launch.storyboard */,
 				7D2733C91E92E7F700EEEF70 /* Resources */,
@@ -612,6 +615,7 @@
 				7D1143311E3BB5C300B3C8B1 /* BorderlineProducts.swift in Sources */,
 				7D6E5DF01E26A82900D4E5A6 /* LevelVC.swift in Sources */,
 				7D25AE8D1D69354C00319F5B /* Borderline.xcdatamodeld in Sources */,
+				7D5D5F2F1FBF959700C31538 /* UIView+Extension.swift in Sources */,
 				7D8A257D1E296563001073A1 /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

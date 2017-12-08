@@ -98,7 +98,7 @@ func styleButton (button: UIButton, locked: Bool){
     button.layer.backgroundColor = GlobalConstants.darkBlue.cgColor
     button.layer.borderColor = GlobalConstants.borderColour.cgColor
     button.layer.shadowColor = GlobalConstants.shadowColour.cgColor
-button.setTitleColor(UIColor.white, for: .normal)
+    button.setTitleColor(UIColor.white, for: .normal)
     
     if(locked){
         button.layer.backgroundColor = GlobalConstants.lightGrey.cgColor
