@@ -405,7 +405,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
                     updateScore(increment: -self.kRegionCost)
                     thisCountry.regionRevealed = 1
 //                    self.clueTitle = self.regionClue+":"
-                    let timeZoneName: String = thisCountry.region!.replacingOccurrences(of: ", ", with: "\n")
+//                    let timeZoneName: String = thisCountry.region!.replacingOccurrences(of: ", ", with: "\n")
 //                    self.clueSubTitle = timeZoneName
 //                    self.clueSubTitle = thisCountry.region!
                 case 2:
