@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    private var scaledFont: ScaledFont = {
 //        return ScaledFont(fontName: fontName)
 //    }()
-
     var window: UIWindow?
 //    let defaultBlue = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0)
 

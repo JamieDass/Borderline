@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ws6-kV-vnP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ws6-kV-vnP">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -20,16 +20,16 @@
                         <viewControllerLayoutGuide type="bottom" id="391-7C-i1Z"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pH6-ye-7PL">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="956"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iAO-0e-ezP" userLabel="backgroundImage">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="956"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAx-y2-wTx">
-                                <rect key="frame" x="38.5" y="420.5" width="691" height="96"/>
+                                <rect key="frame" x="38.5" y="422" width="691" height="96"/>
                                 <color key="backgroundColor" red="0.56459497209999998" green="0.56459497209999998" blue="0.56459497209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" hint="Opens the level selector in challenge mode." label="Challenge"/>
+                                <accessibility key="accessibilityConfiguration" hint="Opens the level selector in challenge mode." identifier="Challenge" label="Challenge"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="tintColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Challenge">
@@ -40,9 +40,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2e-Ks-5Lf">
-                                <rect key="frame" x="38.5" y="689.5" width="691" height="96"/>
+                                <rect key="frame" x="38.5" y="691" width="691" height="96"/>
                                 <color key="backgroundColor" red="0.56459497209999998" green="0.56459497209999998" blue="0.56459497209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" hint="Opens the settings page." label="Settings"/>
+                                <accessibility key="accessibilityConfiguration" hint="Opens the settings page." identifier="Settings" label="Settings"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="tintColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Settings">
@@ -53,9 +53,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMT-7m-ix3" userLabel="About Button">
-                                <rect key="frame" x="38.5" y="823.5" width="691" height="96"/>
+                                <rect key="frame" x="38.5" y="825" width="691" height="96"/>
                                 <color key="backgroundColor" red="0.56459497209999998" green="0.56459497209999998" blue="0.56459497209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" hint="Shows the credits page." label="Credits"/>
+                                <accessibility key="accessibilityConfiguration" hint="Shows the about page." identifier="About" label="About"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="tintColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="About">
@@ -66,27 +66,27 @@
                                 </connections>
                             </button>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gx6-Jv-Mrc" userLabel="TopSpacer">
-                                <rect key="frame" x="39" y="382.5" width="691" height="38.5"/>
+                                <rect key="frame" x="39" y="384" width="691" height="38.5"/>
                             </view>
                             <view opaque="NO" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEu-U3-upF" userLabel="Spacer1">
-                                <rect key="frame" x="38.5" y="516.5" width="691" height="38.5"/>
+                                <rect key="frame" x="38.5" y="518" width="691" height="38.5"/>
                             </view>
                             <view opaque="NO" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yzg-ez-QkQ" userLabel="Spacer2">
-                                <rect key="frame" x="38.5" y="651" width="691" height="38.5"/>
+                                <rect key="frame" x="38.5" y="652.5" width="691" height="38.5"/>
                             </view>
                             <view opaque="NO" tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nja-jt-iCv" userLabel="Spacer3">
-                                <rect key="frame" x="38.5" y="785.5" width="691" height="38"/>
+                                <rect key="frame" x="38.5" y="787" width="691" height="38"/>
                             </view>
                             <view opaque="NO" tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CSz-hd-Mge" userLabel="Spacer4">
-                                <rect key="frame" x="38.5" y="919.5" width="691" height="38.5"/>
+                                <rect key="frame" x="38.5" y="921" width="691" height="38.5"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BorderlineMap.png" translatesAutoresizingMaskIntoConstraints="NO" id="L4C-Fv-GIq">
-                                <rect key="frame" x="0.5" y="0.0" width="768" height="382.5"/>
+                                <rect key="frame" x="0.5" y="0.0" width="768" height="384"/>
                             </imageView>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tzq-ig-JQ7" userLabel="Extras Button">
-                                <rect key="frame" x="38.5" y="555" width="691" height="96"/>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tzq-ig-JQ7" userLabel="Extras">
+                                <rect key="frame" x="38.5" y="556.5" width="691" height="96"/>
                                 <color key="backgroundColor" red="0.56459497209999998" green="0.56459497209999998" blue="0.56459497209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" hint="Shows extra available levels." label="Extra Levels"/>
+                                <accessibility key="accessibilityConfiguration" hint="Shows extra available levels." identifier="Extras" label="Extras"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="tintColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Extras">
@@ -181,16 +181,16 @@
                         <viewControllerLayoutGuide type="bottom" id="gi7-GP-ZZo"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2Mj-5L-Gkm">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="956"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uTd-P8-uFg" userLabel="backgroundImage">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="956"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjq-KL-vex" userLabel="US States">
                                 <rect key="frame" x="39" y="46" width="691" height="168"/>
                                 <color key="backgroundColor" red="0.56459497209999998" green="0.56459497209999998" blue="0.56459497209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" hint="Opens the level selector in challenge mode." label="Challenge"/>
+                                <accessibility key="accessibilityConfiguration" hint="Opens the US States levels." identifier="US States" label="US States"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="tintColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="US States 🔒🛒">
@@ -206,7 +206,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vE-XC-5X2" userLabel="Former Countries">
                                 <rect key="frame" x="39" y="272" width="691" height="168"/>
                                 <color key="backgroundColor" red="0.56459497209999998" green="0.56459497209999998" blue="0.56459497209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" hint="Shows extra available levels." label="Extra Levels"/>
+                                <accessibility key="accessibilityConfiguration" hint="Shows former countries level." identifier="Former Countries" label="Former Countries"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="tintColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Former Countries">
@@ -270,11 +270,11 @@
                         <viewControllerLayoutGuide type="bottom" id="V82-VR-XrF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ORr-cv-bsV">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="956"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="opD-0g-D2T" userLabel="backgroundImage">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="956"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="naM-hf-mCl">
                                 <rect key="frame" x="20" y="58" width="728" height="168"/>
@@ -400,11 +400,11 @@
                         <viewControllerLayoutGuide type="bottom" id="PxV-f4-YM8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mvp-sk-3h2">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="956"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pSG-f1-5TP">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="956"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Borderline" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jCw-cC-viO" userLabel="TitleTV">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="96"/>
@@ -453,16 +453,16 @@
                         <viewControllerLayoutGuide type="bottom" id="biF-ND-nsY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3FA-bL-04p">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="956"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WZ7-ui-rWh" userLabel="backgroundImage">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="956"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dI-xB-Knb">
                                 <rect key="frame" x="20" y="38.5" width="728" height="115"/>
                                 <color key="backgroundColor" red="0.56459497209999998" green="0.56459497209999998" blue="0.56459497209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" hint="Opens level 1." label="Level 1"/>
+                                <accessibility key="accessibilityConfiguration" hint="Opens level 1." identifier="Level 1" label="Level 1"/>
                                 <color key="tintColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Level 1">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -493,7 +493,7 @@
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbg-dX-a6R">
                                 <rect key="frame" x="20" y="192" width="728" height="115"/>
                                 <color key="backgroundColor" red="0.56459497209999998" green="0.56459497209999998" blue="0.56459497209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" hint="Opens level 2." label="Level 2"/>
+                                <accessibility key="accessibilityConfiguration" hint="Opens level 2." identifier="Level 2" label="Level 2"/>
                                 <color key="tintColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Level 2">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -524,7 +524,7 @@
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnr-aT-s7i">
                                 <rect key="frame" x="20" y="345.5" width="728" height="115.5"/>
                                 <color key="backgroundColor" red="0.56459497209999998" green="0.56459497209999998" blue="0.56459497209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" hint="Opens level 3." label="Level 3"/>
+                                <accessibility key="accessibilityConfiguration" hint="Opens level 3." identifier="Level 3" label="Level 3"/>
                                 <color key="tintColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Level 3">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -555,7 +555,7 @@
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q21-XC-drl">
                                 <rect key="frame" x="20" y="499" width="728" height="115.5"/>
                                 <color key="backgroundColor" red="0.56459497209999998" green="0.56459497209999998" blue="0.56459497209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" hint="Opens level 4." label="Level 4"/>
+                                <accessibility key="accessibilityConfiguration" hint="Opens level 4." identifier="Level 4" label="Level 4"/>
                                 <color key="tintColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Level 4">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -586,7 +586,7 @@
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHR-ZC-yKk">
                                 <rect key="frame" x="20" y="654" width="728" height="115"/>
                                 <color key="backgroundColor" red="0.56459497209999998" green="0.56459497209999998" blue="0.56459497209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" hint="Opens level 5." label="Level 5"/>
+                                <accessibility key="accessibilityConfiguration" hint="Opens level 5." identifier="Level 5" label="Level 5"/>
                                 <color key="tintColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Level 5">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -617,7 +617,7 @@
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8o-k4-fpD">
                                 <rect key="frame" x="20" y="807.5" width="728" height="115"/>
                                 <color key="backgroundColor" red="0.56459497209999998" green="0.56459497209999998" blue="0.56459497209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" hint="Opens level 6." label="Level 2"/>
+                                <accessibility key="accessibilityConfiguration" hint="Opens level 6." identifier="Level 6" label="Level 2"/>
                                 <color key="tintColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Level 6">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -814,14 +814,14 @@
                         <viewControllerLayoutGuide type="bottom" id="33l-Tb-Zt7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="l30-5f-hVR">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="956"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vFC-qD-mNN" userLabel="backgroundImage">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="956"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FrB-vI-R72" userLabel="countryCollectionView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="956"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="E1r-ia-Fad">
                                     <size key="itemSize" width="50" height="50"/>
@@ -887,37 +887,38 @@
                         <viewControllerLayoutGuide type="bottom" id="LOA-uH-eQg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4Tz-sn-fVI">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="956"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kCf-wf-bgQ" userLabel="backgroundImage">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="956"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OdI-sG-Qe9" userLabel="bgView">
-                                <rect key="frame" x="0.0" y="50" width="768" height="906"/>
+                                <rect key="frame" x="0.0" y="50" width="768" height="910"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZqH-hK-oTT" userLabel="GameView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="956"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K6V-Ik-UCn" userLabel="squareView">
-                                        <rect key="frame" x="0.0" y="74" width="768" height="768"/>
+                                        <rect key="frame" x="0.0" y="76" width="768" height="768"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="K6V-Ik-UCn" secondAttribute="height" multiplier="1:1" id="ghP-PR-QcY"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dM6-mz-uu2" userLabel="ControlView">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="916"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="920"/>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LzB-Q5-Yl8">
-                                        <rect key="frame" x="50" y="99" width="718" height="718"/>
+                                        <rect key="frame" x="50" y="101" width="718" height="718"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="LzB-Q5-Yl8" secondAttribute="height" multiplier="1:1" id="iCT-Mc-Zzb"/>
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wnf-Q8-6ic">
-                                        <rect key="frame" x="0.0" y="916" width="768" height="40"/>
+                                        <rect key="frame" x="0.0" y="920" width="768" height="40"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="0.12790430929999999" green="0.22324320389999999" blue="0.31610073319999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Text field in which to enter your answer." identifier="Country Guess" label="Country Guess"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="pG7-La-chF"/>
                                         </constraints>
@@ -946,16 +947,16 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="548-bN-i3j" userLabel="ButtonsView">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="916"/>
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="920"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZW-Fo-r1D" userLabel="spacer2">
-                                        <rect key="frame" x="0.0" y="825.5" width="50" height="45.5"/>
+                                        <rect key="frame" x="0.0" y="829.5" width="50" height="45.5"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uuC-aP-3WF" userLabel="spacer1">
-                                        <rect key="frame" x="0.0" y="734.5" width="50" height="46"/>
+                                        <rect key="frame" x="0.0" y="738" width="50" height="46.5"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1m-b7-I4t" userLabel="revealButton">
-                                        <rect key="frame" x="3" y="689.5" width="45" height="45"/>
+                                        <rect key="frame" x="3" y="693" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="s1m-b7-I4t" secondAttribute="height" multiplier="1:1" id="UKC-bt-kxD"/>
                                         </constraints>
@@ -965,7 +966,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcK-9N-1Pm" userLabel="clueButton">
-                                        <rect key="frame" x="3" y="871" width="45" height="45"/>
+                                        <rect key="frame" x="3" y="875" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="zcK-9N-1Pm" secondAttribute="height" multiplier="1:1" id="PhZ-1w-Zcw"/>
                                         </constraints>
@@ -975,7 +976,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EkY-j0-7j2" userLabel="flagButton">
-                                        <rect key="frame" x="3" y="780.5" width="45" height="45"/>
+                                        <rect key="frame" x="3" y="784.5" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="EkY-j0-7j2" secondAttribute="height" multiplier="1:1" id="piB-57-0Cy"/>
                                         </constraints>
@@ -1065,7 +1066,7 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="v5Q-jQ-jzw">
-                        <rect key="frame" x="0.0" y="20" width="768" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1086,16 +1087,16 @@
                         <viewControllerLayoutGuide type="bottom" id="dk1-Ye-e0C"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1KN-oS-cjx">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="956"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="raj-ee-oDG" userLabel="backgroundImage">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="956"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edA-GY-r2n">
                                 <rect key="frame" x="20" y="48" width="728" height="134.5"/>
                                 <color key="backgroundColor" red="0.56459497209999998" green="0.56459497209999998" blue="0.56459497209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" hint="Opens level 1." label="Level 1"/>
+                                <accessibility key="accessibilityConfiguration" hint="Opens level 1." identifier="Level 1" label="Level 1"/>
                                 <color key="tintColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Level 1">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1126,7 +1127,7 @@
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEX-bn-1SR">
                                 <rect key="frame" x="20" y="230.5" width="728" height="134.5"/>
                                 <color key="backgroundColor" red="0.56459497209999998" green="0.56459497209999998" blue="0.56459497209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" hint="Opens level 2." label="Level 2"/>
+                                <accessibility key="accessibilityConfiguration" hint="Opens level 2." identifier="Level 2" label="Level 2"/>
                                 <color key="tintColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Level 2">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1157,7 +1158,7 @@
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QB0-RS-YeR">
                                 <rect key="frame" x="20" y="413" width="728" height="134"/>
                                 <color key="backgroundColor" red="0.56459497209999998" green="0.56459497209999998" blue="0.56459497209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" hint="Opens level 3." label="Level 3"/>
+                                <accessibility key="accessibilityConfiguration" hint="Opens level 3." identifier="Level 3" label="Level 3"/>
                                 <color key="tintColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Level 3">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1188,7 +1189,7 @@
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZlD-1c-81T">
                                 <rect key="frame" x="20" y="595" width="728" height="134.5"/>
                                 <color key="backgroundColor" red="0.56459497209999998" green="0.56459497209999998" blue="0.56459497209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" hint="Opens level 4." label="Level 4"/>
+                                <accessibility key="accessibilityConfiguration" hint="Opens level 4." identifier="Level 4" label="Level 4"/>
                                 <color key="tintColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Level 4">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1219,7 +1220,7 @@
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYf-xI-DjK">
                                 <rect key="frame" x="20" y="778.5" width="728" height="134.5"/>
                                 <color key="backgroundColor" red="0.56459497209999998" green="0.56459497209999998" blue="0.56459497209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" hint="Opens level 5." label="Level 5"/>
+                                <accessibility key="accessibilityConfiguration" hint="Opens level 5." identifier="Level 5" label="Level 5"/>
                                 <color key="tintColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Level 5">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1398,6 +1399,6 @@
         <image name="BorderlineMap.png" width="1500" height="600"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="znB-Cz-tSj"/>
+        <segue reference="UbN-gK-mbQ"/>
     </inferredMetricsTieBreakers>
 </document>

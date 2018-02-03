@@ -31,17 +31,17 @@ class BorderlineUITests: XCTestCase {
     
     func testExample() {
         
-        let app = XCUIApplication()
-        app.buttons["Challenge"].tap()
-        sleep(3)
-        let l1button = app.buttons["Level 1"]
-        let exists = NSPredicate(format: "exists == 1")
-        expectation(for: exists, evaluatedWith: l1button, handler: nil)
-        waitForExpectations(timeout: 5, handler: nil)
-        
-        app.buttons["Level 1"].tap()
-        sleep(5)
-        
+//        let app = XCUIApplication()
+//        app.buttons["Challenge"].tap()
+//        sleep(3)
+//        let l1button = app.buttons["Level 1"]
+//        let exists = NSPredicate(format: "exists == 1")
+//        expectation(for: exists, evaluatedWith: l1button, handler: nil)
+//        waitForExpectations(timeout: 5, handler: nil)
+//
+//        app.buttons["Level 1"].tap()
+//        sleep(5)
+//
 //        app.collectionViews.children(matching: .cell).element(boundBy: 12).children(matching: .other).element.tap()
 //        
 //        let clearTextTextField = app.textFields.containing(.button, identifier:"Clear text").element

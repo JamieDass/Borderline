@@ -49,6 +49,16 @@
                ReferencedContainer = "container:Borderline.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7DBE36621FEB1CB500574D13"
+               BuildableName = "BorderlineUITesting.xctest"
+               BlueprintName = "BorderlineUITesting"
+               ReferencedContainer = "container:Borderline.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

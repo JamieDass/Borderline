@@ -18,7 +18,6 @@
 		7D25AE8A1D69354C00319F5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D25AE881D69354C00319F5B /* Main.storyboard */; };
 		7D25AE8D1D69354C00319F5B /* Borderline.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D25AE8B1D69354C00319F5B /* Borderline.xcdatamodeld */; };
 		7D25AE921D69354C00319F5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D25AE901D69354C00319F5B /* LaunchScreen.storyboard */; };
-		7D25AE9D1D69354C00319F5B /* BorderlineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D25AE9C1D69354C00319F5B /* BorderlineTests.swift */; };
 		7D25AEA81D69354C00319F5B /* BorderlineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D25AEA71D69354C00319F5B /* BorderlineUITests.swift */; };
 		7D25AEB71D6939C500319F5B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D25AEB61D6939C500319F5B /* CloudKit.framework */; };
 		7D25AEB91D6939D200319F5B /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D25AEB81D6939D200319F5B /* GameKit.framework */; };
@@ -40,6 +39,8 @@
 		7DA1FFB21DE34330008D5B44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DA1FFB11DE34330008D5B44 /* Assets.xcassets */; };
 		7DA4B5ED1F0DCAA100771D1F /* BorderlineMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DA4B5EC1F0DCAA100771D1F /* BorderlineMap.png */; };
 		7DA67F291DDD01B200768537 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA67F281DDD01B200768537 /* Extensions.swift */; };
+		7DBE36661FEB1CB500574D13 /* BorderlineUITesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBE36651FEB1CB500574D13 /* BorderlineUITesting.swift */; };
+		7DBE366E1FEB1E0600574D13 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBE366D1FEB1E0600574D13 /* SnapshotHelper.swift */; };
 		7DCE0B491FB8EB4B008D5EBA /* Arvo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7DCE0B481FB8EB4B008D5EBA /* Arvo.plist */; };
 		7DCE0B4B1FB8EED2008D5EBA /* ScaledFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCE0B4A1FB8EED2008D5EBA /* ScaledFont.swift */; };
 		7DEFC7011D70B45A003DA9CF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFC7001D70B45A003DA9CF /* Constants.swift */; };
@@ -70,6 +71,13 @@
 			remoteGlobalIDString = 7D25AE801D69354B00319F5B;
 			remoteInfo = Borderline;
 		};
+		7DBE36681FEB1CB500574D13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7D25AE791D69354B00319F5B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7D25AE801D69354B00319F5B;
+			remoteInfo = Borderline;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -90,8 +98,6 @@
 		7D25AE911D69354C00319F5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D25AE931D69354C00319F5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D25AE981D69354C00319F5B /* BorderlineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BorderlineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7D25AE9C1D69354C00319F5B /* BorderlineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderlineTests.swift; sourceTree = "<group>"; };
-		7D25AE9E1D69354C00319F5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D25AEA31D69354C00319F5B /* BorderlineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BorderlineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D25AEA71D69354C00319F5B /* BorderlineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderlineUITests.swift; sourceTree = "<group>"; };
 		7D25AEA91D69354C00319F5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -116,6 +122,10 @@
 		7DA1FFB11DE34330008D5B44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7DA4B5EC1F0DCAA100771D1F /* BorderlineMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BorderlineMap.png; sourceTree = "<group>"; };
 		7DA67F281DDD01B200768537 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		7DBE36631FEB1CB500574D13 /* BorderlineUITesting.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BorderlineUITesting.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DBE36651FEB1CB500574D13 /* BorderlineUITesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderlineUITesting.swift; sourceTree = "<group>"; };
+		7DBE36671FEB1CB500574D13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DBE366D1FEB1E0600574D13 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		7DCE0B481FB8EB4B008D5EBA /* Arvo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Arvo.plist; sourceTree = "<group>"; };
 		7DCE0B4A1FB8EED2008D5EBA /* ScaledFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaledFont.swift; sourceTree = "<group>"; };
 		7DEFC7001D70B45A003DA9CF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -163,6 +173,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7DBE36601FEB1CB500574D13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -185,8 +202,8 @@
 				7D25AEB81D6939D200319F5B /* GameKit.framework */,
 				7D25AEB61D6939C500319F5B /* CloudKit.framework */,
 				7D25AE831D69354C00319F5B /* Borderline */,
-				7D25AE9B1D69354C00319F5B /* BorderlineTests */,
 				7D25AEA61D69354C00319F5B /* BorderlineUITests */,
+				7DBE36641FEB1CB500574D13 /* BorderlineUITesting */,
 				7D25AE821D69354B00319F5B /* Products */,
 				4F90A911AE4F12B037B614AE /* Pods */,
 				93100F5D2A10EB0BA2A73F09 /* Frameworks */,
@@ -199,6 +216,7 @@
 				7D25AE811D69354B00319F5B /* Borderline.app */,
 				7D25AE981D69354C00319F5B /* BorderlineTests.xctest */,
 				7D25AEA31D69354C00319F5B /* BorderlineUITests.xctest */,
+				7DBE36631FEB1CB500574D13 /* BorderlineUITesting.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -245,15 +263,6 @@
 			path = Borderline;
 			sourceTree = "<group>";
 		};
-		7D25AE9B1D69354C00319F5B /* BorderlineTests */ = {
-			isa = PBXGroup;
-			children = (
-				7D25AE9C1D69354C00319F5B /* BorderlineTests.swift */,
-				7D25AE9E1D69354C00319F5B /* Info.plist */,
-			);
-			path = BorderlineTests;
-			sourceTree = "<group>";
-		};
 		7D25AEA61D69354C00319F5B /* BorderlineUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +282,16 @@
 				7D2733CC1E92E85000EEEF70 /* Pinstripes@3x.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		7DBE36641FEB1CB500574D13 /* BorderlineUITesting */ = {
+			isa = PBXGroup;
+			children = (
+				7DBE366D1FEB1E0600574D13 /* SnapshotHelper.swift */,
+				7DBE36651FEB1CB500574D13 /* BorderlineUITesting.swift */,
+				7DBE36671FEB1CB500574D13 /* Info.plist */,
+			);
+			path = BorderlineUITesting;
 			sourceTree = "<group>";
 		};
 		93100F5D2A10EB0BA2A73F09 /* Frameworks */ = {
@@ -352,13 +371,31 @@
 			productReference = 7D25AEA31D69354C00319F5B /* BorderlineUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		7DBE36621FEB1CB500574D13 /* BorderlineUITesting */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7DBE366C1FEB1CB500574D13 /* Build configuration list for PBXNativeTarget "BorderlineUITesting" */;
+			buildPhases = (
+				7DBE365F1FEB1CB500574D13 /* Sources */,
+				7DBE36601FEB1CB500574D13 /* Frameworks */,
+				7DBE36611FEB1CB500574D13 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7DBE36691FEB1CB500574D13 /* PBXTargetDependency */,
+			);
+			name = BorderlineUITesting;
+			productName = BorderlineUITesting;
+			productReference = 7DBE36631FEB1CB500574D13 /* BorderlineUITesting.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		7D25AE791D69354B00319F5B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Jetliner;
 				TargetAttributes = {
@@ -388,7 +425,14 @@
 					};
 					7D25AEA21D69354C00319F5B = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = D8896AHXDR;
 						LastSwiftMigration = 0900;
+						TestTargetID = 7D25AE801D69354B00319F5B;
+					};
+					7DBE36621FEB1CB500574D13 = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = D8896AHXDR;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 7D25AE801D69354B00319F5B;
 					};
 				};
@@ -409,6 +453,7 @@
 				7D25AE801D69354B00319F5B /* Borderline */,
 				7D25AE971D69354C00319F5B /* BorderlineTests */,
 				7D25AEA21D69354C00319F5B /* BorderlineUITests */,
+				7DBE36621FEB1CB500574D13 /* BorderlineUITesting */,
 			);
 		};
 /* End PBXProject section */
@@ -452,6 +497,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7DBE36611FEB1CB500574D13 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -476,13 +528,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BorderlineTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7B7834A296130917521114F0 /* [CP] Copy Pods Resources */ = {
@@ -536,13 +591,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Borderline-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B05EF544167018851AEE0E58 /* [CP] Check Pods Manifest.lock */ = {
@@ -551,13 +609,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BorderlineUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DE391A489FE57CA96D385AFB /* [CP] Embed Pods Frameworks */ = {
@@ -581,9 +642,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Borderline/Pods-Borderline-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -624,7 +688,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D25AE9D1D69354C00319F5B /* BorderlineTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,6 +696,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D25AEA81D69354C00319F5B /* BorderlineUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DBE365F1FEB1CB500574D13 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DBE36661FEB1CB500574D13 /* BorderlineUITesting.swift in Sources */,
+				7DBE366E1FEB1E0600574D13 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,6 +720,11 @@
 			isa = PBXTargetDependency;
 			target = 7D25AE801D69354B00319F5B /* Borderline */;
 			targetProxy = 7D25AEA41D69354C00319F5B /* PBXContainerItemProxy */;
+		};
+		7DBE36691FEB1CB500574D13 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7D25AE801D69354B00319F5B /* Borderline */;
+			targetProxy = 7DBE36681FEB1CB500574D13 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -845,6 +922,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D348E2A873B89715092A44E1 /* Pods-BorderlineUITests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = D8896AHXDR;
 				INFOPLIST_FILE = BorderlineUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Jetliner.BorderlineUITests;
@@ -859,12 +937,58 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1BF66C25E57BD97EE4A15FBD /* Pods-BorderlineUITests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = D8896AHXDR;
 				INFOPLIST_FILE = BorderlineUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Jetliner.BorderlineUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = Borderline;
+			};
+			name = Release;
+		};
+		7DBE366A1FEB1CB500574D13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D8896AHXDR;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = BorderlineUITesting/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.jetliner.BorderlineUITesting;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Borderline;
+			};
+			name = Debug;
+		};
+		7DBE366B1FEB1CB500574D13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D8896AHXDR;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = BorderlineUITesting/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.jetliner.BorderlineUITesting;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Borderline;
 			};
 			name = Release;
@@ -904,6 +1028,15 @@
 			buildConfigurations = (
 				7D25AEB31D69354C00319F5B /* Debug */,
 				7D25AEB41D69354C00319F5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7DBE366C1FEB1CB500574D13 /* Build configuration list for PBXNativeTarget "BorderlineUITesting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7DBE366A1FEB1CB500574D13 /* Debug */,
+				7DBE366B1FEB1CB500574D13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
