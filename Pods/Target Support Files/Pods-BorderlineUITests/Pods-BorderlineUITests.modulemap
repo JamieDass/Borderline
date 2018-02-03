@@ -1,0 +1,6 @@
+framework module Pods_BorderlineUITests {
+  umbrella header "Pods-BorderlineUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

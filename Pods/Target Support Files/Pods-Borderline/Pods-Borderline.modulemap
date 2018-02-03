@@ -1,0 +1,6 @@
+framework module Pods_Borderline {
+  umbrella header "Pods-Borderline-umbrella.h"
+
+  export *
+  module * { export * }
+}

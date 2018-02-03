@@ -1,0 +1,6 @@
+framework module Pods_BorderlineTests {
+  umbrella header "Pods-BorderlineTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
