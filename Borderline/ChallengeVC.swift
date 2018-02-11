@@ -46,6 +46,7 @@ class ChallengeVC: UIViewController {
     
     @IBOutlet weak var scoreLab: UILabel!
     let levelStrings: NSArray = ["Level 1","Level 2","Level 3","Level 4","Level 5","Level 6"]
+    let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
 
     override func viewWillAppear(_ animated: Bool) {
         self.updateScoreLabel()
@@ -55,6 +56,7 @@ class ChallengeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        impactFeedbackGenerator.prepare()
         backgroundImage.image = UIImage(named:"Images/Backgrounds/Pinstripes.png")
         self.navigationItem.title = "Challenge"
 //        self.configureButtons()
@@ -184,13 +186,14 @@ class ChallengeVC: UIViewController {
         var thresholds: [Int:Int] = [0:-1,1:10,2:20,3:30,4:40,5:50]
         if (nSolved >= thresholds[sender.tag]!){
             playClick()
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
             self.performSegue(withIdentifier: "levelSegue", sender: sender)
             }
         }else{
             playSound(type: "Wrong")
             let diff:Int = thresholds[sender.tag]! - countries.count
             let diffString = "You Need to Solve "+String(diff)+" More Countries!"
+            impactFeedbackGenerator.impactOccurred()
             SCLAlertView().showError("Uh oh!", subTitle:diffString, closeButtonTitle: "Will Do!")
         }
     }

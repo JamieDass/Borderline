@@ -41,7 +41,7 @@
 		18DA4035587B16C18BA510E9CBEA4D51 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E79C3F9C3955108A143081A29FA077F /* Pods-BorderlineUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BorderlineUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		336E189C610930F3641435CF51C8A140 /* Pods-BorderlineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BorderlineTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3BB8865FA166139627CC714CAA4E671A /* Pods_BorderlineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_BorderlineTests.framework; path = "Pods-BorderlineTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BB8865FA166139627CC714CAA4E671A /* Pods_BorderlineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BorderlineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		496F5E94FDDD734780145702198F0605 /* Pods-Borderline-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Borderline-acknowledgements.plist"; sourceTree = "<group>"; };
 		4A915754953BDE3FBECB5447865A4567 /* SCLAlertView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SCLAlertView.xcconfig; sourceTree = "<group>"; };
 		4F6701225D59E175E5736581D8E5AFDA /* Pods-BorderlineUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BorderlineUITests-dummy.m"; sourceTree = "<group>"; };
@@ -56,25 +56,25 @@
 		8472C24BABB9F2064333707A229F5B9F /* Pods-Borderline-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Borderline-resources.sh"; sourceTree = "<group>"; };
 		8D8FF9D3FAFDE1E05CDE717FD2000DBF /* Pods-Borderline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Borderline.debug.xcconfig"; sourceTree = "<group>"; };
 		9097DC2F137A77B611E373D0395AF0A2 /* Pods-BorderlineTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BorderlineTests-dummy.m"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9A828070FF78CDE262AA3B7E60E73428 /* Pods-Borderline-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Borderline-frameworks.sh"; sourceTree = "<group>"; };
 		9D0E8F295277FF48A41EC9425697A4AE /* Pods-BorderlineUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BorderlineUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		A894DA0AFF650E193FE9002CD13C843B /* Pods-Borderline.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Borderline.modulemap"; sourceTree = "<group>"; };
-		AE83C81CBC4F5226537900FF0E72EEF6 /* Pods-BorderlineTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-BorderlineTests.modulemap"; sourceTree = "<group>"; };
+		A894DA0AFF650E193FE9002CD13C843B /* Pods-Borderline.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Borderline.modulemap"; sourceTree = "<group>"; };
+		AE83C81CBC4F5226537900FF0E72EEF6 /* Pods-BorderlineTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-BorderlineTests.modulemap"; sourceTree = "<group>"; };
 		C0E8966D46820A85CF9C799574ED8E9B /* Pods-Borderline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Borderline.release.xcconfig"; sourceTree = "<group>"; };
-		C7CD5494CB2076675E2C17625579D196 /* Pods-BorderlineUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-BorderlineUITests.modulemap"; sourceTree = "<group>"; };
+		C7CD5494CB2076675E2C17625579D196 /* Pods-BorderlineUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-BorderlineUITests.modulemap"; sourceTree = "<group>"; };
 		D0FD72AA1F848B852C2E8BC2DA740048 /* Pods-BorderlineUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BorderlineUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		D18A206AAA6E75D6EF76D8C656EE8C98 /* Pods-BorderlineUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BorderlineUITests-umbrella.h"; sourceTree = "<group>"; };
 		D3CE1CAFEC26242ACDDA79F81AEF06B2 /* Pods-Borderline-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Borderline-acknowledgements.markdown"; sourceTree = "<group>"; };
 		D639D048889083A65E73A04462365139 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7A72F0157B7DB7F368DAB31B6FAEAF9 /* Pods-BorderlineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BorderlineTests.release.xcconfig"; sourceTree = "<group>"; };
-		D7A7804072B8C4FDB847CC00B67E9E65 /* Pods_Borderline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Borderline.framework; path = "Pods-Borderline.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7A7804072B8C4FDB847CC00B67E9E65 /* Pods_Borderline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Borderline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D826BF6AA60C0C13D9E2DD5CE5604CD4 /* SCLAlertView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SCLAlertView-dummy.m"; sourceTree = "<group>"; };
 		D8C6E625663A323541EFF3DE8E080005 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DB40611AA6635A1EF8A9F3381C48DB80 /* Pods_BorderlineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_BorderlineUITests.framework; path = "Pods-BorderlineUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB40611AA6635A1EF8A9F3381C48DB80 /* Pods_BorderlineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BorderlineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF73784E10E6E7F422D5626F30A9011B /* Pods-BorderlineTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BorderlineTests-resources.sh"; sourceTree = "<group>"; };
-		E9132648889FD222D2863D224D777B1F /* SCLAlertView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SCLAlertView.framework; path = SCLAlertView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED09B8D16E50B7F2DAED9CF350FEF481 /* SCLAlertView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SCLAlertView.modulemap; sourceTree = "<group>"; };
+		E9132648889FD222D2863D224D777B1F /* SCLAlertView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SCLAlertView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED09B8D16E50B7F2DAED9CF350FEF481 /* SCLAlertView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SCLAlertView.modulemap; sourceTree = "<group>"; };
 		F1608E648F8457BBFEA4F62303E1EFA9 /* Pods-BorderlineTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BorderlineTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		F34CAFDB7578FE1C0FB87FFB214FB262 /* Pods-BorderlineUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BorderlineUITests-resources.sh"; sourceTree = "<group>"; };
 		F7AF306D2AAF90D6D06E15543364D4C7 /* SCLAlertView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SCLAlertView-prefix.pch"; sourceTree = "<group>"; };
@@ -123,7 +123,6 @@
 				79976012D991BBCB570D7574B6552363 /* SCLExtensions.swift */,
 				42753F0DBF438AAF17062729B2173DED /* Support Files */,
 			);
-			name = SCLAlertView;
 			path = SCLAlertView;
 			sourceTree = "<group>";
 		};
@@ -365,7 +364,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0920;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -444,7 +443,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -452,14 +453,20 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_RELEASE=1",
 					"$(inherited)",
@@ -473,6 +480,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SYMROOT = "${SRCROOT}/../build";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -594,7 +602,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -602,15 +612,21 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_DEBUG=1",

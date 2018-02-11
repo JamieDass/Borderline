@@ -33,6 +33,15 @@ class GameVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var backgroundImage: UIImageView!
     
+    let notificationFeedbackGenerator = UINotificationFeedbackGenerator()
+    let impactFeedbackGenerator: (
+        light: UIImpactFeedbackGenerator,
+        medium: UIImpactFeedbackGenerator,
+        heavy: UIImpactFeedbackGenerator) = (
+            UIImpactFeedbackGenerator(style: .light),
+            UIImpactFeedbackGenerator(style: .medium),
+            UIImpactFeedbackGenerator(style: .heavy)
+    )
     
     let kRegionCost:Int = 1
     let kCapitalCost:Int = 2
@@ -99,11 +108,12 @@ class GameVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundImage.image = UIImage(named:"Images/Backgrounds/Pinstripes.png")
-
         self.navigationItem.title = "Borderline"
         self.loadLevelCountries()
         self.loadCountry()
         self.countryGuess.font = UIFont(name: "Arvo-Bold", size: 29)!
+        impactFeedbackGenerator.light.prepare()
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -239,7 +249,8 @@ class GameVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func gameProgress(){
         self.countryGuess.resignFirstResponder()
-        let alert = SCLAlertView(appearance: progressApp(showCloseButton: false))
+        let alert = SCLAlertView(appearance:
+            progressApp(showCloseButton: false))
         alert.addButton("Cool!"){
             self.countryGuess.becomeFirstResponder()
         }
@@ -253,7 +264,9 @@ class GameVC: UIViewController, UITextFieldDelegate {
         self.countryGuess.resignFirstResponder()
         self.cluesShown = true
         let appearance = SCLAlertView.SCLAppearance(
-            kTextFont: UIFont(name: "HelveticaNeue", size: 20)!,
+            kTitleFont: UIFont(name: "Arvo-Bold", size: 20)!,
+            kTextFont: UIFont(name: "Arvo", size: 16)!,
+            kButtonFont: UIFont(name: "Arvo", size: 14)!,
             showCloseButton: false,
             showCircularIcon: false,
             shouldAutoDismiss: false
@@ -351,7 +364,8 @@ class GameVC: UIViewController, UITextFieldDelegate {
                 self.clueSubTitle = "Need A Hint?"
                 self.countryGuess.becomeFirstResponder()
             }
-            
+            impactFeedbackGenerator.light.prepare()
+            impactFeedbackGenerator.light.impactOccurred()
             alertView.showInfo(clueTitle, subTitle: clueSubTitle)
             do {
                 try managedObjectContext.save()
@@ -396,6 +410,9 @@ class GameVC: UIViewController, UITextFieldDelegate {
             }
             
             let subAppearance = SCLAlertView.SCLAppearance(
+                kTitleFont: UIFont(name: "Arvo-Bold", size: 20)!,
+                kTextFont: UIFont(name: "Arvo", size: 16)!,
+                kButtonFont: UIFont(name: "Arvo", size: 14)!,
                 showCloseButton: false
             )
             let subAlertView = SCLAlertView(appearance: subAppearance)
@@ -431,6 +448,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
             subAlertView.addButton("Cancel", backgroundColor: GlobalConstants.lightGrey, textColor: UIColor.black) {
                 self.showClues()
             }
+            impactFeedbackGenerator.light.impactOccurred()
             subAlertView.showInfo(title, subTitle: subTitle, animationStyle:.bottomToTop)
             do {
                 try managedObjectContext.save()
@@ -447,6 +465,8 @@ class GameVC: UIViewController, UITextFieldDelegate {
     @IBAction func showFlagAlert(){
         playClick()
         if levelCountry.flagRevealed == 0 {
+            impactFeedbackGenerator.light.prepare()
+            impactFeedbackGenerator.light.impactOccurred()
             self.sclAlert(showCloseButton: false, title: "Reveal Flag?", subtitle: "2★", closeText: "Cancel", style: .warning, alertContext: "revealFlag")
         }
     }
@@ -489,8 +509,9 @@ class GameVC: UIViewController, UITextFieldDelegate {
     @IBAction func revealAnswerAlert() {
         playClick()
         if levelCountry.solved == 0 {
-            self.sclAlert(showCloseButton: false, title: "Reveal Answer?", subtitle: "15★", closeText: "Cancel", style: .info, alertContext: "revealAnswer")        
-            
+            impactFeedbackGenerator.light.prepare()
+            impactFeedbackGenerator.light.impactOccurred()
+            self.sclAlert(showCloseButton: false, title: "Reveal Answer?", subtitle: "15★", closeText: "Cancel", style: .info, alertContext: "revealAnswer")
         }
         
     }
@@ -559,9 +580,14 @@ class GameVC: UIViewController, UITextFieldDelegate {
         var answerCheck:String = countryGuess.text!
         answerCheck = answerCheck.lowercased()
         answerCheck = answerCheck.replacingOccurrences(of: "the ", with: "")
+        notificationFeedbackGenerator.prepare()
+
         if (arrAnswers?.contains(answerCheck))! {
+              notificationFeedbackGenerator.notificationOccurred(.success)
+            
             self.rightAnswer()
         }else{
+          notificationFeedbackGenerator.notificationOccurred(.success)
             playSound(type: "Wrong")
             SCLAlertView().showTitle(
                 "Uh Oh!", // Title of view
@@ -657,6 +683,9 @@ class GameVC: UIViewController, UITextFieldDelegate {
             levelCountryName = nextCountry
             
             let appearance = SCLAlertView.SCLAppearance(
+                kTitleFont: UIFont(name: "Arvo-Bold", size: 20)!,
+                kTextFont: UIFont(name: "Arvo", size: 16)!,
+                kButtonFont: UIFont(name: "Arvo", size: 14)!,
                 showCloseButton: false
             )
             let alertView = SCLAlertView(appearance: appearance)
@@ -673,6 +702,9 @@ class GameVC: UIViewController, UITextFieldDelegate {
             
         }else{
             let appearance = SCLAlertView.SCLAppearance(
+                kTitleFont: UIFont(name: "Arvo-Bold", size: 20)!,
+                kTextFont: UIFont(name: "Arvo", size: 16)!,
+                kButtonFont: UIFont(name: "Arvo", size: 14)!,
                 showCloseButton: false
             )
             let alertView = SCLAlertView(appearance: appearance)
@@ -698,6 +730,9 @@ class GameVC: UIViewController, UITextFieldDelegate {
     
     func noStars(){
         let appearance = SCLAlertView.SCLAppearance(
+            kTitleFont: UIFont(name: "Arvo-Bold", size: 20)!,
+            kTextFont: UIFont(name: "Arvo", size: 16)!,
+            kButtonFont: UIFont(name: "Arvo", size: 14)!,
             showCloseButton: false
         )
         let alertView = SCLAlertView(appearance: appearance)
@@ -736,6 +771,9 @@ class GameVC: UIViewController, UITextFieldDelegate {
         
         var colorInt: UInt = defaultColorInt
         let appearance = SCLAlertView.SCLAppearance(
+            kTitleFont: UIFont(name: "Arvo-Bold", size: 20)!,
+            kTextFont: UIFont(name: "Arvo", size: 16)!,
+            kButtonFont: UIFont(name: "Arvo", size: 14)!,
             showCloseButton:showCloseButton
         )
         
@@ -866,60 +904,6 @@ class GameVC: UIViewController, UITextFieldDelegate {
         }
         return output
     }
-    
- //MARK: - Show Info
-    
-    func showGameProgress(){
-        var solvedCountries:[Country] = []
-        if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
-            
-            let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Country")
-            // predicate to find all solved countries. CoreData doesn't accept BOOLs so this is stored as NSNumber 0,1
-            let solvedNumber:NSNumber = 1
-            fetchRequest.predicate = NSPredicate(format: "solved == %@", solvedNumber)
-            do {
-                solvedCountries = try managedObjectContext.fetch(fetchRequest) as! [Country]
-            } catch {
-                print("Failed to retrieve record")
-                print(error)
-            }
-        }
-        
-        let progress:String = "Score: "+String(getScore())+"★"
-        var levelProgress:String = "\n\n"
-        var lvl:Int = 1
-        while lvl <= 6{
-            let passedLevel:Int = solvedCountries.filter{ $0.level == NSNumber(value: lvl) }.count
-            var space:String = ""
-            if(passedLevel < 10){
-                space = " "
-            }
-            levelProgress += "Level "+String(lvl)+":\t\t"+space+String(passedLevel)+"/15"
-            if(lvl != 6){
-                levelProgress = levelProgress+"\n"
-            }
-            lvl += 1
-        }
-        
-        //    let passedLevel = countries.filter{ $0.level == level }.count
-        
-        
-        // Example of using the view to add two text fields to the alert
-        // Create the subview
-        let appearance = SCLAlertView.SCLAppearance(
-            kTitleFont: UIFont(name: "SFMono-Semibold", size: 20)!,
-            //        kTextFont: UIFont(name: "HelveticaNeue", size: 20)!,
-            kTextFont: UIFont(name: "SFMono-Semibold", size: 18)!,
-            kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
-            showCloseButton: false
-        )
-        
-        // Initialize SCLAlertView using custom Appearance
-        let alert = SCLAlertView(appearance: appearance)
-        alert.addButton("Cool!"){
-            self.countryGuess.becomeFirstResponder()
-        }
-        alert.showInfo(progress, subTitle: levelProgress,closeButtonTitle: "Cool!")
-    }
+
 
 }

@@ -100,8 +100,9 @@ class ExtraLevelsVC: UIViewController {
     // MARK: - Navigation
 
     @objc func goToStates(_ sender : UIButton) {
+        DispatchQueue.main.async {
         self.performSegue(withIdentifier: "statesSegue", sender: sender)
-        
+        }
 //        if BorderlineProducts.store.isProductPurchased(BorderlineProducts.USStates) {
 //            self.performSegue(withIdentifier: "statesSegue", sender: sender)
 //        }else{

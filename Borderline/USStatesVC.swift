@@ -44,6 +44,7 @@ class USStatesVC: UIViewController {
     @IBOutlet weak var l5Progress: UILabel!
     
     let levelStrings: NSArray = ["US States 1","US States 2","US States 3","US States 4","US States 5"]
+    let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
 
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +55,7 @@ class USStatesVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        impactFeedbackGenerator.prepare()
         backgroundImage.image = UIImage(named:"Images/Backgrounds/Pinstripes.png")
         self.navigationItem.title = "US States"
 //        self.configureButtons()
@@ -181,11 +183,15 @@ class USStatesVC: UIViewController {
         if (nSolved >= thresholds[sender.tag]!){
             playClick()
             //            AudioServicesPlaySystemSound(1306)
+            DispatchQueue.main.async {
             self.performSegue(withIdentifier: "statesLevelSegue", sender: sender)
+            }
         }else{
             playSound(type: "Wrong")
             let diff:Int = thresholds[sender.tag]! - countries.count
             let diffString = "You Need to Solve "+String(diff)+" More States!"
+
+            impactFeedbackGenerator.impactOccurred()
             SCLAlertView().showError("Uh oh!", subTitle:diffString, closeButtonTitle: "Will Do!")
         }
     }

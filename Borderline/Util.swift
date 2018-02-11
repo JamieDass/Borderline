@@ -14,6 +14,7 @@ import AVFoundation
 import StoreKit
 
 var player: AVAudioPlayer?
+let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
 
 private let fontName = "Arvo"
 private var scaledFont: ScaledFont = {
@@ -35,6 +36,8 @@ func getScore() -> Int{
 }
 
 func showProgress(alert: SCLAlertView){
+    impactFeedbackGenerator.prepare()
+    impactFeedbackGenerator.impactOccurred()
     playClick()
     var solvedCountries:[Country] = []
     if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
@@ -75,7 +78,7 @@ func progressApp(showCloseButton: Bool) -> SCLAlertView.SCLAppearance{
     let appearance = SCLAlertView.SCLAppearance(
         kTitleFont: UIFont(name: "Arvo-Bold", size: 20)!,
         kTextFont: UIFont(name: "SFMono-Semibold", size: 18)!,
-        kButtonFont: UIFont(name: "Arvo-Bold", size: 16)!,
+        kButtonFont: UIFont(name: "Arvo", size: 16)!,
         showCloseButton: showCloseButton
     )
     return appearance
