@@ -21,12 +21,14 @@ class SettingsVC: UIViewController {
     
     
     @IBOutlet weak var backgroundImage: UIImageView!
+    let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundImage.image = UIImage(named:"Images/Backgrounds/Pinstripes.png")
         self.navigationItem.title = "Settings"
         self.configureButtons()
+        impactFeedbackGenerator.prepare()
         // Do any additional setup after loading the view.
     }
 
@@ -47,7 +49,7 @@ class SettingsVC: UIViewController {
                 if(defaults.bool(forKey: "sounds") == false){
                     button.backgroundColor = GlobalConstants.lightGrey
                     button.setTitleColor(GlobalConstants.darkBlue, for: UIControlState.normal)
-                    button.setTitle("Turn Sounds On  🔇", for: UIControlState.normal)
+                    button.setTitle("Sound: 🔇", for: UIControlState.normal)
                 }
             }
         }
@@ -72,15 +74,13 @@ class SettingsVC: UIViewController {
             playClick()
             soundButton.backgroundColor = GlobalConstants.darkBlue
             soundButton.setTitleColor(UIColor.white, for: UIControlState.normal)
-            soundButton.setTitle("Turn Sounds Off  🔈", for: UIControlState.normal)
+            soundButton.setTitle("Sound: 🔈", for: UIControlState.normal)
         }else{
             defaults.set(false, forKey: "sounds")
             soundButton.backgroundColor = GlobalConstants.lightGrey
             soundButton.setTitleColor(GlobalConstants.darkBlue, for: UIControlState.normal)
-            soundButton.setTitle("Turn Sounds On  🔇", for: UIControlState.normal)
-        }
-        
-        
+            soundButton.setTitle("Sound: 🔇", for: UIControlState.normal)
+        }               
         
 //        self.configureButtons()
         
@@ -88,13 +88,19 @@ class SettingsVC: UIViewController {
     
     @IBAction func resetProgressAlert(){
         playClick()
-        let alertView = SCLAlertView()
+        let appearance = SCLAlertView.SCLAppearance(
+            kTitleFont: UIFont(name: "Arvo-Bold", size: 20)!,
+            kTextFont: UIFont(name: "Arvo", size: 16)!,
+            kButtonFont: UIFont(name: "Arvo", size: 14)!
+        )
+        let alertView = SCLAlertView(appearance: appearance)
         alertView.addButton("Reset"){
             self.resetProgress()
         }
+        impactFeedbackGenerator.impactOccurred()
         alertView.showTitle(
             "Are You Sure?", // Title of view
-            subTitle: "This Will Reset Your Progress and Your Score", // String of view
+            subTitle: "This will reset your progress and your score", // String of view
 //            timeout: 0.0, // Duration to show before closing automatically, default: 0.0
             style: .warning, // Styles - see below.
             closeButtonTitle: "Cancel", // Optional button value, default: ""

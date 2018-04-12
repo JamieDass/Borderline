@@ -10,6 +10,14 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Arvo-Bold.ttf">
+            <string>Arvo-Bold</string>
+        </array>
+        <array key="Arvo-Regular.ttf">
+            <string>Arvo</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="MCG-Za-xP5">
@@ -279,7 +287,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="naM-hf-mCl">
                                 <rect key="frame" x="20" y="58" width="728" height="168"/>
                                 <color key="backgroundColor" red="0.56459497209999998" green="0.56459497209999998" blue="0.56459497209999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Turn Sounds Off  🔈">
+                                <state key="normal" title="Sound:  🔈">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -408,13 +416,14 @@
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Borderline" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jCw-cC-viO" userLabel="TitleTV">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="96"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="Arvo-Bold" family="Arvo" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="By Jamie Dassoulas" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="S2i-Xv-z1p" userLabel="AuthorTV">
                                 <rect key="frame" x="0.0" y="96" width="768" height="192"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Arvo" family="Arvo" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
@@ -1399,6 +1408,6 @@
         <image name="BorderlineMap.png" width="1500" height="600"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UbN-gK-mbQ"/>
+        <segue reference="z9W-At-F3b"/>
     </inferredMetricsTieBreakers>
 </document>
