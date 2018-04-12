@@ -224,7 +224,7 @@ class LevelVC: UIViewController, UICollectionViewDataSource,UICollectionViewDele
             let selectedCountry: Country = countries[(sender as! UICollectionViewCell).tag]
 //            print(selectedCountry.name!,"\t",(sender as! UICollectionViewCell).tag as NSNumber!,"\t",levelName as String,"\t",levelType)
             destination.levelCountryName = selectedCountry.name!
-            destination.countryNumber = (sender as! UICollectionViewCell).tag as NSNumber!
+            destination.countryNumber = (sender as! UICollectionViewCell).tag as NSNumber?
             destination.levelName = levelName as String
             destination.levelType = levelType
         }

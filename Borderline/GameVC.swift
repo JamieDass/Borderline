@@ -143,7 +143,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
     
     func loadLevelCountries(){
         let defaults = UserDefaults.standard
-        levelCountries = defaults.object(forKey: levelName) as! [String]!
+        levelCountries = defaults.object(forKey: levelName) as! [String]?
     }
     
     func updateScoreLabel(){
@@ -787,22 +787,22 @@ class GameVC: UIViewController, UITextFieldDelegate {
         
         let alertView = SCLAlertView(appearance: appearance)
         if(alertContext != ""){
-            var selector = String()
+//            var selector = String()
             var buttonTitle = String()
             switch alertContext {
             case "revealFlag":
-                selector = "revealFlag"
+//                selector = "revealFlag"
                 buttonTitle = "Reveal"
                 colorInt = 0x2866BF
             case "rightAnswer":
-                selector = "loadCountry"
+//                selector = "loadCountry"
                 buttonTitle = "Next"
                 colorInt = 0x22B573
             case "revealAnswer":
-                selector = "revealAnswer"
+//                selector = "revealAnswer"
                 buttonTitle = "Reveal"
                 colorInt = 0xA429FF
-            default: selector = ""
+            default: buttonTitle = ""
             }
 //            alertView.addButton(buttonTitle, target:self, selector:Selector(selector))
             alertView.addButton(buttonTitle){
@@ -896,7 +896,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
     
     func insert(separator: String, afterEveryXChars: Int, intoString: String) -> String {
         var output = ""
-        intoString.characters.enumerated().forEach { index, c in
+        intoString.enumerated().forEach { index, c in
             if index % afterEveryXChars == 0 && index > 0 {
                 output += separator
             }
