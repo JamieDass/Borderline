@@ -23,4 +23,11 @@ struct GlobalConstants {
     static let borderWidth:CGFloat = 5.0
     static let defaultBlue: UIColor = UIColor(red: 11/255, green: 24/255, blue: 37/255, alpha: 1.0)
     static let countriesPerLevel:Int = 15
+    static let rightAnswerReward:Int = 1
+    static let revealCost:Int = 10
+    static let flagCost:Int = 2
+    static let clueCost:Int = 3
+    static let capitalCost:Int = 2
+    static let regionCost:Int = 1
+    
 }

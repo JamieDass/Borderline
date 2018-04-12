@@ -43,12 +43,12 @@ class GameVC: UIViewController, UITextFieldDelegate {
             UIImpactFeedbackGenerator(style: .heavy)
     )
     
-    let kRegionCost:Int = 1
-    let kCapitalCost:Int = 2
-    let kClueCost:Int = 3
-    let kFlagCost:Int = 2
-    let kRevealCost:Int = 15
-    let kReward:Int = 3
+    let kRegionCost:Int = GlobalConstants.regionCost
+    let kCapitalCost:Int = GlobalConstants.capitalCost
+    let kClueCost:Int = GlobalConstants.clueCost
+    let kFlagCost:Int = GlobalConstants.flagCost
+    let kRevealCost:Int = GlobalConstants.revealCost
+    let kReward:Int = GlobalConstants.rightAnswerReward
     
     var clueTextViews: NSArray!
     var clueButtons: NSArray!
@@ -511,7 +511,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
         if levelCountry.solved == 0 {
             impactFeedbackGenerator.light.prepare()
             impactFeedbackGenerator.light.impactOccurred()
-            self.sclAlert(showCloseButton: false, title: "Reveal Answer?", subtitle: "15★", closeText: "Cancel", style: .info, alertContext: "revealAnswer")
+            self.sclAlert(showCloseButton: false, title: "Reveal Answer?", subtitle: String(self.kRevealCost)+"★", closeText: "Cancel", style: .info, alertContext: "revealAnswer")
         }
         
     }
@@ -741,7 +741,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
                 self.countryGuess.becomeFirstResponder()
             }
         }
-        alertView.showError("Uh Oh!", subTitle: "You Need to Earn More Stars")
+        alertView.showError("Uh Oh!", subTitle: "You need to earn more stars!")
         //        SCLAlertView().showError("Uh Oh!", subTitle: "You Need to Earn More Stars",closeButtonTitle: "Will Do!")
     }
     

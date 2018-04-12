@@ -192,7 +192,7 @@ class ChallengeVC: UIViewController {
         }else{
             playSound(type: "Wrong")
             let diff:Int = thresholds[sender.tag]! - countries.count
-            let diffString = "You Need to Solve "+String(diff)+" More Countries!"
+            let diffString = "You need to solve "+String(diff)+" more countries!"
             impactFeedbackGenerator.impactOccurred()
             SCLAlertView().showError("Uh oh!", subTitle:diffString, closeButtonTitle: "Will Do!")
         }
