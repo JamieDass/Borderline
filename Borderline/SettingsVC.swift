@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import SCLAlertView
 import AVFoundation
+import StoreKit
 
 class SettingsVC: UIViewController {
 
@@ -52,6 +53,15 @@ class SettingsVC: UIViewController {
                     button.setTitle("Sound: 🔇", for: UIControlState.normal)
                 }
             }
+            //else if(button == rateButton){
+//                let attributedString = NSMutableAttributedString(string: "Please Rate Borderline  ⭐️")
+////                let myAttribute = [ NSFontAttributeName: UIFont(name: "Arvo", size: 12.0)! ]
+//                attributedString.append(NSAttributedString(string: "\n"))
+//                attributedString.append(NSAttributedString(string: "Borderline will never ask you for a rating.", attributes: [NSAttributedStringKey.font: UIFont(name: "Arvo", size: 12)!]))
+//                button.setAttributedTitle(attributedString, for: UIControlState.normal)
+//            }
+            
+            
         }
     }
     @objc func touchButton(_ sender : UIButton){
@@ -135,6 +145,18 @@ class SettingsVC: UIViewController {
         initLevelCountries()
     }
     
+    @IBAction func DisplayReviewController() {
+        if #available( iOS 10.3,*){
+            SKStoreReviewController.requestReview()
+        }
+    }
+    
+    @IBAction func shareApp(){
+        let shareText = "https://itunes.apple.com/us/app/borderline/id1199101606?ls=1&mt=8&at=1000lIXe"
+        let vc = UIActivityViewController(activityItems: [shareText], applicationActivities: [])
+        present(vc, animated: true, completion: nil)
+
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
