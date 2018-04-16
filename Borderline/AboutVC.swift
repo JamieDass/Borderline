@@ -18,15 +18,16 @@ class AboutVC: UIViewController {
         backgroundImage.image = UIImage(named:"Images/Backgrounds/Pinstripes.png")
         self.navigationItem.title = "About"
         let attributes = [NSAttributedStringKey.font: UIFont(name: "Arvo", size: 16)!]
-        let attributedString = NSMutableAttributedString(string:"by Jamie Dassoulas.\n\nThe \'right answer\' sound was made by grunz, the \'wrong answer\' sound by Tim Gormly, and the \'reveal\' sound by Gabriel Araujo.\nThe font is Arvo.", attributes: attributes)
+        let attributedString = NSMutableAttributedString(string:"Borderline was created by Jamie Dassoulas.\n\nThe \'right answer\' sound was made by grunz, the \'wrong answer\' sound by Tim Gormly, and the \'reveal\' sound by Gabriel Araujo.\n\nThis app also uses \'SCLAlertView\' by Sherzod Max, Victor Radchenko, Bilawal Hameed, and Riz Joj.\n\nThe font is Arvo.", attributes: attributes)
         _ = attributedString.setAsLink(textToFind: "Jamie Dassoulas", linkURL: "http://jamiedass.com")
         _ = attributedString.setAsLink(textToFind: "grunz", linkURL: "https://freesound.org/s/109663/")
         _ = attributedString.setAsLink(textToFind: "Gabriel Araujo", linkURL: "https://freesound.org/s/242501/")
         _ = attributedString.setAsLink(textToFind: "Tim Gormly", linkURL: "https://freesound.org/s/181857/")
         _ = attributedString.setAsLink(textToFind: "Arvo", linkURL: "https://fonts.google.com/specimen/Arvo")
+        _ = attributedString.setAsLink(textToFind: "SCLAlertView", linkURL: "https://github.com/vikmeup/SCLAlertView-Swift")
 
         authorTV.font = UIFont(name: "Arvo", size: 14)
-        authorTV.layer.cornerRadius = 10
+        authorTV.layer.cornerRadius = 15
         authorTV.attributedText = attributedString
         // Do any additional setup after loading the view.
     }
