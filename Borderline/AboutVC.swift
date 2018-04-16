@@ -27,11 +27,24 @@ class AboutVC: UIViewController {
         _ = attributedString.setAsLink(textToFind: "SCLAlertView", linkURL: "https://github.com/vikmeup/SCLAlertView-Swift")
 
         authorTV.font = UIFont(name: "Arvo", size: 14)
-        authorTV.layer.cornerRadius = 15
+        authorTV.layer.cornerRadius = 10
+        authorTV.layer.borderWidth = GlobalConstants.borderWidth
+        authorTV.layer.borderColor = GlobalConstants.borderColour.cgColor
+        authorTV.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         authorTV.attributedText = attributedString
+
+        authorTV.isScrollEnabled = false
+        let fixedWidth = authorTV.frame.size.width
+        authorTV.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+        let newSize = authorTV.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+        var newFrame = authorTV.frame
+        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+        authorTV.frame = newFrame
         // Do any additional setup after loading the view.
     }
 
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
