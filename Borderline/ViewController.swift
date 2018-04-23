@@ -97,7 +97,6 @@ class ViewController: UIViewController {
     }
     
     @objc func preferredContentSizeChanged(_ notification: Notification) {
-//        print("size changed")
         initButtons()
     }
     func initButtons(){

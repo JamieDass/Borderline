@@ -580,6 +580,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
         var answerCheck:String = countryGuess.text!
         answerCheck = answerCheck.lowercased()
         answerCheck = answerCheck.replacingOccurrences(of: "the ", with: "")
+        answerCheck = answerCheck.trimmingCharacters(in: .whitespacesAndNewlines)
         notificationFeedbackGenerator.prepare()
 
         if (arrAnswers?.contains(answerCheck))! {
