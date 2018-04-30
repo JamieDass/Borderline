@@ -588,7 +588,7 @@ class GameVC: UIViewController, UITextFieldDelegate {
             
             self.rightAnswer()
         }else{
-          notificationFeedbackGenerator.notificationOccurred(.success)
+          notificationFeedbackGenerator.notificationOccurred(.error)
             playSound(type: "Wrong")
             SCLAlertView().showTitle(
                 "Uh Oh!", // Title of view
@@ -742,6 +742,8 @@ class GameVC: UIViewController, UITextFieldDelegate {
                 self.countryGuess.becomeFirstResponder()
             }
         }
+        notificationFeedbackGenerator.prepare()
+        notificationFeedbackGenerator.notificationOccurred(.error)
         alertView.showError("Uh Oh!", subTitle: "You need to earn more stars!")
         //        SCLAlertView().showError("Uh Oh!", subTitle: "You Need to Earn More Stars",closeButtonTitle: "Will Do!")
     }
