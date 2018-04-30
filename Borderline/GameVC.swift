@@ -745,7 +745,6 @@ class GameVC: UIViewController, UITextFieldDelegate {
         notificationFeedbackGenerator.prepare()
         notificationFeedbackGenerator.notificationOccurred(.error)
         alertView.showError("Uh Oh!", subTitle: "You need to earn more stars!")
-        //        SCLAlertView().showError("Uh Oh!", subTitle: "You Need to Earn More Stars",closeButtonTitle: "Will Do!")
     }
     
     func sclAlert(showCloseButton: Bool, title: String, subtitle: String, closeText: String, style: SCLAlertViewStyle, alertContext: String){

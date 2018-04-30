@@ -13,6 +13,7 @@
 		7D0E5DDC1E36721800AF8091 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 7D0E5DDB1E36721800AF8091 /* Fonts */; };
 		7D1143311E3BB5C300B3C8B1 /* BorderlineProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1143301E3BB5C300B3C8B1 /* BorderlineProducts.swift */; };
 		7D1143331E3BB5D000B3C8B1 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1143321E3BB5D000B3C8B1 /* IAPHelper.swift */; };
+		7D126D172097D33D00EC60E1 /* JetlinerLaunch.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D126D162097D33D00EC60E1 /* JetlinerLaunch.png */; };
 		7D25AE851D69354C00319F5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D25AE841D69354C00319F5B /* AppDelegate.swift */; };
 		7D25AE871D69354C00319F5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D25AE861D69354C00319F5B /* ViewController.swift */; };
 		7D25AE8A1D69354C00319F5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D25AE881D69354C00319F5B /* Main.storyboard */; };
@@ -90,6 +91,7 @@
 		7D0E5DDB1E36721800AF8091 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		7D1143301E3BB5C300B3C8B1 /* BorderlineProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderlineProducts.swift; sourceTree = "<group>"; };
 		7D1143321E3BB5D000B3C8B1 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		7D126D162097D33D00EC60E1 /* JetlinerLaunch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JetlinerLaunch.png; sourceTree = "<group>"; };
 		7D25AE811D69354B00319F5B /* Borderline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Borderline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D25AE841D69354C00319F5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D25AE861D69354C00319F5B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 		7D2733C91E92E7F700EEEF70 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7D126D162097D33D00EC60E1 /* JetlinerLaunch.png */,
 				7DA4B5EC1F0DCAA100771D1F /* BorderlineMap.png */,
 				7D2733C71E92E7EF00EEEF70 /* JetlinerBlueOrangeLogo.png */,
 				7D2733CA1E92E85000EEEF70 /* Pinstripes@2x.png */,
@@ -463,6 +466,7 @@
 				7D2733CE1E92E85000EEEF70 /* Pinstripes@2x-iphone.png in Resources */,
 				7D25AE921D69354C00319F5B /* LaunchScreen.storyboard in Resources */,
 				7D25AE8A1D69354C00319F5B /* Main.storyboard in Resources */,
+				7D126D172097D33D00EC60E1 /* JetlinerLaunch.png in Resources */,
 				7DCE0B491FB8EB4B008D5EBA /* Arvo.plist in Resources */,
 				7DF18BE11E38108E00F65D37 /* BorderlineCountries.sqlite-shm in Resources */,
 				7D0E5DDC1E36721800AF8091 /* Fonts in Resources */,
