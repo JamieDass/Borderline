@@ -100,43 +100,43 @@ class ExtraLevelsVC: UIViewController {
     // MARK: - Navigation
 
     @objc func goToStates(_ sender : UIButton) {
-        DispatchQueue.main.async {
-        self.performSegue(withIdentifier: "statesSegue", sender: sender)
-        }
-//        if BorderlineProducts.store.isProductPurchased(BorderlineProducts.USStates) {
-//            self.performSegue(withIdentifier: "statesSegue", sender: sender)
-//        }else{
-//            if(self.products.count > 0){
-//                let appearance = SCLAlertView.SCLAppearance(
-//                    kTitleFont: UIFont(name: "Arvo", size: 20)!,
-//                    kTextFont: UIFont(name: "Arvo", size: 18)!
-//                )
-//
-//                let alert = SCLAlertView(appearance: appearance)
-//                let formatter = NumberFormatter()
-//                formatter.numberStyle = .currency
-//                formatter.locale = NSLocale.current
-//                var title: String = "Unlock US States?"
-//                var closeText: String = "No Thanks!"
-//                var subTitle: String = "\nMastered the countries of the world?\nTry your hand at the United States.\n\n"+formatter.string(from: self.products[0].price)!
-//                if(IAPHelper.canMakePayments()){
-//                    alert.addButton("Buy"){
-//                        BorderlineProducts.store.buyProduct(self.products[0])
-//                        NotificationCenter.default.addObserver(self, selector: #selector(ExtraLevelsVC.purchaseSucceeded), name: NSNotification.Name(rawValue: IAPHelper.IAPHelperPurchaseNotification), object: nil)
-//                    }
-//                    alert.addButton("Restore Purchases"){
-//                        BorderlineProducts.store.restorePurchases()
-//                         NotificationCenter.default.addObserver(self, selector: #selector(ExtraLevelsVC.restoreSucceeded), name: NSNotification.Name(rawValue: IAPHelper.IAPHelperPurchaseNotification), object: nil)
-//                    }
-//
-//                }else{
-//                    title = "Purchases Disabled"
-//                    subTitle = "You must be authorised to make payments to proceed."
-//                    closeText = "OK!"
-//                }
-//                alert.showInfo(title, subTitle: subTitle,closeButtonTitle: closeText)
-//            }
-//        }// else
+//        DispatchQueue.main.async {
+//        self.performSegue(withIdentifier: "statesSegue", sender: sender)
+//        }
+        if BorderlineProducts.store.isProductPurchased(BorderlineProducts.USStates) {
+            self.performSegue(withIdentifier: "statesSegue", sender: sender)
+        }else{
+            if(self.products.count > 0){
+                let appearance = SCLAlertView.SCLAppearance(
+                    kTitleFont: UIFont(name: "Arvo", size: 20)!,
+                    kTextFont: UIFont(name: "Arvo", size: 18)!
+                )
+
+                let alert = SCLAlertView(appearance: appearance)
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .currency
+                formatter.locale = NSLocale.current
+                var title: String = "Unlock US States?"
+                var closeText: String = "No Thanks!"
+                var subTitle: String = "\nMastered the countries of the world?\nTry your hand at the United States.\n\n"+formatter.string(from: self.products[0].price)!
+                if(IAPHelper.canMakePayments()){
+                    alert.addButton("Buy"){
+                        BorderlineProducts.store.buyProduct(self.products[0])
+                        NotificationCenter.default.addObserver(self, selector: #selector(ExtraLevelsVC.purchaseSucceeded), name: NSNotification.Name(rawValue: IAPHelper.IAPHelperPurchaseNotification), object: nil)
+                    }
+                    alert.addButton("Restore Purchases"){
+                        BorderlineProducts.store.restorePurchases()
+                         NotificationCenter.default.addObserver(self, selector: #selector(ExtraLevelsVC.restoreSucceeded), name: NSNotification.Name(rawValue: IAPHelper.IAPHelperPurchaseNotification), object: nil)
+                    }
+
+                }else{
+                    title = "Purchases Disabled"
+                    subTitle = "You must be authorised to make payments to proceed."
+                    closeText = "OK!"
+                }
+                alert.showInfo(title, subTitle: subTitle,closeButtonTitle: closeText)
+            }
+        }// else
  
 
     }
