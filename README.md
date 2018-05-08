@@ -4,4 +4,10 @@ A fun quiz game where you have to name the country based on its shape!
 Think you know China from Chile? Iraq from Iran? 
 Test your geography skills now!
 
-![Menu Screen](https://github.com/JamieDass/Borderline/blob/master/gh_screenshots/iPhone%20X-FirstScreen_framed_1000.png "Menu Screen") ![Level 1](https://github.com/JamieDass/Borderline/blob/master/gh_screenshots/iPhone%20X-Level1_framed_1000.png "Level 1")
+
+<a href="https://github.com/JamieDass/Borderline/blob/master/gh_screenshots/iPhone%20X-FirstScreen_framed_1000.png">                                                                                                                                                        
+<img class="screenshot" src="https://github.com/JamieDass/Borderline/blob/master/gh_screenshots/iPhone%20X-FirstScreen_framed_1000.png" alt="Menu Screen" style="width:350px">
+</a>
+<a href="https://github.com/JamieDass/Borderline/blob/master/gh_screenshots/iPhone%20X-Level1_framed_1000.png">                                                                                                                                                        
+<img class="screenshot" src="https://github.com/JamieDass/Borderline/blob/master/gh_screenshots/iPhone%20X-Level1_framed_1000.png" alt="Level 1" style="width:350px">
+</a>
