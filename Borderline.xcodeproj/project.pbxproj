@@ -26,6 +26,9 @@
 		7D2733CD1E92E85000EEEF70 /* Pinstripes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2733CA1E92E85000EEEF70 /* Pinstripes@2x.png */; };
 		7D2733CE1E92E85000EEEF70 /* Pinstripes@2x-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2733CB1E92E85000EEEF70 /* Pinstripes@2x-iphone.png */; };
 		7D2733CF1E92E85000EEEF70 /* Pinstripes@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2733CC1E92E85000EEEF70 /* Pinstripes@3x.png */; };
+		7D525BC12097E1DB00449D5C /* BorderlineCountries.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7D525BBF2097E1D800449D5C /* BorderlineCountries.sqlite */; };
+		7D525BC22097E1DB00449D5C /* BorderlineCountries.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 7D525BBE2097E1D800449D5C /* BorderlineCountries.sqlite-shm */; };
+		7D525BC32097E1DB00449D5C /* BorderlineCountries.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 7D525BC02097E1D800449D5C /* BorderlineCountries.sqlite-wal */; };
 		7D5D5F2F1FBF959700C31538 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5D5F2E1FBF959600C31538 /* UIView+Extension.swift */; };
 		7D62CE381E253BF30072D7DD /* Backgrounds.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D62CE371E253BF30072D7DD /* Backgrounds.xcassets */; };
 		7D6E5DF01E26A82900D4E5A6 /* LevelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E5DEF1E26A82900D4E5A6 /* LevelVC.swift */; };
@@ -50,9 +53,6 @@
 		7DF04B931E92DAA8005C57EB /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF04B921E92DAA8005C57EB /* AboutVC.swift */; };
 		7DF04B971E92E42D005C57EB /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DF04B961E92E42D005C57EB /* Launch.storyboard */; };
 		7DF18BDC1E37E6A000F65D37 /* USStatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF18BDB1E37E6A000F65D37 /* USStatesVC.swift */; };
-		7DF18BE01E38108E00F65D37 /* BorderlineCountries.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7DF18BDD1E38108E00F65D37 /* BorderlineCountries.sqlite */; };
-		7DF18BE11E38108E00F65D37 /* BorderlineCountries.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 7DF18BDE1E38108E00F65D37 /* BorderlineCountries.sqlite-shm */; };
-		7DF18BE21E38108E00F65D37 /* BorderlineCountries.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 7DF18BDF1E38108E00F65D37 /* BorderlineCountries.sqlite-wal */; };
 		8B4EE4FED7A0993186C0344E /* Pods_BorderlineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4DEAE02F43EC3294BA0E689 /* Pods_BorderlineUITests.framework */; };
 		9C44E25FE48BB5773FBE8777 /* Pods_BorderlineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705F8AA55C97BFE5F78E9015 /* Pods_BorderlineTests.framework */; };
 /* End PBXBuildFile section */
@@ -110,6 +110,9 @@
 		7D2733CA1E92E85000EEEF70 /* Pinstripes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pinstripes@2x.png"; sourceTree = "<group>"; };
 		7D2733CB1E92E85000EEEF70 /* Pinstripes@2x-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pinstripes@2x-iphone.png"; sourceTree = "<group>"; };
 		7D2733CC1E92E85000EEEF70 /* Pinstripes@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pinstripes@3x.png"; sourceTree = "<group>"; };
+		7D525BBE2097E1D800449D5C /* BorderlineCountries.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BorderlineCountries.sqlite-shm"; sourceTree = "<group>"; };
+		7D525BBF2097E1D800449D5C /* BorderlineCountries.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = BorderlineCountries.sqlite; sourceTree = "<group>"; };
+		7D525BC02097E1D800449D5C /* BorderlineCountries.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BorderlineCountries.sqlite-wal"; sourceTree = "<group>"; };
 		7D5D5F2E1FBF959600C31538 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		7D62CE371E253BF30072D7DD /* Backgrounds.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Backgrounds.xcassets; sourceTree = "<group>"; };
 		7D6E5DEF1E26A82900D4E5A6 /* LevelVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelVC.swift; sourceTree = "<group>"; };
@@ -136,9 +139,6 @@
 		7DF04B921E92DAA8005C57EB /* AboutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		7DF04B961E92E42D005C57EB /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		7DF18BDB1E37E6A000F65D37 /* USStatesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = USStatesVC.swift; sourceTree = "<group>"; };
-		7DF18BDD1E38108E00F65D37 /* BorderlineCountries.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = BorderlineCountries.sqlite; sourceTree = "<group>"; };
-		7DF18BDE1E38108E00F65D37 /* BorderlineCountries.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BorderlineCountries.sqlite-shm"; sourceTree = "<group>"; };
-		7DF18BDF1E38108E00F65D37 /* BorderlineCountries.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BorderlineCountries.sqlite-wal"; sourceTree = "<group>"; };
 		94FEDA47935E2F1F1F5EA179 /* Pods-BorderlineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BorderlineTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BorderlineTests/Pods-BorderlineTests.release.xcconfig"; sourceTree = "<group>"; };
 		C4DEAE02F43EC3294BA0E689 /* Pods_BorderlineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BorderlineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D348E2A873B89715092A44E1 /* Pods-BorderlineUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BorderlineUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BorderlineUITests/Pods-BorderlineUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -258,9 +258,9 @@
 				7D25AE901D69354C00319F5B /* LaunchScreen.storyboard */,
 				7D25AE931D69354C00319F5B /* Info.plist */,
 				7D25AE8B1D69354C00319F5B /* Borderline.xcdatamodeld */,
-				7DF18BDD1E38108E00F65D37 /* BorderlineCountries.sqlite */,
-				7DF18BDE1E38108E00F65D37 /* BorderlineCountries.sqlite-shm */,
-				7DF18BDF1E38108E00F65D37 /* BorderlineCountries.sqlite-wal */,
+				7D525BBF2097E1D800449D5C /* BorderlineCountries.sqlite */,
+				7D525BBE2097E1D800449D5C /* BorderlineCountries.sqlite-shm */,
+				7D525BC02097E1D800449D5C /* BorderlineCountries.sqlite-wal */,
 			);
 			path = Borderline;
 			sourceTree = "<group>";
@@ -466,16 +466,16 @@
 				7D2733CE1E92E85000EEEF70 /* Pinstripes@2x-iphone.png in Resources */,
 				7D25AE921D69354C00319F5B /* LaunchScreen.storyboard in Resources */,
 				7D25AE8A1D69354C00319F5B /* Main.storyboard in Resources */,
+				7D525BC32097E1DB00449D5C /* BorderlineCountries.sqlite-wal in Resources */,
 				7D126D172097D33D00EC60E1 /* JetlinerLaunch.png in Resources */,
+				7D525BC22097E1DB00449D5C /* BorderlineCountries.sqlite-shm in Resources */,
 				7DCE0B491FB8EB4B008D5EBA /* Arvo.plist in Resources */,
-				7DF18BE11E38108E00F65D37 /* BorderlineCountries.sqlite-shm in Resources */,
 				7D0E5DDC1E36721800AF8091 /* Fonts in Resources */,
-				7DF18BE21E38108E00F65D37 /* BorderlineCountries.sqlite-wal in Resources */,
 				7DA4B5ED1F0DCAA100771D1F /* BorderlineMap.png in Resources */,
-				7DF18BE01E38108E00F65D37 /* BorderlineCountries.sqlite in Resources */,
 				7D2733C81E92E7EF00EEEF70 /* JetlinerBlueOrangeLogo.png in Resources */,
 				7D62CE381E253BF30072D7DD /* Backgrounds.xcassets in Resources */,
 				7D2733CF1E92E85000EEEF70 /* Pinstripes@3x.png in Resources */,
+				7D525BC12097E1DB00449D5C /* BorderlineCountries.sqlite in Resources */,
 				7DF04B971E92E42D005C57EB /* Launch.storyboard in Resources */,
 				7DA1FFB21DE34330008D5B44 /* Assets.xcassets in Resources */,
 				7DEFC7201D70EE27003DA9CF /* Images in Resources */,
@@ -719,7 +719,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -770,7 +770,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
